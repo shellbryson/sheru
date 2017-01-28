@@ -1,196 +1,254 @@
 <?php
 /**
- * Custom template tags for this theme
+ * Custom Twenty Sixteen template tags
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
+ * @subpackage Twenty_Sixteen
+ * @since Twenty Sixteen 1.0
  */
 
-if ( ! function_exists( 'twentyseventeen_posted_on' ) ) :
+if ( ! function_exists( 'twentysixteen_entry_meta' ) ) :
 /**
- * Prints HTML with meta information for the current post-date/time and author.
+ * Prints HTML with meta information for the categories, tags.
+ *
+ * Create your own twentysixteen_entry_meta() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
  */
-function twentyseventeen_posted_on() {
+function twentysixteen_entry_meta() {
+	if ( 'post' === get_post_type() ) {
+		$author_avatar_size = apply_filters( 'twentysixteen_author_avatar_size', 49 );
+		printf( '<span class="byline"><span class="author vcard">%1$s<span class="screen-reader-text">%2$s </span> <a class="url fn n" href="%3$s">%4$s</a></span></span>',
+			get_avatar( get_the_author_meta( 'user_email' ), $author_avatar_size ),
+			_x( 'Author', 'Used before post author name.', 'twentysixteen' ),
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+			get_the_author()
+		);
+	}
 
-	// Get the author name; wrap it in a link.
-	$byline = sprintf(
-		/* translators: %s: post author */
-		__( 'by %s', 'twentyseventeen' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_the_author() . '</a></span>'
-	);
+	if ( in_array( get_post_type(), array( 'post', 'attachment' ) ) ) {
+		twentysixteen_entry_date();
+	}
 
-	// Finally, let's write all of this to the page.
-	echo '<span class="posted-on">' . twentyseventeen_time_link() . '</span><span class="byline"> ' . $byline . '</span>';
+	$format = get_post_format();
+	if ( current_theme_supports( 'post-formats', $format ) ) {
+		printf( '<span class="entry-format">%1$s<a href="%2$s">%3$s</a></span>',
+			sprintf( '<span class="screen-reader-text">%s </span>', _x( 'Format', 'Used before post format.', 'twentysixteen' ) ),
+			esc_url( get_post_format_link( $format ) ),
+			get_post_format_string( $format )
+		);
+	}
+
+	if ( 'post' === get_post_type() ) {
+		twentysixteen_entry_taxonomies();
+	}
+
+	if ( ! is_singular() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		echo '<span class="comments-link">';
+		comments_popup_link( sprintf( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'twentysixteen' ), get_the_title() ) );
+		echo '</span>';
+	}
 }
 endif;
 
-
-if ( ! function_exists( 'twentyseventeen_time_link' ) ) :
+if ( ! function_exists( 'twentysixteen_entry_date' ) ) :
 /**
- * Gets a nicely formatted string for the published date.
+ * Prints HTML with date information for current post.
+ *
+ * Create your own twentysixteen_entry_date() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
  */
-function twentyseventeen_time_link() {
+function twentysixteen_entry_date() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 	}
 
 	$time_string = sprintf( $time_string,
-		get_the_date( DATE_W3C ),
+		esc_attr( get_the_date( 'c' ) ),
 		get_the_date(),
-		get_the_modified_date( DATE_W3C ),
+		esc_attr( get_the_modified_date( 'c' ) ),
 		get_the_modified_date()
 	);
 
-	// Wrap the time string in a link, and preface it with 'Posted on'.
-	return sprintf(
-		/* translators: %s: post date */
-		__( '<span class="screen-reader-text">Posted on</span> %s', 'twentyseventeen' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+	printf( '<span class="posted-on"><span class="screen-reader-text">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
+		_x( 'Posted on', 'Used before publish date.', 'twentysixteen' ),
+		esc_url( get_permalink() ),
+		$time_string
 	);
 }
 endif;
 
-
-if ( ! function_exists( 'twentyseventeen_entry_footer' ) ) :
+if ( ! function_exists( 'twentysixteen_entry_taxonomies' ) ) :
 /**
- * Prints HTML with meta information for the categories, tags and comments.
+ * Prints HTML with category and tags for current post.
+ *
+ * Create your own twentysixteen_entry_taxonomies() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
  */
-function twentyseventeen_entry_footer() {
+function twentysixteen_entry_taxonomies() {
+	$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'twentysixteen' ) );
+	if ( $categories_list && twentysixteen_categorized_blog() ) {
+		printf( '<span class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
+			_x( 'Categories', 'Used before category names.', 'twentysixteen' ),
+			$categories_list
+		);
+	}
 
-	/* translators: used between list items, there is a space after the comma */
-	$separate_meta = __( ', ', 'twentyseventeen' );
-
-	// Get Categories for posts.
-	$categories_list = get_the_category_list( $separate_meta );
-
-	// Get Tags for posts.
-	$tags_list = get_the_tag_list( '', $separate_meta );
-
-	// We don't want to output .entry-footer if it will be empty, so make sure its not.
-	if ( ( ( twentyseventeen_categorized_blog() && $categories_list ) || $tags_list ) || get_edit_post_link() ) {
-
-		echo '<footer class="entry-footer">';
-
-			if ( 'post' === get_post_type() ) {
-				if ( ( $categories_list && twentyseventeen_categorized_blog() ) || $tags_list ) {
-					echo '<span class="cat-tags-links">';
-
-						// Make sure there's more than one category before displaying.
-						if ( $categories_list && twentyseventeen_categorized_blog() ) {
-							echo '<span class="cat-links">' . twentyseventeen_get_svg( array( 'icon' => 'folder-open' ) ) . '<span class="screen-reader-text">' . __( 'Categories', 'twentyseventeen' ) . '</span>' . $categories_list . '</span>';
-						}
-
-						if ( $tags_list ) {
-							echo '<span class="tags-links">' . twentyseventeen_get_svg( array( 'icon' => 'hashtag' ) ) . '<span class="screen-reader-text">' . __( 'Tags', 'twentyseventeen' ) . '</span>' . $tags_list . '</span>';
-						}
-
-					echo '</span>';
-				}
-			}
-
-			twentyseventeen_edit_link();
-
-		echo '</footer> <!-- .entry-footer -->';
+	$tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'twentysixteen' ) );
+	if ( $tags_list ) {
+		printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
+			_x( 'Tags', 'Used before tag names.', 'twentysixteen' ),
+			$tags_list
+		);
 	}
 }
 endif;
 
-
-if ( ! function_exists( 'twentyseventeen_edit_link' ) ) :
+if ( ! function_exists( 'twentysixteen_post_thumbnail' ) ) :
 /**
- * Returns an accessibility-friendly link to edit a post or page.
+ * Displays an optional post thumbnail.
  *
- * This also gives us a little context about what exactly we're editing
- * (post or page?) so that users understand a bit more where they are in terms
- * of the template hierarchy and their content. Helpful when/if the single-page
- * layout with multiple posts/pages shown gets confusing.
+ * Wraps the post thumbnail in an anchor element on index views, or a div
+ * element when on single views.
+ *
+ * Create your own twentysixteen_post_thumbnail() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
  */
-function twentyseventeen_edit_link() {
+function twentysixteen_post_thumbnail() {
+	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		return;
+	}
 
-	$link = edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
-			get_the_title()
-		),
-		'<span class="edit-link">',
-		'</span>'
+	if ( is_singular() ) :
+	?>
+
+	<div class="post-thumbnail">
+		<?php the_post_thumbnail(); ?>
+	</div><!-- .post-thumbnail -->
+
+	<?php else : ?>
+
+	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
+		<?php the_post_thumbnail( 'post-thumbnail', array( 'alt' => the_title_attribute( 'echo=0' ) ) ); ?>
+	</a>
+
+	<?php endif; // End is_singular()
+}
+endif;
+
+if ( ! function_exists( 'twentysixteen_excerpt' ) ) :
+	/**
+	 * Displays the optional excerpt.
+	 *
+	 * Wraps the excerpt in a div element.
+	 *
+	 * Create your own twentysixteen_excerpt() function to override in a child theme.
+	 *
+	 * @since Twenty Sixteen 1.0
+	 *
+	 * @param string $class Optional. Class string of the div element. Defaults to 'entry-summary'.
+	 */
+	function twentysixteen_excerpt( $class = 'entry-summary' ) {
+		$class = esc_attr( $class );
+
+		if ( has_excerpt() || is_search() ) : ?>
+			<div class="<?php echo $class; ?>">
+				<?php the_excerpt(); ?>
+			</div><!-- .<?php echo $class; ?> -->
+		<?php endif;
+	}
+endif;
+
+if ( ! function_exists( 'twentysixteen_excerpt_more' ) && ! is_admin() ) :
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with ... and
+ * a 'Continue reading' link.
+ *
+ * Create your own twentysixteen_excerpt_more() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
+ *
+ * @return string 'Continue reading' link prepended with an ellipsis.
+ */
+function twentysixteen_excerpt_more() {
+	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
+		esc_url( get_permalink( get_the_ID() ) ),
+		/* translators: %s: Name of current post */
+		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ), get_the_title( get_the_ID() ) )
 	);
-
-	return $link;
+	return ' &hellip; ' . $link;
 }
+add_filter( 'excerpt_more', 'twentysixteen_excerpt_more' );
 endif;
 
+if ( ! function_exists( 'twentysixteen_categorized_blog' ) ) :
 /**
- * Display a front page section.
+ * Determines whether blog/site has more than one category.
  *
- * @param $partial WP_Customize_Partial Partial associated with a selective refresh request.
- * @param $id integer Front page section to display.
- */
-function twentyseventeen_front_page_section( $partial = null, $id = 0 ) {
-	if ( is_a( $partial, 'WP_Customize_Partial' ) ) {
-		// Find out the id and set it up during a selective refresh.
-		global $twentyseventeencounter;
-		$id = str_replace( 'panel_', '', $partial->id );
-		$twentyseventeencounter = $id;
-	}
-
-	global $post; // Modify the global post object before setting up post data.
-	if ( get_theme_mod( 'panel_' . $id ) ) {
-		global $post;
-		$post = get_post( get_theme_mod( 'panel_' . $id ) );
-		setup_postdata( $post );
-		set_query_var( 'panel', $id );
-
-		get_template_part( 'template-parts/page/content', 'front-page-panels' );
-
-		wp_reset_postdata();
-	} elseif ( is_customize_preview() ) {
-		// The output placeholder anchor.
-		echo '<article class="panel-placeholder panel twentyseventeen-panel twentyseventeen-panel' . $id . '" id="panel' . $id . '"><span class="twentyseventeen-panel-title">' . sprintf( __( 'Front Page Section %1$s Placeholder', 'twentyseventeen' ), $id ) . '</span></article>';
-	}
-}
-
-/**
- * Returns true if a blog has more than 1 category.
+ * Create your own twentysixteen_categorized_blog() function to override in a child theme.
  *
- * @return bool
+ * @since Twenty Sixteen 1.0
+ *
+ * @return bool True if there is more than one category, false otherwise.
  */
-function twentyseventeen_categorized_blog() {
-	$category_count = get_transient( 'twentyseventeen_categories' );
-
-	if ( false === $category_count ) {
+function twentysixteen_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'twentysixteen_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
-		$categories = get_categories( array(
+		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
-			'hide_empty' => 1,
 			// We only need to know if there is more than one category.
 			'number'     => 2,
 		) );
 
 		// Count the number of categories that are attached to the posts.
-		$category_count = count( $categories );
+		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'twentyseventeen_categories', $category_count );
+		set_transient( 'twentysixteen_categories', $all_the_cool_cats );
 	}
 
-	return $category_count > 1;
+	if ( $all_the_cool_cats > 1 ) {
+		// This blog has more than 1 category so twentysixteen_categorized_blog should return true.
+		return true;
+	} else {
+		// This blog has only 1 category so twentysixteen_categorized_blog should return false.
+		return false;
+	}
 }
-
+endif;
 
 /**
- * Flush out the transients used in twentyseventeen_categorized_blog.
+ * Flushes out the transients used in twentysixteen_categorized_blog().
+ *
+ * @since Twenty Sixteen 1.0
  */
-function twentyseventeen_category_transient_flusher() {
+function twentysixteen_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'twentyseventeen_categories' );
+	delete_transient( 'twentysixteen_categories' );
 }
-add_action( 'edit_category', 'twentyseventeen_category_transient_flusher' );
-add_action( 'save_post',     'twentyseventeen_category_transient_flusher' );
+add_action( 'edit_category', 'twentysixteen_category_transient_flusher' );
+add_action( 'save_post',     'twentysixteen_category_transient_flusher' );
+
+if ( ! function_exists( 'twentysixteen_the_custom_logo' ) ) :
+/**
+ * Displays the optional custom logo.
+ *
+ * Does nothing if the custom logo is not available.
+ *
+ * @since Twenty Sixteen 1.2
+ */
+function twentysixteen_the_custom_logo() {
+	if ( function_exists( 'the_custom_logo' ) ) {
+		the_custom_logo();
+	}
+}
+endif;

@@ -1,53 +1,88 @@
-<?php
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
- */
-
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js no-svg">
+<!DOCTYPE html>
+<html <?php language_attributes(); ?> class="no-js">
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-
-<?php wp_head(); ?>
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
+  <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+  <?php endif; ?>
+  <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyseventeen' ); ?></a>
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
+    <header id="masthead" class="site-header" role="banner">
+      <div class="site-header-main">
+        <div class="site-branding">
+          <?php twentysixteen_the_custom_logo(); ?>
 
-		<?php get_template_part( 'template-parts/header/header', 'image' ); ?>
+          <?php if ( is_front_page() && is_home() ) : ?>
+            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+          <?php else : ?>
+            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+          <?php endif;
 
-		<?php if ( has_nav_menu( 'top' ) ) : ?>
-			<div class="navigation-top">
-				<div class="wrap">
-					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>
-				</div><!-- .wrap -->
-			</div><!-- .navigation-top -->
-		<?php endif; ?>
+          $description = get_bloginfo( 'description', 'display' );
+          if ( $description || is_customize_preview() ) : ?>
+            <p class="site-description"><?php echo $description; ?></p>
+          <?php endif; ?>
+        </div><!-- .site-branding -->
 
-	</header><!-- #masthead -->
+        <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
+          <button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'twentysixteen' ); ?></button>
 
-	<?php
-	// If a regular post or page, and not the front page, show the featured image.
-	if ( has_post_thumbnail() && ( is_single() || ( is_page() && ! twentyseventeen_is_frontpage() ) ) ) :
-		echo '<div class="single-featured-image-header">';
-		the_post_thumbnail( 'twentyseventeen-featured-image' );
-		echo '</div><!-- .single-featured-image-header -->';
-	endif;
-	?>
+          <div id="site-header-menu" class="site-header-menu">
+            <?php if ( has_nav_menu( 'primary' ) ) : ?>
+              <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'twentysixteen' ); ?>">
+                <?php
+                  wp_nav_menu( array(
+                    'theme_location' => 'primary',
+                    'menu_class'     => 'primary-menu',
+                   ) );
+                ?>
+              </nav><!-- .main-navigation -->
+            <?php endif; ?>
 
-	<div class="site-content-contain">
-		<div id="content" class="site-content">
+            <?php if ( has_nav_menu( 'social' ) ) : ?>
+              <nav id="social-navigation" class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'twentysixteen' ); ?>">
+                <?php
+                  wp_nav_menu( array(
+                    'theme_location' => 'social',
+                    'menu_class'     => 'social-links-menu',
+                    'depth'          => 1,
+                    'link_before'    => '<span class="screen-reader-text">',
+                    'link_after'     => '</span>',
+                  ) );
+                ?>
+              </nav><!-- .social-navigation -->
+            <?php endif; ?>
+          </div><!-- .site-header-menu -->
+        <?php endif; ?>
+      </div><!-- .site-header-main -->
+
+      <?php if ( get_header_image() ) : ?>
+        <?php
+          /**
+           * Filter the default twentysixteen custom header sizes attribute.
+           *
+           * @since Twenty Sixteen 1.0
+           *
+           * @param string $custom_header_sizes sizes attribute
+           * for Custom Header. Default '(max-width: 709px) 85vw,
+           * (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'.
+           */
+          $custom_header_sizes = apply_filters( 'twentysixteen_custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px' );
+        ?>
+        <div class="header-image">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+            <img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+          </a>
+        </div><!-- .header-image -->
+      <?php endif; // End header image check. ?>
+    </header><!-- .site-header -->
+
+    <div id="content" class="site-content">
