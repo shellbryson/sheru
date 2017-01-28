@@ -130,6 +130,32 @@ function twentysixteen_setup() {
 endif; // twentysixteen_setup
 add_action( 'after_setup_theme', 'twentysixteen_setup' );
 
+
+/**
+ * SHERU
+ * Gets a category ID from its Slug
+ */
+function sheru_get_category_id_from_slug( $slug ) {
+  $idObj = get_category_by_slug( $slug );
+  $id = $idObj->term_id;
+  return $id;
+}
+
+/**
+ * SHERU
+ * Filter home categories to those specified here
+ */
+function sheru_home_category( $query ) {
+  $categories = array();
+  array_push($categories, sheru_get_category_id_from_slug( "code-tips" ));
+  array_push($categories, sheru_get_category_id_from_slug( "blog" ));
+
+  if ( $query->is_home() && $query->is_main_query() ) {
+    $query->set( 'category__in', $categories);
+  }
+}
+add_action( 'pre_get_posts', 'sheru_home_category' );
+
 /**
  * Sets the content width in pixels, based on the theme's design and stylesheet.
  *
