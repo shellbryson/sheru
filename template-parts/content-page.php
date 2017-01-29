@@ -8,14 +8,14 @@
  */
 ?>
 
-<article class="su-entry" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <header class="entry-header">
-    <?php the_title( '<h1 class="su-entry-title su-title">', '</h1>' ); ?>
+<article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <header class="su-header su-article__header">
+    <?php the_title( '<h1 class="su-title su-title--one">', '</h1>' ); ?>
   </header><!-- .entry-header -->
 
   <?php twentysixteen_post_thumbnail(); ?>
 
-  <div class="entry-content su-entry-content">
+  <div class="entry-content su-article__content">
     <?php
     the_content();
 

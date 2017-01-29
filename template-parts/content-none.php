@@ -8,26 +8,26 @@
  */
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php _e( 'Nothing Found', 'twentysixteen' ); ?></h1>
-	</header><!-- .page-header -->
+<section class="no-results not-found su-article">
+  <header class="su-header su-article__header">
+    <h1 class="page-title su-title su-title--one"><?php _e( 'Nothing Found', 'twentysixteen' ); ?></h1>
+  </header>
 
-	<div class="page-content">
-		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+  <section class="page-content entry-content su-article__content">
+    <?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
-			<p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'twentysixteen' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
+      <p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'twentysixteen' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
-		<?php elseif ( is_search() ) : ?>
+    <?php elseif ( is_search() ) : ?>
 
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentysixteen' ); ?></p>
-			<?php get_search_form(); ?>
+      <p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentysixteen' ); ?></p>
+      <?php get_search_form(); ?>
 
-		<?php else : ?>
+    <?php else : ?>
 
-			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentysixteen' ); ?></p>
-			<?php get_search_form(); ?>
+      <p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentysixteen' ); ?></p>
+      <?php get_search_form(); ?>
 
-		<?php endif; ?>
-	</div><!-- .page-content -->
-</section><!-- .no-results -->
+    <?php endif; ?>
+  </section>
+</section>

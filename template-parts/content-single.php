@@ -8,16 +8,16 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <header class="su-entry-header">
-    <?php the_title( '<h1 class="su-entry-title">', '</h1>' ); ?>
+<article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <header class="su-header su-article__header">
+    <?php the_title( '<h1 class="su-title su-title--one su-article__title">', '</h1>' ); ?>
   </header>
 
   <?php twentysixteen_excerpt(); ?>
 
   <?php twentysixteen_post_thumbnail(); ?>
 
-  <div class="entry-content su-entry-content">
+  <section class="entry-content su-article__content">
     <?php
       the_content();
 
@@ -34,9 +34,9 @@
         get_template_part( 'template-parts/biography' );
       }
     ?>
-  </div><!-- .entry-content -->
+  </section>
 
-  <footer class="entry-footer">
+  <footer class="entry-footer su-article__footer">
     <?php twentysixteen_entry_meta(); ?>
     <?php
       edit_post_link(
