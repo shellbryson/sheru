@@ -151,6 +151,16 @@ function sheru_home_category( $query ) {
 add_action( 'pre_get_posts', 'sheru_home_category' );
 
 /**
+ * SHERU
+ * Returns version of this template
+ */
+function sheru_get_theme_version() {
+  $sheru_theme = wp_get_theme();
+  $sheru_theme_version = $sheru_theme->get('Version');
+  return $sheru_theme_version;
+}
+
+/**
  * Sets the content width in pixels, based on the theme's design and stylesheet.
  *
  * Priority 0 to make it available to lower priority callbacks.

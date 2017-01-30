@@ -39,7 +39,12 @@
       <?php endif; ?>
 
       <div class="site-info">
-        <span class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
+        <span class="site-title">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+            <?php bloginfo( 'name' ); ?>
+          </a>
+        </span>
+        version <?php echo sheru_get_theme_version();?></php>
       </div>
     </footer>
   </div><!-- .site-inner -->
