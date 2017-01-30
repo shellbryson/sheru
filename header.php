@@ -20,36 +20,38 @@
   <div class="site-inner">
     <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'sheru' ); ?></a>
 
-    <header id="masthead" class="site-header" role="banner">
-      <div class="site-header-main">
-        <div class="site-branding">
-          <?php sheru_the_custom_logo(); ?>
+    <header id="masthead" class="site-header su-head" role="banner">
 
-          <?php if ( is_front_page() && is_home() ) : ?>
-            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-          <?php else : ?>
-            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-          <?php endif;
+      <div class="su-title su-title--one su-brand__title">
+        <?php sheru_the_custom_logo(); ?>
 
-          $description = get_bloginfo( 'description', 'display' );
-          if ( $description || is_customize_preview() ) : ?>
-            <p class="site-description"><?php echo $description; ?></p>
-          <?php endif; ?>
-        </div><!-- .site-branding -->
+        <?php if ( is_front_page() && is_home() ) : ?>
+          <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+        <?php else : ?>
+          <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+        <?php endif;
+
+        $description = get_bloginfo( 'description', 'display' );
+        if ( $description || is_customize_preview() ) : ?>
+          <p class="site-description"><?php echo $description; ?></p>
+        <?php endif; ?>
+      </div>
+
+      <div class="site-header-main su-head__navigation">
 
         <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
-          <button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'sheru' ); ?></button>
+          <button id="menu-toggle" class="menu-toggle su-navigation__menu-toggle"><?php _e( 'Menu', 'sheru' ); ?></button>
 
-          <div id="site-header-menu" class="site-header-menu">
+          <div id="site-header-menu" class="site-header-menu su-navigation">
             <?php if ( has_nav_menu( 'primary' ) ) : ?>
-              <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'sheru' ); ?>">
+              <nav id="site-navigation" class="main-navigation su-navigation__menu" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'sheru' ); ?>">
                 <?php
                   wp_nav_menu( array(
                     'theme_location' => 'primary',
                     'menu_class'     => 'primary-menu',
                    ) );
                 ?>
-              </nav><!-- .main-navigation -->
+              </nav>
             <?php endif; ?>
 
             <?php if ( has_nav_menu( 'social' ) ) : ?>
@@ -63,11 +65,11 @@
                     'link_after'     => '</span>',
                   ) );
                 ?>
-              </nav><!-- .social-navigation -->
+              </nav>
             <?php endif; ?>
-          </div><!-- .site-header-menu -->
+          </div>
         <?php endif; ?>
-      </div><!-- .site-header-main -->
+      </div>
 
       <?php if ( get_header_image() ) : ?>
         <?php
@@ -86,8 +88,8 @@
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
             <img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
           </a>
-        </div><!-- .header-image -->
+        </div>
       <?php endif; // End header image check. ?>
-    </header><!-- .site-header -->
+    </header>
 
     <div id="content" class="site-content">

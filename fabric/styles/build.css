@@ -124,8 +124,8 @@ table {
   .su-article__content h4--two,
   .su-article__content h5--two,
   .su-article__content h6--two {
-    font-size: 20px;
-    font-size: 1.25rem;
+    font-size: 30px;
+    font-size: 1.875rem;
     margin-bottom: 40px;
     margin-bottom: 2.5rem; }
     @media (min-width: 768px) {
@@ -138,8 +138,8 @@ table {
       .su-article__content h6--two {
         font-size: 40px;
         font-size: 2.5rem;
-        margin-bottom: 80px;
-        margin-bottom: 5rem; } }
+        margin-bottom: 60px;
+        margin-bottom: 3.75rem; } }
 
 .su-paragraph,
 .su-article__content p {
@@ -163,6 +163,68 @@ table {
     .su-article__content p a:hover,
     .su-article__content p a:focus {
       color: #000000; }
+
+.su-head {
+  position: relative; }
+  .su-head__navigation {
+    position: absolute; }
+    @media (max-width: 768px) {
+      .su-head__navigation {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+        width: 100%;
+        height: 80px;
+        background-color: rgba(0, 0, 0, 0.9); }
+        .su-head__navigation a {
+          color: #FFFFFF; } }
+    @media (max-width: 768px) {
+      .su-head__navigation .menu-item {
+        padding: 10px 20px;
+        padding: 0.625rem 1.25rem; }
+        .su-head__navigation .menu-item a {
+          color: #FFFFFF; } }
+
+.su-brand__title {
+  margin: 20px 60px 40px 0;
+  margin: 1.25rem 3.75rem 2.5rem 0;
+  display: inline-block; }
+
+.su-navigation {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0; }
+  @media (min-width: 768px) {
+    .su-navigation .primary-menu {
+      display: block; } }
+  @media (max-width: 768px) {
+    .su-navigation__menu {
+      position: fixed;
+      right: 0;
+      bottom: 80px;
+      left: 0;
+      z-index: 99;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9); } }
+  .su-navigation__menu-toggle {
+    position: absolute;
+    right: 0;
+    margin-top: 0; }
+    @media (min-width: 768px) {
+      .su-navigation__menu-toggle {
+        display: none; } }
+  .su-navigation ul li {
+    position: static;
+    text-indent: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+    .su-navigation ul li:before {
+      display: none;
+      content: ""; }
 
 .su-article__content p {
   line-height: 1.6; }
@@ -257,8 +319,8 @@ ul li {
     position: absolute;
     top: 8px;
     left: 0;
-    width: 10px;
-    height: 10px;
+    width: 4px;
+    height: 4px;
     border-radius: 100%;
     content: "";
     background-color: #000000; }
@@ -345,9 +407,20 @@ a,
 p {
   font-family: "Overpass", sans-serif; }
 
-.su-main {
-  width: 100%;
-  height: 100%; }
+body {
+  margin: 10px 10px;
+  margin: 0.625rem 0.625rem;
+  vertical-align: baseline;
+  -webkit-transition: 0.2s;
+  transition: 0.2s; }
+  @media (min-width: 600px) {
+    body {
+      margin: 40px 30px;
+      margin: 2.5rem 1.875rem; } }
+  @media (min-width: 768px) {
+    body {
+      margin: 40px 40px;
+      margin: 2.5rem 2.5rem; } }
 
 /*
  SHAME FILE
