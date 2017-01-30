@@ -64,6 +64,13 @@ function sheru_setup() {
    */
   add_theme_support( 'title-tag' );
 
+
+  /**
+   * SHERU
+   * Removes the meta tag identifying WordPress
+   */
+  remove_action('wp_head', 'wp_generator');
+
   /*
    * Enable support for custom logo.
    *
