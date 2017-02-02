@@ -263,20 +263,6 @@ table {
       .su-navigation__menu {
         display: block;
         text-align: right; } }
-    .su-navigation__menu li {
-      position: static;
-      text-indent: 0;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      width: 50%; }
-      .su-navigation__menu li:before {
-        display: none;
-        content: ""; }
-      @media (min-width: 500px) {
-        .su-navigation__menu li {
-          display: inline-block;
-          width: auto; } }
     .su-navigation__menu--show {
       display: -webkit-box;
       display: -webkit-flex;
@@ -294,86 +280,97 @@ table {
       .su-navigation__primary-mobile {
         display: none; } }
 
-.su-menu-item {
+.su-navigation__item {
+  position: static;
+  text-indent: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: block;
   position: relative;
+  width: 50%;
   height: 120px;
   padding: 0 6px;
   line-height: 120px;
   text-align: center;
   text-decoration: none;
   font-family: "PT Sans", sans-serif; }
-  .su-menu-item-1 {
+  .su-navigation__item:before {
+    display: none;
+    content: ""; }
+  .su-navigation__item-1 {
     color: #0d5279;
     background-color: #1791d5; }
-    .su-menu-item-1:after {
+    .su-navigation__item-1:after {
       background-color: #1791d5; }
-  .su-menu-item-2 {
+  .su-navigation__item-2 {
     color: #0b496b;
     background-color: #1587c7; }
-    .su-menu-item-2:after {
+    .su-navigation__item-2:after {
       background-color: #1587c7; }
-  .su-menu-item-3 {
+  .su-navigation__item-3 {
     color: #0a3f5d;
     background-color: #147eb9; }
-    .su-menu-item-3:after {
+    .su-navigation__item-3:after {
       background-color: #147eb9; }
-  .su-menu-item-4 {
+  .su-navigation__item-4 {
     color: #08364f;
     background-color: #1274ac; }
-    .su-menu-item-4:after {
+    .su-navigation__item-4:after {
       background-color: #1274ac; }
-  .su-menu-item-5 {
+  .su-navigation__item-5 {
     color: #072c42;
     background-color: #116b9e; }
-    .su-menu-item-5:after {
+    .su-navigation__item-5:after {
       background-color: #116b9e; }
-  .su-menu-item-6 {
+  .su-navigation__item-6 {
     color: #010406;
     background-color: #0f6290; }
-    .su-menu-item-6:after {
+    .su-navigation__item-6:after {
       background-color: #0f6290; }
-  .su-menu-item-7 {
+  .su-navigation__item-7 {
     color: #041a26;
     background-color: #0e5882; }
-    .su-menu-item-7:after {
+    .su-navigation__item-7:after {
       background-color: #0e5882; }
-  .su-menu-item-8 {
+  .su-navigation__item-8 {
     color: #031018;
     background-color: #0c4f74; }
-    .su-menu-item-8:after {
+    .su-navigation__item-8:after {
       background-color: #0c4f74; }
   @media (min-width: 500px) {
-    .su-menu-item {
+    .su-navigation__item {
+      display: inline-block;
+      width: auto;
       height: auto;
       line-height: 50px;
       background-color: transparent; } }
   @media (min-width: 500px) {
-    .su-menu-item:after {
+    .su-navigation__item:after {
       display: block;
       width: 100%;
       height: 4px;
       margin-top: -4px;
       content: ""; } }
-  .su-menu-item .menu-icon {
+  .su-navigation__item .menu-icon {
     font-size: 40px;
     vertical-align: middle; }
-  .su-menu-item--tile {
+  .su-navigation__item--tile {
     vertical-align: middle;
     line-height: 70px;
     color: #FFFFFF;
     text-align: center;
     text-decoration: none; }
-  .su-menu-item--one {
+  .su-navigation__item--one {
     background-color: #737373; }
-  .su-menu-item--two {
+  .su-navigation__item--two {
     background-color: #595959; }
-  .su-menu-item--three {
+  .su-navigation__item--three {
     background-color: #262626; }
-  .su-menu-item--four {
+  .su-navigation__item--four {
     background-color: #000000; }
   @media (min-width: 500px) {
-    .su-menu-item--hide-desktop {
+    .su-navigation__item--hide-desktop {
       display: none; } }
 
 .su-article__content p {

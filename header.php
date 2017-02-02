@@ -58,17 +58,17 @@
 
             <div class="su-navigation__primary-mobile">
               <ul class="su-navigation__menu-mobile">
-                <li>
-                  <a href="#" class="menu-item menu-item--tile menu-item--one">Code</a>
+                <li class="su-navigation__item su-navigation__item--tile">
+                  <a href="#">Code</a>
                 </li>
-                <li>
-                  <a href="#" class="menu-item menu-item--tile menu-item--two">Blog</a>
+                <li class="su-navigation__item su-navigation__item--tile">
+                  <a href="#">Blog</a>
                 </li>
-                <li>
-                  <a href="#" class="menu-item menu-item--tile menu-item--three">Tweet</a>
+                <li class="su-navigation__item su-navigation__item--tile">
+                  <a href="#">Tweet</a>
                 </li>
-                <li>
-                  <a href="#" class="menu-item menu-item--tile menu-item--four js-toggle">
+                <li class="su-navigation__item su-navigation__item--tile js-toggle">
+                  <a href="#">
                     <i class="fa fa-th-large menu-icon"></i>
                   </a>
                 </li>
@@ -101,8 +101,7 @@
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
             <img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
           </a>
-        </div><!-- .header-image -->
+        </div>
       <?php endif; // End header image check. ?>
-<!--    </header><!-- .site-header -->-->
 
     <div id="content" class="site-content">
