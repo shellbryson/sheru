@@ -67,6 +67,12 @@ function sheru_setup() {
 
   /**
    * SHERU
+   * Custom navigation walker
+   */
+  require_once('sheru-nav-walker.php');
+
+  /**
+   * SHERU
    * Removes the meta tag identifying WordPress
    */
   remove_action('wp_head', 'wp_generator');

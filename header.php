@@ -51,9 +51,16 @@
           <nav class="su-navigation__wrapper">
             <?php
             wp_nav_menu( array(
-            'theme_location' => 'primary',
-            'menu_class'     => 'su-navigation__menu',
-            ) );
+                'container' => false,
+                'menu_class' => 'su-navigation__menu js-navigation',
+                'echo' => true,
+                'before' => '',
+                'after' => '',
+                'link_before' => '',
+                'link_after' => '',
+                'depth' => 0,
+                'walker' => new description_walker())
+            );
             ?>
 
             <div class="su-navigation__primary-mobile">

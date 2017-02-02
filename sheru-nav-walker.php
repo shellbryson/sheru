@@ -6,15 +6,9 @@ class description_walker extends Walker_Nav_Menu
     global $wp_query;
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-    //$class_names = $value = '';
+    // Supports up to 10 Primary menus. Any more than that, and we have a UX issue.
 
-    //$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-
-    //$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-    //$class_names = ' class="su-navigation__menu-entry"';
-
-    //$output .= $indent . '<li id="item-'. $item->ID . '"' . $value . $class_names .'>';
-    $output .= $indent . '<li id="item-'. $item->ID . '" class="su-navigation__menu-entry">';
+    $output .= $indent . '<li id="item-'. $item->ID . '" class="su-navigation__item">';
 
     $attributes  = !empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
     $attributes .= !empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
@@ -33,7 +27,7 @@ class description_walker extends Walker_Nav_Menu
     }
 
     $item_output = $args->before;
-    $item_output .= '<a'. $attributes .' class="menu-item">';
+    $item_output .= '<a'. $attributes .' class="su-navigation__link">';
     $item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
     $item_output .= $description.$args->link_after;
     $item_output .= '</a>';
