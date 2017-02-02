@@ -20,10 +20,12 @@
   <div class="site-inner">
     <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'sheru' ); ?></a>
 
-    <header id="masthead" class="site-header" role="banner">
-      <div class="site-header-main">
-        <div class="site-branding">
-          <?php sheru_the_custom_logo(); ?>
+    <header class="su-head">
+
+      <div class="su-brand">
+        <h1 class="su-title su-title--one su-brand__title">
+
+          <!--<?php sheru_the_custom_logo(); ?>-->
 
           <?php if ( is_front_page() && is_home() ) : ?>
             <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -33,41 +35,54 @@
 
           $description = get_bloginfo( 'description', 'display' );
           if ( $description || is_customize_preview() ) : ?>
-            <p class="site-description"><?php echo $description; ?></p>
+
+          <p class="site-description"><?php echo $description; ?></p>
+
           <?php endif; ?>
-        </div><!-- .site-branding -->
+        </h1>
+      </div>
 
-        <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
-          <button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'sheru' ); ?></button>
+      <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 
-          <div id="site-header-menu" class="site-header-menu">
-            <?php if ( has_nav_menu( 'primary' ) ) : ?>
-              <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'sheru' ); ?>">
-                <?php
-                  wp_nav_menu( array(
-                    'theme_location' => 'primary',
-                    'menu_class'     => 'primary-menu',
-                   ) );
-                ?>
-              </nav><!-- .main-navigation -->
-            <?php endif; ?>
+        <div class="su-navigation">
 
-            <?php if ( has_nav_menu( 'social' ) ) : ?>
-              <nav id="social-navigation" class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'sheru' ); ?>">
-                <?php
-                  wp_nav_menu( array(
-                    'theme_location' => 'social',
-                    'menu_class'     => 'social-links-menu',
-                    'depth'          => 1,
-                    'link_before'    => '<span class="screen-reader-text">',
-                    'link_after'     => '</span>',
-                  ) );
-                ?>
-              </nav><!-- .social-navigation -->
-            <?php endif; ?>
-          </div><!-- .site-header-menu -->
+          <?php if ( has_nav_menu( 'primary' ) ) : ?>
+
+          <nav class="su-navigation__wrapper">
+            <?php
+            wp_nav_menu( array(
+            'theme_location' => 'primary',
+            'menu_class'     => 'su-navigation__menu',
+            ) );
+            ?>
+
+            <div class="su-navigation__primary-mobile">
+              <ul class="su-navigation__menu-mobile">
+                <li>
+                  <a href="#" class="menu-item menu-item--tile menu-item--one">Code</a>
+                </li>
+                <li>
+                  <a href="#" class="menu-item menu-item--tile menu-item--two">Blog</a>
+                </li>
+                <li>
+                  <a href="#" class="menu-item menu-item--tile menu-item--three">Tweet</a>
+                </li>
+                <li>
+                  <a href="#" class="menu-item menu-item--tile menu-item--four js-toggle">
+                    <i class="fa fa-th-large menu-icon"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </nav>
         <?php endif; ?>
-      </div><!-- .site-header-main -->
+
+      </div>
+
+      <?php endif; ?>
+
+    </header>
 
       <?php if ( get_header_image() ) : ?>
         <?php
@@ -88,6 +103,6 @@
           </a>
         </div><!-- .header-image -->
       <?php endif; // End header image check. ?>
-    </header><!-- .site-header -->
+<!--    </header><!-- .site-header -->-->
 
     <div id="content" class="site-content">

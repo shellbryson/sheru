@@ -10676,10 +10676,34 @@ define('toggleAttribute', ['jquery'], function ($) {
 
 });
 
-define('assets/scripts/build.main',['require','toggleAttribute'],function (require) {
+define('navigation',['require','jquery'],function (require) {
+  'use strict';
+
+  var $ = require('jquery');
+  var $nav = $('.js-navigation');
+  var $toggle = $('.js-toggle');
+
+  function initNavigation() {
+    $toggle.on('click', function (e) {
+      e.preventDefault();
+      $nav.toggleClass('su-navigation__menu--show');
+    });
+  }
+
+  $(function () {
+    if ($nav.length) {
+      initNavigation();
+    }
+  });
+
+});
+
+
+define('assets/scripts/build.main',['require','toggleAttribute','navigation'],function (require) {
   'use strict';
 
   require('toggleAttribute');
+  require('navigation');
 
   // TODO Remove this font hack once Fabric supports fully custom headers
   if (location.hostname === 'localhost' ||
