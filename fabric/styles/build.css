@@ -164,6 +164,13 @@ table {
     .su-article__content p a:focus {
       color: #000000; }
 
+.su-forms__input {
+  border: 1px solid #000000;
+  background-color: #F1F1F1; }
+  .su-forms__input:focus {
+    border: 1px solid #333333;
+    background-color: white; }
+
 .su-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -412,6 +419,14 @@ table {
     @media (min-width: 768px) {
       .su-navigation__item--hide-desktop {
         display: none; } }
+
+.su-navigation-search {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .su-navigation-search__submit {
+    border: 0; }
 
 .su-article__content p {
   line-height: 1.6; }
