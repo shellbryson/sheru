@@ -614,6 +614,14 @@ p {
 body {
   background-color: #000000; }
 
+body.admin-bar {
+  padding-top: 50px;
+  padding-top: 3.125rem; }
+  @media (min-width: 768px) {
+    body.admin-bar {
+      padding-top: 10px;
+      padding-top: 0.625rem; } }
+
 .su-site {
   margin: 10px 10px;
   margin: 0.625rem 0.625rem;

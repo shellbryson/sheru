@@ -64,12 +64,21 @@ function sheru_setup() {
    */
   add_theme_support( 'title-tag' );
 
-
   /**
    * SHERU
    * Custom navigation walker
    */
   require_once('sheru-nav-walker.php');
+
+  /**
+   * SHERU
+   * Remove admin bar spacing (handled via CSS instead)
+   */
+  add_action('get_header', 'sheru_filter_head');
+
+  function sheru_filter_head() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+  }
 
   /**
    * SHERU
