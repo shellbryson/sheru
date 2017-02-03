@@ -177,7 +177,8 @@ table {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  background-color: #e6e6e6; }
 
 .su-brand {
   display: block;
@@ -203,13 +204,20 @@ table {
 .su-navigation {
   position: fixed;
   bottom: 0;
-  z-index: 99;
-  background-color: #e6e6e6; }
+  z-index: 99; }
   @media (max-width: 768px) {
     .su-navigation {
       right: 0;
       left: 0; } }
   @media (min-width: 768px) {
+    .su-navigation {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: auto;
+      width: 50%; } }
+  @media (min-width: 1024px) {
     .su-navigation {
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
@@ -233,6 +241,9 @@ table {
             flex-direction: row; }
     @media (min-width: 768px) {
       .su-navigation__menu-mobile {
+        height: 50px; } }
+    @media (min-width: 1024px) {
+      .su-navigation__menu-mobile {
         display: none; } }
     .su-navigation__menu-mobile li {
       position: static;
@@ -249,7 +260,7 @@ table {
     display: none;
     width: 100%;
     margin: 0; }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .su-navigation__menu {
         display: block;
         text-align: right; } }
@@ -263,13 +274,24 @@ table {
               flex-wrap: wrap; }
       @media (min-width: 768px) {
         .su-navigation__menu--show {
-          display: inline-block; } }
+          display: block;
+          padding-top: 50px; } }
+      @media (min-width: 1024px) {
+        .su-navigation__menu--show {
+          display: inline-block;
+          padding-top: 0; } }
   .su-navigation__primary-mobile {
     height: 70px; }
     @media (min-width: 768px) {
       .su-navigation__primary-mobile {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%; } }
+    @media (min-width: 1024px) {
+      .su-navigation__primary-mobile {
         display: none; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(1) {
       color: #9fd6f5;
       background-color: #1791d5; }
@@ -279,7 +301,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(1):after {
         background-color: #1791d5; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(2) {
       color: #91d0f3;
       background-color: #1587c7; }
@@ -289,7 +311,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(2):after {
         background-color: #1587c7; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(3) {
       color: #83caf2;
       background-color: #147eb9; }
@@ -299,7 +321,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(3):after {
         background-color: #147eb9; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(4) {
       color: #76c4f0;
       background-color: #1274ac; }
@@ -309,7 +331,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(4):after {
         background-color: #1274ac; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(5) {
       color: #68beef;
       background-color: #116b9e; }
@@ -319,7 +341,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(5):after {
         background-color: #116b9e; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(6) {
       color: #5ab8ee;
       background-color: #0f6290; }
@@ -329,7 +351,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(6):after {
         background-color: #0f6290; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(7) {
       color: #4cb3ec;
       background-color: #0e5882; }
@@ -339,7 +361,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(7):after {
         background-color: #0e5882; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(8) {
       color: #3eadeb;
       background-color: #0c4f74; }
@@ -349,7 +371,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(8):after {
         background-color: #0c4f74; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(9) {
       color: #30a7e9;
       background-color: #0b4666; }
@@ -359,7 +381,7 @@ table {
         text-decoration: none; }
       .su-navigation__item:nth-child(9):after {
         background-color: #0b4666; } }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .su-navigation__item:nth-child(10) {
       color: #23a1e8;
       background-color: #093c59; }
@@ -389,12 +411,19 @@ table {
       content: ""; }
     @media (min-width: 768px) {
       .su-navigation__item {
+        display: block;
+        width: auto;
+        height: auto;
+        line-height: 50px;
+        background-color: transparent; } }
+    @media (min-width: 1024px) {
+      .su-navigation__item {
         display: inline-block;
         width: auto;
         height: auto;
         line-height: 50px;
         background-color: transparent; } }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .su-navigation__item:after {
         display: block;
         width: 100%;
@@ -410,6 +439,9 @@ table {
       color: #FFFFFF;
       text-align: center;
       text-decoration: none; }
+      @media (min-width: 768px) {
+        .su-navigation__item--tile {
+          line-height: 50px; } }
     .su-navigation__item--one {
       background-color: #737373; }
     .su-navigation__item--two {
@@ -418,7 +450,7 @@ table {
       background-color: #262626; }
     .su-navigation__item--four {
       background-color: #000000; }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .su-navigation__item--hide-desktop {
         display: none; } }
 
