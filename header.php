@@ -91,7 +91,8 @@
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile js-toggle">
                   <a href="#">
-                    <i class="fa fa-th-large menu-icon"></i>
+                    <i class="fa fa-th-large menu-icon su-display-small"></i>
+                    <i class="fa fa-bars menu-icon su-display-medium"></i>
                   </a>
                 </li>
               </ul>

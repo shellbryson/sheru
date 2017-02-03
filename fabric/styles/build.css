@@ -660,6 +660,16 @@ body.admin-bar {
       padding-top: 10px;
       padding-top: 0.625rem; } }
 
+@media (min-width: 768px) {
+  .su-display-small {
+    display: none; } }
+
+.su-display-medium {
+  display: none; }
+  @media (min-width: 768px) {
+    .su-display-medium {
+      display: inherit; } }
+
 .su-site {
   margin: 10px 10px;
   margin: 0.625rem 0.625rem;
