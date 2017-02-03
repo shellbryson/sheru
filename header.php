@@ -81,13 +81,13 @@
             <div class="su-navigation__primary-mobile">
               <ul class="su-navigation__menu-mobile">
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="#">Code</a>
+                  <a href="/code-tips">Code</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="#">Blog</a>
+                  <a href="/blog">Blog</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="#">Tweet</a>
+                  <a href="/projects">Projects</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile js-toggle">
                   <a href="#">
