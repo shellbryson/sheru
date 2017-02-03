@@ -45,7 +45,7 @@
 
       <form role="search" method="get" class="su-navigation-search"
             action="<?php echo esc_url( home_url( '/' ) ); ?>">
-        <label>
+        <label class="su-forms__label">
           <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
           <input type="search" class="su-forms__input su-navigation-search__input"
                  placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
