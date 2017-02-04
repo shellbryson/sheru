@@ -44,20 +44,6 @@
           <?php endif; ?>
       </div>
 
-      <form role="search" method="get" class="su-navigation-search"
-            action="<?php echo esc_url( home_url( '/' ) ); ?>">
-        <label class="su-forms__label">
-          <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
-          <input type="search" class="su-forms__input su-navigation-search__input"
-                 placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
-                 value="<?php echo get_search_query(); ?>" name="s" />
-        </label>
-        <button type="submit" class="su-navigation-search__submit">
-          <i class="fa fa-search"></i>
-          <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
-        </button>
-      </form>
-
       <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 
         <div class="su-navigation">
@@ -65,6 +51,21 @@
           <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
           <nav class="su-navigation__wrapper">
+
+            <form role="search" method="get" class="su-navigation-search js-search"
+                  action="<?php echo esc_url( home_url( '/' ) ); ?>">
+              <label class="su-navigation-search__label">
+                <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
+                <input type="search" class="su-navigation-search__input"
+                       placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
+                       value="<?php echo get_search_query(); ?>" name="s" />
+              </label>
+              <button type="submit" class="su-navigation-search__submit">
+                <i class="fa fa-search"></i>
+                <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
+              </button>
+            </form>
+
             <?php
             wp_nav_menu( array(
                 'container' => false,
@@ -90,10 +91,15 @@
                 <li class="su-navigation__item animation-fadein">
                   <a href="/projects">Blog</a>
                 </li>
-                <li class="su-navigation__item animation-fadein js-toggle">
+                <li class="su-navigation__item animation-fadein js-toggleMenu">
                   <a href="#">
                     <i class="fa fa-th-large su-display-small"></i>
                     <i class="fa fa-bars su-display-medium"></i>
+                  </a>
+                </li>
+                <li class="su-navigation__item su-navigation__item--small animation-fadein js-toggleSearch">
+                  <a href="#">
+                    <i class="fa fa-search"></i>
                   </a>
                 </li>
               </ul>
@@ -108,24 +114,24 @@
 
     </header>
 
-      <?php if ( get_header_image() ) : ?>
-        <?php
-          /**
-           * Filter the default sheru custom header sizes attribute.
-           *
-           * @since Twenty Sixteen 1.0
-           *
-           * @param string $custom_header_sizes sizes attribute
-           * for Custom Header. Default '(max-width: 709px) 85vw,
-           * (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'.
-           */
-          $custom_header_sizes = apply_filters( 'sheru_custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px' );
-        ?>
-        <div class="header-image">
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-            <img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-          </a>
-        </div>
-      <?php endif; // End header image check. ?>
+    <?php if ( get_header_image() ) : ?>
+      <?php
+        /**
+         * Filter the default sheru custom header sizes attribute.
+         *
+         * @since Twenty Sixteen 1.0
+         *
+         * @param string $custom_header_sizes sizes attribute
+         * for Custom Header. Default '(max-width: 709px) 85vw,
+         * (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'.
+         */
+        $custom_header_sizes = apply_filters( 'sheru_custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px' );
+      ?>
+      <div class="header-image">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+          <img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+        </a>
+      </div>
+    <?php endif; // End header image check. ?>
 
     <div id="content" class="su-content">
