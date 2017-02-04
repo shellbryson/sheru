@@ -6,8 +6,6 @@ class description_walker extends Walker_Nav_Menu
     global $wp_query;
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-    // Supports up to 10 Primary menus. Any more than that, and we have a UX issue.
-
     $output .= $indent . '<li id="item-'. $item->ID . '" class="su-navigation__item">';
 
     $attributes  = !empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
@@ -15,10 +13,8 @@ class description_walker extends Walker_Nav_Menu
     $attributes .= !empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
     $attributes .= !empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
-    //echo var_dump( $item );
-
-    $prepend = '<strong>';
-    $append = '</strong>';
+    $prepend = '<span>'; // example: <strong>
+    $append = '</span>'; // example: </strong>
     $description  = !empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
 
     if($depth != 0)
