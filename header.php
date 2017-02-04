@@ -17,31 +17,46 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
+<div id="page" class="su-site">
   <div class="site-inner">
     <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'sheru' ); ?></a>
 
     <header class="su-head">
 
       <div class="su-brand">
-        <h1 class="su-title su-title--one su-brand__title">
-
           <!--<?php sheru_the_custom_logo(); ?>-->
 
           <?php if ( is_front_page() && is_home() ) : ?>
-            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <h1 class="su-brand__title">
+              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link"><?php bloginfo( 'name' ); ?></a>
+            </h1>
           <?php else : ?>
-            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+            <p class="su-brand__title">
+              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link"><?php bloginfo( 'name' ); ?></a>
+            </p>
           <?php endif;
 
           $description = get_bloginfo( 'description', 'display' );
           if ( $description || is_customize_preview() ) : ?>
 
-          <p class="site-description"><?php echo $description; ?></p>
+          <!--<p class="site-description"><?php echo $description; ?></p>-->
 
           <?php endif; ?>
-        </h1>
       </div>
+
+      <form role="search" method="get" class="su-navigation-search"
+            action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <label class="su-forms__label">
+          <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
+          <input type="search" class="su-forms__input su-navigation-search__input"
+                 placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
+                 value="<?php echo get_search_query(); ?>" name="s" />
+        </label>
+        <button type="submit" class="su-navigation-search__submit">
+          <i class="fa fa-search"></i>
+          <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
+        </button>
+      </form>
 
       <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 
@@ -67,17 +82,18 @@
             <div class="su-navigation__primary-mobile">
               <ul class="su-navigation__menu-mobile">
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="#">Code</a>
+                  <a href="/code-tips">Code</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="#">Blog</a>
+                  <a href="/blog">Projects</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="#">Tweet</a>
+                  <a href="/projects">Blog</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile js-toggle">
                   <a href="#">
-                    <i class="fa fa-th-large menu-icon"></i>
+                    <i class="fa fa-th-large su-display-small"></i>
+                    <i class="fa fa-bars su-display-medium"></i>
                   </a>
                 </li>
               </ul>
@@ -112,4 +128,4 @@
         </div>
       <?php endif; // End header image check. ?>
 
-    <div id="content" class="site-content">
+    <div id="content" class="su-content">
