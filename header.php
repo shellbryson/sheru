@@ -79,18 +79,18 @@
             );
             ?>
 
-            <div class="su-navigation__primary-mobile">
-              <ul class="su-navigation__menu-mobile">
-                <li class="su-navigation__item su-navigation__item--tile">
+            <div class="su-navigation__primary">
+              <ul class="su-navigation__primary-menu">
+                <li class="su-navigation__item animation-fadein">
                   <a href="/code-tips">Code</a>
                 </li>
-                <li class="su-navigation__item su-navigation__item--tile">
+                <li class="su-navigation__item animation-fadein">
                   <a href="/blog">Projects</a>
                 </li>
-                <li class="su-navigation__item su-navigation__item--tile">
+                <li class="su-navigation__item animation-fadein">
                   <a href="/projects">Blog</a>
                 </li>
-                <li class="su-navigation__item su-navigation__item--tile js-toggle">
+                <li class="su-navigation__item animation-fadein js-toggle">
                   <a href="#">
                     <i class="fa fa-th-large su-display-small"></i>
                     <i class="fa fa-bars su-display-medium"></i>
