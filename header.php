@@ -24,14 +24,16 @@
     <header class="su-head">
 
       <div class="su-brand">
-        <h1 class="su-title su-title--one su-brand__title">
-
           <!--<?php sheru_the_custom_logo(); ?>-->
 
           <?php if ( is_front_page() && is_home() ) : ?>
-            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <h1 class="su-brand__title">
+              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link"><?php bloginfo( 'name' ); ?></a>
+            </h1>
           <?php else : ?>
-            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+            <p class="su-brand__title">
+              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link"><?php bloginfo( 'name' ); ?></a>
+            </p>
           <?php endif;
 
           $description = get_bloginfo( 'description', 'display' );
@@ -40,7 +42,6 @@
           <!--<p class="site-description"><?php echo $description; ?></p>-->
 
           <?php endif; ?>
-        </h1>
       </div>
 
       <form role="search" method="get" class="su-navigation-search"
@@ -84,15 +85,15 @@
                   <a href="/code-tips">Code</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="/blog">Blog</a>
+                  <a href="/blog">Projects</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile">
-                  <a href="/projects">Projects</a>
+                  <a href="/projects">Blog</a>
                 </li>
                 <li class="su-navigation__item su-navigation__item--tile js-toggle">
                   <a href="#">
-                    <i class="fa fa-th-large menu-icon su-display-small"></i>
-                    <i class="fa fa-bars menu-icon su-display-medium"></i>
+                    <i class="fa fa-th-large su-display-small"></i>
+                    <i class="fa fa-bars su-display-medium"></i>
                   </a>
                 </li>
               </ul>
@@ -127,4 +128,4 @@
         </div>
       <?php endif; // End header image check. ?>
 
-    <div id="content" class="site-content">
+    <div id="content" class="su-content">
