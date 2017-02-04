@@ -742,35 +742,27 @@ body.admin-bar {
   .su-navigation__link {
     vertical-align: middle; }
 
-h
 .su-navigation-search {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
   @media (min-width: 392px) {
-    h
-.su-navigation-search {
+    .su-navigation-search {
       width: 50%; } }
-  h
-.su-navigation-search .su-forms__input {
+  .su-navigation-search .su-forms__input {
     display: none;
     height: 100%; }
     @media (min-width: 392px) {
-      h
-.su-navigation-search .su-forms__input {
-        display: block;
-        width: 100%; } }
+      .su-navigation-search .su-forms__input {
+        display: block; } }
     @media (min-width: 768px) {
-      h
-.su-navigation-search .su-forms__input {
+      .su-navigation-search .su-forms__input {
         display: none; } }
     @media (min-width: 1024px) {
-      h
-.su-navigation-search .su-forms__input {
+      .su-navigation-search .su-forms__input {
         display: block; } }
-  h
-.su-navigation-search .su-forms__label {
+  .su-navigation-search .su-forms__label {
     width: 100%; }
 
 .su-content {
