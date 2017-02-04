@@ -76,13 +76,13 @@
                 <li class="su-navigation__item animation-fadein">
                   <a href="/projects">Blog</a>
                 </li>
-                <li class="su-navigation__item animation-fadein js-toggle">
+                <li class="su-navigation__item animation-fadein js-toggleMenu">
                   <a href="#">
                     <i class="fa fa-th-large su-display-small"></i>
                     <i class="fa fa-bars su-display-medium"></i>
                   </a>
                 </li>
-                <li class="su-navigation__item su-navigation__item--small animation-fadein">
+                <li class="su-navigation__item su-navigation__item--small animation-fadein js-toggleSearch">
                   <a href="#">
                     <i class="fa fa-search su-display-medium"></i>
                   </a>
@@ -97,21 +97,21 @@
 
       <?php endif; ?>
 
-      <form role="search" method="get" class="su-navigation-search"
-            action="<?php echo esc_url( home_url( '/' ) ); ?>">
-        <label class="su-forms__label">
-          <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
-          <input type="search" class="su-forms__input su-navigation-search__input"
-                 placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
-                 value="<?php echo get_search_query(); ?>" name="s" />
-        </label>
-        <button type="submit" class="su-navigation-search__submit">
-          <i class="fa fa-search"></i>
-          <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
-        </button>
-      </form>
-
     </header>
+
+    <form role="search" method="get" class="su-search js-search"
+          action="<?php echo esc_url( home_url( '/' ) ); ?>">
+      <label class="su-forms__label">
+        <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
+        <input type="search" class="su-forms__input su-search__input"
+               placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
+               value="<?php echo get_search_query(); ?>" name="s" />
+      </label>
+      <button type="submit" class="su-search__submit">
+        <i class="fa fa-search"></i>
+        <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
+      </button>
+    </form>
 
       <?php if ( get_header_image() ) : ?>
         <?php

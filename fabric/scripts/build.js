@@ -10681,12 +10681,19 @@ define('navigation',['require','jquery'],function (require) {
 
   var $ = require('jquery');
   var $nav = $('.js-navigation');
-  var $toggle = $('.js-toggle');
+  var $toggleMenu = $('.js-toggleMenu');
+  var $toggleSearch = $('.js-toggleSearch');
 
   function initNavigation() {
-    $toggle.on('click', function (e) {
+
+    $toggleMenu.on('click', function (e) {
       e.preventDefault();
       $nav.toggleClass('su-navigation__menu--show');
+    });
+
+    $toggleSearch.on('click', function (e) {
+      e.preventDefault();
+      $nav.toggleClass('su-search--show');
     });
   }
 

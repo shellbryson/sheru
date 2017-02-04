@@ -5,18 +5,21 @@
 (function( $ ) {
 
   var body, resizeTimer;
-  var $nav = $('.js-navigation');
-  var $toggle = $('.js-toggle');
+  var $nav = $(".js-navigation");
+  var $search = $(".js-search");
+  var $toggleMenu = $('.js-toggleMenu');
+  var $toggleSearch = $('.js-toggleSearch');
 
   function initNavigation() {
 
-    $toggle.on('click', function (e) {
+    $toggleMenu.on('click', function (e) {
       e.preventDefault();
       $nav.toggleClass('su-navigation__menu--show');
     });
 
-    $(function () {
-
+    $toggleSearch.on('click', function (e) {
+      e.preventDefault();
+      $search.toggleClass('su-search--show');
     });
   }
 
