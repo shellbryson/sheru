@@ -44,20 +44,6 @@
           <?php endif; ?>
       </div>
 
-      <form role="search" method="get" class="su-navigation-search"
-            action="<?php echo esc_url( home_url( '/' ) ); ?>">
-        <label class="su-forms__label">
-          <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
-          <input type="search" class="su-forms__input su-navigation-search__input"
-                 placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
-                 value="<?php echo get_search_query(); ?>" name="s" />
-        </label>
-        <button type="submit" class="su-navigation-search__submit">
-          <i class="fa fa-search"></i>
-          <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
-        </button>
-      </form>
-
       <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 
         <div class="su-navigation">
@@ -96,6 +82,11 @@
                     <i class="fa fa-bars su-display-medium"></i>
                   </a>
                 </li>
+                <li class="su-navigation__item su-navigation__item--small animation-fadein">
+                  <a href="#">
+                    <i class="fa fa-search su-display-medium"></i>
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -105,6 +96,20 @@
       </div>
 
       <?php endif; ?>
+
+      <form role="search" method="get" class="su-navigation-search"
+            action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <label class="su-forms__label">
+          <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
+          <input type="search" class="su-forms__input su-navigation-search__input"
+                 placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
+                 value="<?php echo get_search_query(); ?>" name="s" />
+        </label>
+        <button type="submit" class="su-navigation-search__submit">
+          <i class="fa fa-search"></i>
+          <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
+        </button>
+      </form>
 
     </header>
 

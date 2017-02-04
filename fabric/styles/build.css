@@ -430,12 +430,8 @@ body.admin-bar {
       display: -ms-inline-flexbox;
       display: inline-flex;
       position: relative;
-      width: 50%;
       -webkit-transition: 0.2s;
       transition: 0.2s; } }
-  @media (min-width: 768px) {
-    .su-brand {
-      width: 100%; } }
   .su-brand__subtitle {
     display: none; }
     @media (min-width: 1600px) {
@@ -453,8 +449,8 @@ body.admin-bar {
 .su-navigation {
   position: fixed;
   right: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   z-index: 99;
   -webkit-transition: 0.2s;
   transition: 0.2s; }
@@ -463,7 +459,7 @@ body.admin-bar {
       display: block;
       position: absolute;
       top: 0;
-      right: -10px;
+      right: 40px;
       bottom: auto;
       left: auto;
       width: 50%; } }
@@ -626,6 +622,11 @@ body.admin-bar {
         line-height: 50px;
         -webkit-transition: 0.2s;
         transition: 0.2s; }
+      .su-navigation__primary .su-navigation__item--small {
+        width: 60px;
+        margin-right: -100px; }
+        .su-navigation__primary .su-navigation__item--small i {
+          font-size: 20px; }
   .su-navigation__item {
     position: static;
     text-indent: 0;
@@ -743,19 +744,10 @@ body.admin-bar {
     vertical-align: middle; }
 
 .su-navigation-search {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-  @media (min-width: 392px) {
-    .su-navigation-search {
-      width: 50%; } }
+  display: none; }
   .su-navigation-search .su-forms__input {
     display: none;
     height: 100%; }
-    @media (min-width: 392px) {
-      .su-navigation-search .su-forms__input {
-        display: block; } }
     @media (min-width: 768px) {
       .su-navigation-search .su-forms__input {
         display: none; } }
@@ -764,6 +756,11 @@ body.admin-bar {
         display: block; } }
   .su-navigation-search .su-forms__label {
     width: 100%; }
+  .su-navigation-search--show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
 
 .su-content {
   margin-top: 20px;
