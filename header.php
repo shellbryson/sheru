@@ -99,7 +99,7 @@
                 </li>
                 <li class="su-navigation__item su-navigation__item--small animation-fadein js-toggleSearch">
                   <a href="#">
-                    <i class="fa fa-search su-display-medium"></i>
+                    <i class="fa fa-search"></i>
                   </a>
                 </li>
               </ul>

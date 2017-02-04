@@ -10684,17 +10684,24 @@ define('navigation',['require','jquery'],function (require) {
   var $search = $('.js-search');
   var $toggleMenu = $('.js-toggleMenu');
   var $toggleSearch = $('.js-toggleSearch');
+  var _menuClass = 'su-navigation__menu--show';
+  var _searchClass = 'su-navigation-search--show';
 
   function initNavigation() {
     $toggleMenu.on('click', function (e) {
       e.preventDefault();
-      $nav.toggleClass('su-navigation__menu--show');
-      $search.toggleClass('su-navigation-search--show');
+      if ($nav.hasClass(_menuClass)) {
+        $nav.removeClass(_menuClass);
+        $search.removeClass(_searchClass);
+      } else {
+        $nav.addClass(_menuClass);
+        $search.addClass(_searchClass);
+      }
     });
 
     $toggleSearch.on('click', function (e) {
       e.preventDefault();
-      $search.toggleClass('su-navigation-search--show');
+      $search.toggleClass(_searchClass);
     });
   }
 
