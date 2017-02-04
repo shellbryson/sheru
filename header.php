@@ -79,8 +79,8 @@
             );
             ?>
 
-            <div class="su-navigation__primary-mobile">
-              <ul class="su-navigation__menu-mobile">
+            <div class="su-navigation__primary">
+              <ul class="su-navigation__primary-menu">
                 <li class="su-navigation__item su-navigation__item--tile">
                   <a href="/code-tips">Code</a>
                 </li>
