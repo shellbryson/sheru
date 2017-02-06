@@ -12,17 +12,20 @@
 
     </div><!-- .site-content -->
 
-    <footer id="colophon" class="site-footer" role="contentinfo">
-      <?php if ( has_nav_menu( 'primary' ) ) : ?>
-        <nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'sheru' ); ?>">
-          <?php
-            wp_nav_menu( array(
-              'theme_location' => 'primary',
-              'menu_class'     => 'primary-menu',
-             ) );
-          ?>
-        </nav><!-- .main-navigation -->
-      <?php endif; ?>
+    <footer id="colophon" class="su-foot" role="contentinfo">
+      <nav class="su-footer__navigation" role="navigation" aria-label="Site navigation">
+          <ul class="su-footer__navigation-menu">
+            <li class="su-footer__navigation-item">
+              <a href="/code-tips">Code</a>
+            </li>
+            <li class="su-footer__navigation-item">
+              <a href="/blog">Projects</a>
+            </li>
+            <li class="su-footer__navigation-item">
+              <a href="/projects">Blog</a>
+            </li>
+          </ul>
+      </nav>
 
       <?php if ( has_nav_menu( 'social' ) ) : ?>
         <nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'sheru' ); ?>">

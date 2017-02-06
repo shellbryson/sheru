@@ -528,40 +528,6 @@ blockquote:after,
   clear: both;
 }
 
-
-/**
- * 10.0 - Widgets
- */
-
-.widget {
-  border-top: 4px solid #1a1a1a;
-  margin-bottom: 3.5em;
-  padding-top: 1.75em;
-}
-
-.widget-area > :last-child,
-.widget > :last-child {
-  margin-bottom: 0;
-}
-
-.widget .widget-title {
-  font-family: Montserrat, "Helvetica Neue", sans-serif;
-  font-size: 16px;
-  font-size: 1rem;
-  letter-spacing: 0.046875em;
-  line-height: 1.3125;
-  margin: 0 0 1.75em;
-  text-transform: uppercase;
-}
-
-.widget .widget-title:empty {
-  margin-bottom: 0;
-}
-
-.widget-title a {
-  color: #1a1a1a;
-}
-
 /* Calendar widget */
 .widget.widget_calendar table {
   margin: 0;
@@ -648,15 +614,6 @@ blockquote:after,
   border-color: #007acc;
   color: #007acc;
   outline: 0;
-}
-
-
-/**
- * 11.0 - Content
- */
-
-.site {
-  background-color: #fff;
 }
 
 .site-inner {
@@ -749,43 +706,6 @@ blockquote:after,
   font-weight: 400;
   line-height: 1.0769230769;
   margin: 0.538461538em 0 0;
-}
-
-.menu-toggle {
-  background-color: transparent;
-  border: 1px solid #d1d1d1;
-  color: #1a1a1a;
-  font-size: 13px;
-  font-size: 0.8125rem;
-  margin: 1.076923077em 0;
-  padding: 0.769230769em;
-}
-
-.no-js .menu-toggle {
-  display: none;
-}
-
-.menu-toggle:hover,
-.menu-toggle:focus {
-  background-color: transparent;
-  border-color: #007acc;
-  color: #007acc;
-}
-
-.menu-toggle.toggled-on,
-.menu-toggle.toggled-on:hover,
-.menu-toggle.toggled-on:focus {
-  background-color: #1a1a1a;
-  border-color: #1a1a1a;
-  color: #fff;
-}
-
-.menu-toggle:focus {
-  outline: 0;
-}
-
-.menu-toggle.toggled-on:focus {
-  outline: thin dotted;
 }
 
 .header-image {
@@ -2084,18 +2004,6 @@ p > video {
     width: 25%;
   }
 
-  .widget {
-    font-size: 13px;
-    font-size: 0.8125rem;
-    line-height: 1.6153846154;
-    margin-bottom: 3.230769231em;
-    padding-top: 1.615384615em;
-  }
-
-  .widget .widget-title {
-    margin-bottom: 1.3125em;
-  }
-
   .widget p,
   .widget address,
   .widget hr,
@@ -2130,82 +2038,6 @@ p > video {
   .widget th,
   .widget td {
     padding: 0.5384615385em;
-  }
-
-  .widget pre {
-    font-size: 13px;
-    font-size: 0.8125rem;
-    line-height: 1.6153846154;
-    margin-bottom: 1.6153846154em;
-    padding: 0.5384615385em;
-  }
-
-  .widget fieldset {
-    margin-bottom: 1.6153846154em;
-    padding: 0.5384615385em;
-  }
-
-  .widget button,
-  .widget input,
-  .widget select,
-  .widget textarea {
-    font-size: 13px;
-    font-size: 0.8125rem;
-    line-height: 1.6153846154;
-  }
-
-  .widget button,
-  .widget input[type="button"],
-  .widget input[type="reset"],
-  .widget input[type="submit"] {
-    line-height: 1;
-    padding: 0.846153846em;
-  }
-
-  .widget input[type="date"],
-  .widget input[type="time"],
-  .widget input[type="datetime-local"],
-  .widget input[type="week"],
-  .widget input[type="month"],
-  .widget input[type="text"],
-  .widget input[type="email"],
-  .widget input[type="url"],
-  .widget input[type="password"],
-  .widget input[type="search"],
-  .widget input[type="tel"],
-  .widget input[type="number"],
-  .widget textarea {
-    padding: 0.4615384615em 0.5384615385em;
-  }
-
-  .widget h1 {
-    font-size: 23px;
-    font-size: 1.4375rem;
-    line-height: 1.2173913043;
-    margin-bottom: 0.9130434783em;
-  }
-
-  .widget h2 {
-    font-size: 19px;
-    font-size: 1.1875rem;
-    line-height: 1.1052631579;
-    margin-bottom: 1.1052631579em;
-  }
-
-  .widget h3 {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 1.3125;
-    margin-bottom: 1.3125em;
-  }
-
-  .widget h4,
-  .widget h5,
-  .widget h6 {
-    font-size: 13px;
-    font-size: 0.8125rem;
-    line-height: 1.6153846154;
-    margin-bottom: 0.9130434783em;
   }
 
   .widget .alignleft {
