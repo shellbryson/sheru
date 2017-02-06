@@ -13,7 +13,7 @@ get_header(); ?>
   <main id="main" class="site-main" role="main">
 
     <section class="error-404 not-found">
-      <header class="page-header">
+      <header class="su-page-header">
         <h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'sheru' ); ?></h1>
       </header>
 

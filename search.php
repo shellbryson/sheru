@@ -14,7 +14,7 @@ get_header(); ?>
 
     <?php if ( have_posts() ) : ?>
 
-      <header class="page-header">
+      <header class="su-page-header">
         <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'sheru' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
       </header><!-- .page-header -->
 

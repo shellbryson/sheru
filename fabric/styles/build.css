@@ -288,8 +288,6 @@ body.admin-bar {
 .su-article__content h4,
 .su-article__content h5,
 .su-article__content h6 {
-  margin-right: 7.6923%;
-  margin-left: 7.6923%;
   line-height: 1.2;
   color: #000000; }
   @media (min-width: 910px) {
