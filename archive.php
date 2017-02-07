@@ -18,48 +18,49 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div id="primary" class="su-content">
 
-		<?php if ( have_posts() ) : ?>
+  <main id="main" class="site-main" role="main">
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+  <?php if ( have_posts() ) : ?>
 
-			<?php
-			// Start the Loop.
-			while ( have_posts() ) : the_post();
+    <header class="page-header">
+      <?php
+        the_archive_title( '<h1 class="page-title">', '</h1>' );
+        the_archive_description( '<div class="taxonomy-description">', '</div>' );
+      ?>
+    </header><!-- .page-header -->
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+    <?php
+    // Start the Loop.
+    while ( have_posts() ) : the_post();
 
-			// End the loop.
-			endwhile;
+      /*
+       * Include the Post-Format-specific template for the content.
+       * If you want to override this in a child theme, then include a file
+       * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+       */
+      get_template_part( 'template-parts/content', get_post_format() );
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'sheru' ),
-				'next_text'          => __( 'Next page', 'sheru' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'sheru' ) . ' </span>',
-			) );
+    // End the loop.
+    endwhile;
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
+    // Previous/next page navigation.
+    the_posts_pagination( array(
+      'prev_text'          => __( 'Previous page', 'sheru' ),
+      'next_text'          => __( 'Next page', 'sheru' ),
+      'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'sheru' ) . ' </span>',
+    ) );
 
-		endif;
-		?>
+  // If no content, include the "No posts found" template.
+  else :
+    get_template_part( 'template-parts/content', 'none' );
 
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+  endif;
+  ?>
+
+  </main><!-- .site-main -->
+</div><!-- .content-area -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

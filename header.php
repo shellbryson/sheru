@@ -134,4 +134,4 @@
       </div>
     <?php endif; // End header image check. ?>
 
-    <div id="content" class="su-content">
+    <div id="content" class="su-wrapper">
