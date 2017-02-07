@@ -50,8 +50,8 @@
         version <?php echo sheru_get_theme_version();?></php>
       </div>
     </footer>
-  </div><!-- .site-inner -->
-</div><!-- .site -->
+  </div>
+</div>
 
 <?php wp_footer(); ?>
 </body>
