@@ -64,6 +64,14 @@ function sheru_setup() {
    */
   add_theme_support( 'title-tag' );
 
+
+  function get_cat_slug($cat_id) {
+    //$cat_id = $cat_id;
+    $category = get_category($cat_id);
+    return $category['slug'];
+  }
+
+
   /**
    * SHERU
    * Custom navigation walker
@@ -164,13 +172,68 @@ function sheru_get_category_id_from_slug( $slug ) {
 function sheru_home_category( $query ) {
   $categories = array();
   array_push($categories, sheru_get_category_id_from_slug( "code-tips" ));
-  //array_push($categories, sheru_get_category_id_from_slug( "blog" ));
-
   if ( $query->is_home() && $query->is_main_query() ) {
     $query->set( 'category__in', $categories);
   }
 }
 add_action( 'pre_get_posts', 'sheru_home_category' );
+
+/**
+ * SHERU
+ * Remove named categories from Categories Widget
+ */
+function sheru_exclude_catergory_from_widget( $args ){
+  $excluded_categories = array();
+  array_push($excluded_categories, sheru_get_category_id_from_slug( "blog" ));
+  $args["exclude"] = $excluded_categories;
+  return $args;
+}
+add_filter( 'widget_categories_args', 'sheru_exclude_catergory_from_widget');
+
+/**
+ * SHERU
+ * A widget that lists the latest posts, excluding specified Category names.
+ */
+function sheru_posts($args) {
+  echo $args['before_widget'];
+  echo $args['before_title'] . 'My Unique Widget' .  $args['after_title'];
+  echo $args['after_widget'];
+
+  echo "Your Widget Test";
+
+  $slug = "blog";
+
+  $args = array(
+    'posts_per_page' => 5,
+    'category__not_in' => array( sheru_get_category_id_from_slug( $slug ) )
+  );
+
+  $sheru_posts = new WP_Query($args);
+
+  if($sheru_posts->have_posts() ) :
+    echo '<ul>';
+    while ( $sheru_posts->have_posts() ) : $sheru_posts->the_post();
+      echo '<li>';
+      echo '<a href="'.the_permalink().'">';
+      the_title();
+      echo '</a>';
+      echo '</li>';
+    endwhile;
+    echo '</ul>';
+  endif;
+
+}
+
+//wp_register_sidebar_widget(
+//  'sheru_posts',        // your unique widget id
+//  'Sheru Posts',          // widget name
+//  'sheru_posts',  // callback function
+//  array(                  // options
+//    'description' => 'Lists latest posts, but excludes posts from specified Categories.'
+//  )
+//);
+
+/* ...? */
 
 /**
  * SHERU
