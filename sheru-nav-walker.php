@@ -1,7 +1,7 @@
 <?php
-class description_walker extends Walker_Nav_Menu {
+class sheru_nav_walker extends Walker_Nav_Menu {
   function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-    global $wp_query;
+
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
     $output .= $indent . '<li id="item-'. $item->ID . '" class="su-navigation__item">';

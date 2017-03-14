@@ -76,7 +76,9 @@
                 'link_before' => '',
                 'link_after' => '',
                 'depth' => 0,
-                'walker' => new description_walker())
+                // Prevents callback crashing menu if menu empty
+                'fallback_cb' => false,
+                'walker' => new sheru_nav_walker())
             );
             ?>
 
