@@ -94,6 +94,52 @@ function sheru_setup() {
    */
   remove_action('wp_head', 'wp_generator');
 
+//  /**
+//   * SHERU
+//   * Add custom post types
+//   */
+//
+//  function custom_post_type() {
+//
+//    $labels = array(
+//      'name'                => _x( 'Projects', 'Post Type General Name', 'sheru' ),
+//      'singular_name'       => _x( 'Projects', 'Post Type Singular Name', 'sheru' ),
+//      'menu_name'           => __( 'Projects', 'sheru' ),
+//      'parent_item_colon'   => __( 'Parent Project', 'sheru' ),
+//      'all_items'           => __( 'All Projects', 'sheru' ),
+//      'view_item'           => __( 'View Project', 'sheru' ),
+//      'add_new_item'        => __( 'Add New Project', 'sheru' ),
+//      'add_new'             => __( 'Add New', 'sheru' ),
+//      'edit_item'           => __( 'Edit Project', 'sheru' ),
+//      'update_item'         => __( 'Update Project', 'sheru' ),
+//      'search_items'        => __( 'Search Projects', 'sheru' ),
+//      'not_found'           => __( 'Not Found', 'sheru' ),
+//      'not_found_in_trash'  => __( 'Not found in Trash', 'sheru' ),
+//    );
+//
+//    $args = array(
+//      'label'               => __( 'projects', 'sheru' ),
+//      'description'         => __( 'Projects', 'sheru' ),
+//      'labels'              => $labels,
+//      'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields' ),
+//      'hierarchical'        => false,
+//      'public'              => true,
+//      'show_ui'             => true,
+//      'show_in_menu'        => true,
+//      'show_in_nav_menus'   => true,
+//      'show_in_admin_bar'   => true,
+//      'menu_position'       => 5,
+//      'can_export'          => true,
+//      'has_archive'         => true,
+//      'exclude_from_search' => false,
+//      'publicly_queryable'  => true,
+//      'capability_type'     => 'page',
+//    );
+//   register_post_type( 'projects', $args );
+//  }
+//
+//  add_action( 'init', 'custom_post_type', 0 );
+
   /*
    * Enable support for custom logo.
    *
