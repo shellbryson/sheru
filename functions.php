@@ -65,11 +65,79 @@ function sheru_setup() {
   add_theme_support( 'title-tag' );
 
 
+  function get_cat_slug($cat_id) {
+    //$cat_id = $cat_id;
+    $category = get_category($cat_id);
+    return $category['slug'];
+  }
+
+
+  /**
+   * SHERU
+   * Custom navigation walker
+   */
+  require_once('sheru-nav-walker.php');
+
+  /**
+   * SHERU
+   * Remove admin bar spacing (handled via CSS instead)
+   */
+  add_action('get_header', 'sheru_filter_head');
+
+  function sheru_filter_head() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+  }
+
   /**
    * SHERU
    * Removes the meta tag identifying WordPress
    */
   remove_action('wp_head', 'wp_generator');
+
+  /**
+  * SHERU
+  * Add custom post type for Devlogs
+  */
+
+ function custom_post_type_devlogs() {
+
+   $labels = array(
+     'name'                => _x( 'Devlogs', 'Post Type General Name', 'sheru' ),
+     'singular_name'       => _x( 'Devlog', 'Post Type Singular Name', 'sheru' ),
+     'menu_name'           => __( 'Devlog', 'sheru' ),
+     'all_items'           => __( 'All Devlogs', 'sheru' ),
+     'view_item'           => __( 'View Devlog', 'sheru' ),
+     'add_new_item'        => __( 'Add New Devlog', 'sheru' ),
+     'add_new'             => __( 'Add New', 'sheru' ),
+     'edit_item'           => __( 'Edit Devlog', 'sheru' ),
+     'update_item'         => __( 'Update Devlog', 'sheru' ),
+     'search_items'        => __( 'Search Devlogs', 'sheru' ),
+     'not_found'           => __( 'Devlog Not Found', 'sheru' ),
+     'not_found_in_trash'  => __( 'Devlog Not found in Trash', 'sheru' ),
+   );
+
+   $args = array(
+     'label'               => __( 'devlogs', 'sheru' ),
+     'description'         => __( 'Live developer logs', 'sheru' ),
+     'labels'              => $labels,
+     'supports'            => array( 'title', 'editor' ),
+     'hierarchical'        => false,
+     'public'              => true,
+     'show_ui'             => true,
+     'show_in_menu'        => true,
+     'show_in_nav_menus'   => true,
+     'show_in_admin_bar'   => true,
+     'menu_position'       => 6,
+     'can_export'          => true,
+     'has_archive'         => true,
+     'exclude_from_search' => false,
+     'publicly_queryable'  => true,
+     'capability_type'     => 'post',
+   );
+  register_post_type( 'devlogs', $args );
+ }
+
+ add_action( 'init', 'custom_post_type_devlogs', 0 );
 
   /*
    * Enable support for custom logo.
@@ -149,13 +217,68 @@ function sheru_get_category_id_from_slug( $slug ) {
 function sheru_home_category( $query ) {
   $categories = array();
   array_push($categories, sheru_get_category_id_from_slug( "code-tips" ));
-  //array_push($categories, sheru_get_category_id_from_slug( "blog" ));
-
   if ( $query->is_home() && $query->is_main_query() ) {
     $query->set( 'category__in', $categories);
   }
 }
 add_action( 'pre_get_posts', 'sheru_home_category' );
+
+/**
+ * SHERU
+ * Remove named categories from Categories Widget
+ */
+function sheru_exclude_catergory_from_widget( $args ){
+  $excluded_categories = array();
+  array_push($excluded_categories, sheru_get_category_id_from_slug( "blog" ));
+  $args["exclude"] = $excluded_categories;
+  return $args;
+}
+add_filter( 'widget_categories_args', 'sheru_exclude_catergory_from_widget');
+
+/**
+ * SHERU
+ * A widget that lists the latest posts, excluding specified Category names.
+ */
+function sheru_posts($args) {
+  echo $args['before_widget'];
+  echo $args['before_title'] . 'My Unique Widget' .  $args['after_title'];
+  echo $args['after_widget'];
+
+  echo "Your Widget Test";
+
+  $slug = "blog";
+
+  $args = array(
+    'posts_per_page' => 5,
+    'category__not_in' => array( sheru_get_category_id_from_slug( $slug ) )
+  );
+
+  $sheru_posts = new WP_Query($args);
+
+  if($sheru_posts->have_posts() ) :
+    echo '<ul>';
+    while ( $sheru_posts->have_posts() ) : $sheru_posts->the_post();
+      echo '<li>';
+      echo '<a href="'.the_permalink().'">';
+      the_title();
+      echo '</a>';
+      echo '</li>';
+    endwhile;
+    echo '</ul>';
+  endif;
+
+}
+
+//wp_register_sidebar_widget(
+//  'sheru_posts',        // your unique widget id
+//  'Sheru Posts',          // widget name
+//  'sheru_posts',  // callback function
+//  array(                  // options
+//    'description' => 'Lists latest posts, but excludes posts from specified Categories.'
+//  )
+//);
+
+/* ...? */
 
 /**
  * SHERU

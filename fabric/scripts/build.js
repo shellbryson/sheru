@@ -1724,7 +1724,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		assert(function( el ) {
 			// Select is set to empty string on purpose
 			// This is to test IE's treatment of not explicitly
-			// setting a boolean content attribute,
+			// setting a boolean page-content attribute,
 			// since its presence should be enough
 			// https://bugs.jquery.com/ticket/12359
 			docElem.appendChild( el ).innerHTML = "<a id='" + expando + "'></a>" +
@@ -2509,7 +2509,7 @@ Expr = Sizzle.selectors = {
 		// Contents
 		"empty": function( elem ) {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
+			// :empty is negated by element (1) or page-content nodes (text: 3; cdata: 4; entity ref: 5),
 			//   but not by others (comment: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
@@ -5227,7 +5227,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				wrap = wrapMap[ tag ] || wrapMap._default;
 				tmp.innerHTML = wrap[ 1 ] + jQuery.htmlPrefilter( elem ) + wrap[ 2 ];
 
-				// Descend through wrappers to the right content
+				// Descend through wrappers to the right page-content
 				j = wrap[ 0 ];
 				while ( j-- ) {
 					tmp = tmp.lastChild;
@@ -6170,7 +6170,7 @@ function domManip( collection, args, callback, ignored ) {
 			fragment = first;
 		}
 
-		// Require either new content or an interest in ignored elements to invoke the callback
+		// Require either new page-content or an interest in ignored elements to invoke the callback
 		if ( first || ignored ) {
 			scripts = jQuery.map( getAll( fragment, "script" ), disableScript );
 			hasScripts = scripts.length;
@@ -6454,7 +6454,7 @@ jQuery.fn.extend( {
 	replaceWith: function() {
 		var ignored = [];
 
-		// Make the changes, replacing each non-ignored context element with the new content
+		// Make the changes, replacing each non-ignored context element with the new page-content
 		return domManip( this, arguments, function( elem ) {
 			var parent = this.parentNode;
 
@@ -6565,9 +6565,9 @@ var getStyles = function( elem ) {
 
 	// Support: IE <=9 - 11 only
 	// Style of cloned element affects source element cloned (#8908)
-	div.style.backgroundClip = "content-box";
+	div.style.backgroundClip = "page-content-box";
 	div.cloneNode( true ).style.backgroundClip = "";
-	support.clearCloneStyle = div.style.backgroundClip === "content-box";
+	support.clearCloneStyle = div.style.backgroundClip === "page-content-box";
 
 	container.style.cssText = "border:0;width:8px;height:0;top:0;left:-9999px;" +
 		"padding:0;margin-top:1px;position:absolute";
@@ -6730,7 +6730,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 
 		if ( isBorderBox ) {
 
-			// border-box includes padding, so remove it if we want content
+			// border-box includes padding, so remove it if we want page-content
 			if ( extra === "content" ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
@@ -6741,10 +6741,10 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 			}
 		} else {
 
-			// At this point, extra isn't content, so add padding
+			// At this point, extra isn't page-content, so add padding
 			val += jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 
-			// At this point, extra isn't content nor padding, so add border
+			// At this point, extra isn't page-content nor padding, so add border
 			if ( extra !== "padding" ) {
 				val += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
@@ -9017,7 +9017,7 @@ function ajaxExtend( target, src ) {
 }
 
 /* Handles responses to an ajax request:
- * - finds the right dataType (mediates between content-type and expected dataType)
+ * - finds the right dataType (mediates between page-content-type and expected dataType)
  * - returns the corresponding response
  */
 function ajaxHandleResponses( s, jqXHR, responses ) {
@@ -9026,7 +9026,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		contents = s.contents,
 		dataTypes = s.dataTypes;
 
-	// Remove auto dataType and get content-type in the process
+	// Remove auto dataType and get page-content-type in the process
 	while ( dataTypes[ 0 ] === "*" ) {
 		dataTypes.shift();
 		if ( ct === undefined ) {
@@ -9034,7 +9034,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		}
 	}
 
-	// Check if we're dealing with a known content-type
+	// Check if we're dealing with a known page-content-type
 	if ( ct ) {
 		for ( type in contents ) {
 			if ( contents[ type ] && contents[ type ].test( ct ) ) {
@@ -9179,7 +9179,7 @@ jQuery.extend( {
 	// Counter for holding the number of active queries
 	active: 0,
 
-	// Last-Modified header cache for next request
+	// Last-Modified site-header cache for next request
 	lastModified: {},
 	etag: {},
 
@@ -9356,7 +9356,7 @@ jQuery.extend( {
 					return completed ? responseHeadersString : null;
 				},
 
-				// Caches the header
+				// Caches the site-header
 				setRequestHeader: function( name, value ) {
 					if ( completed == null ) {
 						name = requestHeadersNames[ name.toLowerCase() ] =
@@ -9366,7 +9366,7 @@ jQuery.extend( {
 					return this;
 				},
 
-				// Overrides response content-type header
+				// Overrides response page-content-type site-header
 				overrideMimeType: function( type ) {
 					if ( completed == null ) {
 						s.mimeType = type;
@@ -9467,15 +9467,15 @@ jQuery.extend( {
 		// Uppercase the type
 		s.type = s.type.toUpperCase();
 
-		// Determine if request has content
+		// Determine if request has page-content
 		s.hasContent = !rnoContent.test( s.type );
 
 		// Save the URL in case we're toying with the If-Modified-Since
-		// and/or If-None-Match header later on
+		// and/or If-None-Match site-header later on
 		// Remove hash to simplify url manipulation
 		cacheURL = s.url.replace( rhash, "" );
 
-		// More options handling for requests with no content
+		// More options handling for requests with no page-content
 		if ( !s.hasContent ) {
 
 			// Remember the hash so we can put it back
@@ -9498,13 +9498,13 @@ jQuery.extend( {
 			// Put hash and anti-cache on the URL that will be requested (gh-1732)
 			s.url = cacheURL + uncached;
 
-		// Change '%20' to '+' if this is encoded form body content (gh-2658)
+		// Change '%20' to '+' if this is encoded form body page-content (gh-2658)
 		} else if ( s.data && s.processData &&
 			( s.contentType || "" ).indexOf( "application/x-www-form-urlencoded" ) === 0 ) {
 			s.data = s.data.replace( r20, "+" );
 		}
 
-		// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
+		// Set the If-Modified-Since and/or If-None-Match site-header, if in ifModified mode.
 		if ( s.ifModified ) {
 			if ( jQuery.lastModified[ cacheURL ] ) {
 				jqXHR.setRequestHeader( "If-Modified-Since", jQuery.lastModified[ cacheURL ] );
@@ -9514,12 +9514,12 @@ jQuery.extend( {
 			}
 		}
 
-		// Set the correct header, if data is being sent
+		// Set the correct site-header, if data is being sent
 		if ( s.data && s.hasContent && s.contentType !== false || options.contentType ) {
 			jqXHR.setRequestHeader( "Content-Type", s.contentType );
 		}
 
-		// Set the Accepts header for the server, depending on the dataType
+		// Set the Accepts site-header for the server, depending on the dataType
 		jqXHR.setRequestHeader(
 			"Accept",
 			s.dataTypes[ 0 ] && s.accepts[ s.dataTypes[ 0 ] ] ?
@@ -9631,7 +9631,7 @@ jQuery.extend( {
 			// If successful, handle type chaining
 			if ( isSuccess ) {
 
-				// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
+				// Set the If-Modified-Since and/or If-None-Match site-header, if in ifModified mode.
 				if ( s.ifModified ) {
 					modified = jqXHR.getResponseHeader( "Last-Modified" );
 					if ( modified ) {
@@ -9643,7 +9643,7 @@ jQuery.extend( {
 					}
 				}
 
-				// if no content
+				// if no page-content
 				if ( status === 204 || s.type === "HEAD" ) {
 					statusText = "nocontent";
 
@@ -9879,11 +9879,11 @@ jQuery.ajaxTransport( function( options ) {
 					xhr.overrideMimeType( options.mimeType );
 				}
 
-				// X-Requested-With header
+				// X-Requested-With site-header
 				// For cross-domain requests, seeing as conditions for a preflight are
 				// akin to a jigsaw puzzle, we simply never set it to be sure.
 				// (it can always be set on a per-request basis or even using ajaxSetup)
-				// For same-domain requests, won't change header if already provided.
+				// For same-domain requests, won't change site-header if already provided.
 				if ( !options.crossDomain && !headers[ "X-Requested-With" ] ) {
 					headers[ "X-Requested-With" ] = "XMLHttpRequest";
 				}
@@ -10676,10 +10676,49 @@ define('toggleAttribute', ['jquery'], function ($) {
 
 });
 
-define('assets/scripts/build.main',['require','toggleAttribute'],function (require) {
+define('navigation',['require','jquery'],function (require) {
+  'use strict';
+
+  var $ = require('jquery');
+  var $nav = $('.js-navigation');
+  var $search = $('.js-search');
+  var $toggleMenu = $('.js-toggleMenu');
+  var $toggleSearch = $('.js-toggleSearch');
+  var _menuClass = 'su-navigation__menu--show';
+  var _searchClass = 'su-navigation-search--show';
+
+  function initNavigation() {
+    $toggleMenu.on('click', function (e) {
+      e.preventDefault();
+      if ($nav.hasClass(_menuClass)) {
+        $nav.removeClass(_menuClass);
+        $search.removeClass(_searchClass);
+      } else {
+        $nav.addClass(_menuClass);
+        $search.addClass(_searchClass);
+      }
+    });
+
+    $toggleSearch.on('click', function (e) {
+      e.preventDefault();
+      $search.toggleClass(_searchClass);
+    });
+  }
+
+  $(function () {
+    if ($nav.length) {
+      initNavigation();
+    }
+  });
+
+});
+
+
+define('assets/scripts/build.main',['require','toggleAttribute','navigation'],function (require) {
   'use strict';
 
   require('toggleAttribute');
+  require('navigation');
 
   // TODO Remove this font hack once Fabric supports fully custom headers
   if (location.hostname === 'localhost' ||
@@ -10687,6 +10726,7 @@ define('assets/scripts/build.main',['require','toggleAttribute'],function (requi
       location.hostname === 'sheru.local'
   ) {
     $('head').append('<link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">');
+    $('head').append('<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">');
   }
 
 });
