@@ -21,6 +21,7 @@ class sheru_nav_secondary extends Walker_Nav_Menu {
     $output .= $indent . '      <span class="su-nav__shard"></span>';
     $output .= $indent . '      <span class="su-nav__shard"></span>';
     $output .= $indent . '      <span class="su-nav__shard"></span>';
+    $output .= $indent . '      <span class="su-nav__shard"></span>';
     $output .= $indent . '    </a>';
     $output .= $indent . '  </div>';
     $output .= $indent . '</li>';
