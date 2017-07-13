@@ -651,7 +651,7 @@ define('project-spinner',['require','TweenMax'],function (require) {
 
 });
 
-define('assets/scripts/build.main',['require','navigation','project-spinner'],function (require) {
+define('assets/scripts/sheru.main',['require','navigation','project-spinner'],function (require) {
   'use strict';
 
   require('navigation');
@@ -680,4 +680,4 @@ define('assets/scripts/build.main',['require','navigation','project-spinner'],fu
 });
 
 
-require(["assets/scripts/build.main"]);
+require(["assets/scripts/sheru.main"]);

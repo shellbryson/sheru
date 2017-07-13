@@ -71,12 +71,11 @@ function sheru_setup() {
     return $category['slug'];
   }
 
-
   /**
    * SHERU
-   * Custom navigation walker
+   * Custom secondary navigation
    */
-  require_once('sheru-nav-walker.php');
+  require_once('sheru-nav-secondary.php');
 
   /**
    * SHERU
@@ -370,6 +369,7 @@ function sheru_scripts() {
   wp_enqueue_style( 'sheru-style', get_stylesheet_uri() );
 
   wp_enqueue_style( 'fabric', get_template_directory_uri() . '/fabric/styles/build.css', array(), '0.0.1' );
+  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/fabric/scripts/build.js', array(), '0.0.1', true );
 
   wp_enqueue_script( 'sheru-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 

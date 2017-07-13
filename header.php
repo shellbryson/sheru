@@ -23,117 +23,119 @@
 
     <header class="su-head">
 
-      <div class="su-brand">
-          <!--<?php sheru_the_custom_logo(); ?>-->
-
-          <?php if ( is_front_page() && is_home() ) : ?>
-            <h1 class="su-brand__title">
-              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link"><?php bloginfo( 'name' ); ?></a>
-            </h1>
-          <?php else : ?>
-            <p class="su-brand__title">
-              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link"><?php bloginfo( 'name' ); ?></a>
-            </p>
-          <?php endif;
-
-          $description = get_bloginfo( 'description', 'display' );
-          if ( $description || is_customize_preview() ) : ?>
-
-          <!--<p class="site-description"><?php echo $description; ?></p>-->
-
-          <?php endif; ?>
-      </div>
-
       <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 
-        <div class="su-navigation">
+        <div class="su-nav">
 
           <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
-          <nav class="su-navigation__wrapper">
+            <nav class="su-nav__wrapper">
 
-            <form role="search" method="get" class="su-navigation-search js-search"
-                  action="<?php echo esc_url( home_url( '/' ) ); ?>">
-              <label class="su-navigation-search__label">
-                <span class="sr-only"><?php echo _x( 'Search for:', 'label', 'sheru' ); ?></span>
-                <input type="search" class="su-navigation-search__input"
-                       placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'sheru' ); ?>"
-                       value="<?php echo get_search_query(); ?>" name="s" />
-              </label>
-              <button type="submit" class="su-navigation-search__submit">
-                <i class="fa fa-search"></i>
-                <span class="sr-only"><?php echo _x( 'Search', 'submit button', 'sheru' ); ?></span>
-              </button>
-            </form>
+              <header class="su-brand">
+                <div class="su-brand__wrapper">
 
-            <?php
-            wp_nav_menu( array(
-                'container' => false,
-                'menu_class' => 'su-navigation__menu js-navigation',
-                'echo' => true,
-                'before' => '',
-                'after' => '',
-                'link_before' => '',
-                'link_after' => '',
-                'depth' => 0,
-                // Prevents callback crashing menu if menu empty
-                'fallback_cb' => false,
-                'walker' => new sheru_nav_walker())
-            );
-            ?>
+                  <h1 class="su-brand__title">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link">Sheru</a>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="su-brand__link su-brand__link--hidden">Shell Bryson</a>
+                  </h1>
 
-            <div class="su-navigation__primary">
-              <ul class="su-navigation__primary-menu">
-                <li class="su-navigation__item animation-fadein">
-                  <a href="/code-tips">Code</a>
+                  <?php
+                  $description = get_bloginfo( 'description', 'display' );
+                  if ( $description || is_customize_preview() ) : ?>
+
+                  <div class="su-brand__subtitle">
+                    <?php echo $description; ?>
+                  </div>
+
+                  <?php endif; ?>
+                </div>
+              </header>
+
+              <ol class="su-nav__primary">
+                <li class="su-nav__primary-tile animation-fadein">
+                  <a href="/code-tips" class="su-nav__primary-tile-link">Code</a>
                 </li>
-                <li class="su-navigation__item animation-fadein">
-                  <a href="/blog">Projects</a>
+                <li class="su-nav__primary-tile animation-fadein">
+                  <a href="/blog" class="su-nav__primary-tile-link">Projects</a>
                 </li>
-                <li class="su-navigation__item animation-fadein">
-                  <a href="/projects">Blog</a>
+                <li class="su-nav__primary-tile animation-fadein">
+                  <a href="/projects" class="su-nav__primary-tile-link">Blog</a>
                 </li>
-                <li class="su-navigation__item animation-fadein js-toggleMenu">
-                  <a href="#">
+
+                <li class="su-nav__primary-tile animation-fadein js-toggleMenu">
+                  <button class="su-nav__button"
+                    aria-haspopup="true"
+                    aria-owns="nav-secondary"
+                    aria-controls="nav-secondary">
+                    <span class="sr-only">Toggle expanded navigation</span>
                     <i class="fa fa-th-large su-display-small"></i>
                     <i class="fa fa-bars su-display-medium"></i>
-                  </a>
+                  </button>
                 </li>
-                <li class="su-navigation__item su-navigation__item--small animation-fadein js-toggleSearch">
-                  <a href="#">
-                    <i class="fa fa-search"></i>
-                  </a>
+
+                <li class="su-nav__primary-tile su-nav__primary-tile--small animation-fadein js-toggleSearch">
+                  <button class="su-nav__button"
+                    aria-haspopup="true"
+                    aria-owns="nav-search"
+                    aria-controls="nav-search">
+                    <span class="sr-only">Toggle search form</span>
+                    <i class="fa fa-search su-display-medium"></i>
+                  </button>
                 </li>
-              </ul>
-            </div>
 
-          </nav>
-        <?php endif; ?>
+              </ol>
 
-      </div>
+              <form method="get"
+                    class="su-nav-search js-search"
+                    action="<?php echo esc_url( home_url( '/' ) ); ?>"
+                    role="search">
+                <label class="su-nav-search__label">
+                  <span class="sr-only">Search for:</span>
+                  <input type="search"
+                         class="su-forms__input su-nav-search__input"
+                         placeholder="Search"
+                         id="search-input"
+                         role="search"
+                         name="s"
+                         value="<?php echo get_search_query(); ?>"
+                  />
+                </label>
+                <button type="submit" class="su-nav-search__submit">
+                  <i class="fa fa-search"></i>
+                  <span class="sr-only">Submit search</span>
+                </button>
+              </form>
+
+              <div class="su-nav__scroll-wrap">
+
+                <div class="su-nav__action js-nav-control">
+                  <div class="su-nav__action-inner">
+                  </div>
+                </div>
+
+                <div class="su-nav__scroll su-scrollbar">
+                  <?php
+                  wp_nav_menu( array(
+                    'container' => false,
+                    'menu_class' => 'su-nav__secondary js-nav',
+                    'echo' => true,
+                    'depth' => 1,
+                    // Prevents callback crashing menu if menu empty
+                    'fallback_cb' => false,
+                    'walker' => new sheru_nav_secondary())
+                  );
+                  ?>
+                </div>
+
+              </div>
+
+            </nav>
+          <?php endif; ?>
+
+        </div>
 
       <?php endif; ?>
 
     </header>
 
-    <?php if ( get_header_image() ) : ?>
-      <?php
-        /**
-         * Filter the default sheru custom header sizes attribute.
-         *
-         * @since Twenty Sixteen 1.0
-         *
-         * @param string $custom_header_sizes sizes attribute
-         * for Custom Header. Default '(max-width: 709px) 85vw,
-         * (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'.
-         */
-        $custom_header_sizes = apply_filters( 'sheru_custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px' );
-      ?>
-      <div class="header-image">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-          <img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-        </a>
-      </div>
-    <?php endif; // End header image check. ?>
-
-    <div id="content" class="su-wrapper">
+    <div id="content" class="su-wrapper js-wrapper">
