@@ -438,8 +438,8 @@ define("node_modules/almond/almond", function(){});
 define('navigation',['require'],function (require) {
   'use strict';
 
-  const body = document.querySelector('body');
   const navPanel = document.querySelector('.js-nav');
+  const body = document.querySelector('body');
   const navPanelControls = document.querySelector('.js-nav-control');
   const searchPanel = document.querySelector('.js-search');
   const toggleNavigation = document.querySelector('.js-toggleMenu');
@@ -450,6 +450,7 @@ define('navigation',['require'],function (require) {
   const _showMenu = 'su-menu-open';
 
   function initnav() {
+
     document.addEventListener("keydown", handleKeys, false);
 
     toggleNavigation.addEventListener('click', function (e) {
@@ -508,7 +509,9 @@ define('navigation',['require'],function (require) {
     body.classList.remove(_showMenu);
   }
 
-  initnav();
+  if (navPanel) {
+    initnav();
+  }
 
 });
 
@@ -534,20 +537,83 @@ define("TweenMax", function(){});
 define('project-spinner',['require','TweenMax'],function (require) {
   'use strict';
 
-  const TweenMax = require('TweenMax');
-  const btnTogglePause = document.querySelector('.js-pause');
-  const spinnerInner = document.getElementById('pulse-inner');
-  const spinnerOuter = document.getElementById('pulse-outer');
-  const spinnerQuad = document.getElementById('pulse-quad');
-  const strings = {
-    buttonPause: {
-      pause: 'Pause animation',
-      resume: 'Resume animation'
-    }
-  };
-  const state = {
-    animated: true
-  };
+  const primaryInteraction =  document.querySelector('[data-primary-interaction]');
+
+  function initSpinner() {
+
+    const TweenMax = require('TweenMax');
+    const btnTogglePause = document.querySelector('.js-pause');
+    const spinnerInner = document.getElementById('pulse-inner');
+    const spinnerOuter = document.getElementById('pulse-outer');
+    const spinnerQuad = document.getElementById('pulse-quad');
+    const strings = {
+      buttonPause: {
+        pause: 'Pause animation',
+        resume: 'Resume animation'
+      }
+    };
+    const state = {
+      animated: true
+    };
+
+    const btn = btnTogglePause;
+    btn.textContent = strings.buttonPause.pause;
+    btn.addEventListener('click', () => {
+      if ( state.animated ) {
+        btn.textContent = strings.buttonPause.resume;
+        TweenLite.to(
+          animOuterRing, 1, { timeScale: 0 }
+        );
+        state.animated = false;
+      } else {
+        btn.textContent = strings.buttonPause.pause;
+        TweenLite.to(
+          animOuterRing, 1, { timeScale: 1 }
+        );
+        state.animated = true;
+      }
+    });
+
+    // Animation
+    let animOuterRing = new TweenMax.to(
+      spinnerOuter, 15, {
+        rotation: 360, transformOrigin: 'center center', ease: Linear.easeNone, repeat:-1
+      }, {
+        timeScale: 1
+      }
+    );
+
+    let animQuad = new TweenMax.to(
+      spinnerQuad, 60, {
+        rotation: 360, transformOrigin: 'center center', ease: Linear.easeNone, repeat:-1
+      }, {
+        timeScale: 1
+      }
+    );
+
+    // Interactions
+    spinnerQuad.addEventListener('mouseover', () => {
+      if ( state.animated ) {
+        TweenLite.to(
+          animOuterRing, 1, { timeScale: 10 }
+        );
+      }
+    });
+
+    spinnerQuad.addEventListener('mouseout', () => {
+      if ( state.animated ) {
+        TweenLite.to(
+          animOuterRing, 1, { timeScale: 1 }
+        );
+      }
+    });
+
+    // Creation
+    createProject( 'test1', 200, 200 );
+    cloneSVG( 'test1', 'test2', 300, 300, 'Spinner' );
+    cloneSVG( 'test1', 'test3', 300, 340, 'Spinner' );
+    cloneSVG( 'test1', 'test4', 300, 380, 'Spinner' );
+  }
 
   // Creates a new svg element [id] attached to [parentID]
   class SVGElement {
@@ -581,73 +647,10 @@ define('project-spinner',['require','TweenMax'],function (require) {
     parent.appendChild(project.svg);
   }
 
-  function initSpinner() {
-
-    // Master switches
-
-    const btn = btnTogglePause;
-    btn.textContent = strings.buttonPause.pause;
-    btn.addEventListener('click', () => {
-      if ( state.animated ) {
-        btn.textContent = strings.buttonPause.resume;
-        TweenLite.to(
-          animOuterRing, 1, { timeScale: 0 }
-        );
-        state.animated = false;
-      } else {
-        btn.textContent = strings.buttonPause.pause;
-        TweenLite.to(
-          animOuterRing, 1, { timeScale: 1 }
-        );
-        state.animated = true;
-      }
-    });
-
-    // Animation
-
-    let animOuterRing = new TweenMax.to(
-      spinnerOuter, 15, {
-        rotation: 360, transformOrigin: 'center center', ease: Linear.easeNone, repeat:-1
-      }, {
-        timeScale: 1
-      }
-    );
-
-    let animQuad = new TweenMax.to(
-      spinnerQuad, 60, {
-        rotation: 360, transformOrigin: 'center center', ease: Linear.easeNone, repeat:-1
-      }, {
-        timeScale: 1
-      }
-    );
-
-    // Interactions
-
-    spinnerQuad.addEventListener('mouseover', () => {
-      if ( state.animated ) {
-        TweenLite.to(
-          animOuterRing, 1, { timeScale: 10 }
-        );
-      }
-    });
-
-    spinnerQuad.addEventListener('mouseout', () => {
-      if ( state.animated ) {
-        TweenLite.to(
-          animOuterRing, 1, { timeScale: 1 }
-        );
-      }
-    });
-
-    // Creation
-
-    createProject( 'test1', 200, 200 );
-    cloneSVG( 'test1', 'test2', 300, 300, 'Spinner' );
-    cloneSVG( 'test1', 'test3', 300, 340, 'Spinner' );
-    cloneSVG( 'test1', 'test4', 300, 380, 'Spinner' );
+  // Trigger if on page
+  if (primaryInteraction) {
+    initSpinner();
   }
-
-  initSpinner();
 
 });
 
