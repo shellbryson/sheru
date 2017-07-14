@@ -13,7 +13,7 @@ class sheru_nav_secondary extends Walker_Nav_Menu {
     $output .= $indent . '  <div class="su-nav__secondary-tile">';
     $output .= $indent . '    <a'. $attributes .' class="su-nav__secondary-tile-link">';
     $output .= $indent . '      <div class="su-nav__secondary-tile-content">';
-    $output .= $indent . '        <span class="title">x'. esc_attr( $item->description ) .'</span>';
+    $output .= $indent . '        <span class="title">'. apply_filters( 'the_title', $item->title, $item->ID ) .'</span>';
     $output .= $indent . '        <span class="divider"></span>';
     $output .= $indent . '      </div>';
     $output .= $indent . '      <span class="su-nav__shard"></span>';
