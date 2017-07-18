@@ -18,16 +18,12 @@
 
 <body <?php body_class(); ?>>
   <div id="page" class="su-page">
-    
+
       <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'sheru' ); ?></a>
 
       <header class="su-head">
 
-        <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
-
           <div class="su-nav">
-
-            <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
               <nav class="su-nav__wrapper">
 
@@ -114,8 +110,12 @@
                   </div>
 
                   <div class="su-nav__scroll su-scrollbar">
+
+                    <?php if ( has_nav_menu( 'sheru-secondary' ) ) { ?>
+
                     <?php
                     wp_nav_menu( array(
+                      'theme_location' => 'sheru-secondary',
                       'container' => false,
                       'menu_class' => 'su-nav__secondary js-nav',
                       'echo' => true,
@@ -125,16 +125,25 @@
                       'walker' => new sheru_nav_secondary())
                     );
                     ?>
+
+                    <?php
+                    } else {
+                    ?>
+
+                    <p>Sheru Secondary Menu has not been defined</p>
+
+                    <?php
+                    }
+                    ?>
+
                   </div>
 
                 </div>
 
               </nav>
-            <?php endif; ?>
 
           </div>
 
-        <?php endif; ?>
 
       </header>
 

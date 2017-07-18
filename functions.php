@@ -159,8 +159,8 @@ function sheru_setup() {
 
   // This theme uses wp_nav_menu() in two locations.
   register_nav_menus( array(
-    'primary' => __( 'Primary Menu', 'sheru' ),
-    'social'  => __( 'Social Links Menu', 'sheru' ),
+    'sheru-top'  => __( 'Sheru Top Level Menu', 'sheru' ),
+    'sheru-secondary'  => __( 'Sheru Secondary Menu (revealed)', 'sheru' )
   ) );
 
   /*
