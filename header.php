@@ -47,39 +47,19 @@
                   </div>
                 </header>
 
-                <ol class="su-nav__primary">
-                  <li class="su-nav__primary-tile animation-fadein">
-                    <a href="/code-tips" class="su-nav__primary-tile-link">Code</a>
-                  </li>
-                  <li class="su-nav__primary-tile animation-fadein">
-                    <a href="/blog" class="su-nav__primary-tile-link">Projects</a>
-                  </li>
-                  <li class="su-nav__primary-tile animation-fadein">
-                    <a href="/projects" class="su-nav__primary-tile-link">Blog</a>
-                  </li>
-
-                  <li class="su-nav__primary-tile animation-fadein js-toggleMenu">
-                    <button class="su-nav__button"
-                      aria-haspopup="true"
-                      aria-owns="nav-secondary"
-                      aria-controls="nav-secondary">
-                      <span class="sr-only">Toggle expanded navigation</span>
-                      <i class="fa fa-th-large su-display-small"></i>
-                      <i class="fa fa-bars su-display-medium"></i>
-                    </button>
-                  </li>
-
-                  <li class="su-nav__primary-tile su-nav__primary-tile--small animation-fadein js-toggleSearch">
-                    <button class="su-nav__button"
-                      aria-haspopup="true"
-                      aria-owns="nav-search"
-                      aria-controls="nav-search">
-                      <span class="sr-only">Toggle search form</span>
-                      <i class="fa fa-search su-display-medium"></i>
-                    </button>
-                  </li>
-
-                </ol>
+                <?php
+                if ( has_nav_menu( 'sheru-top' ) ) {
+                  wp_nav_menu( array(
+                    'theme_location' => 'sheru-top',
+                    'container' => false,
+                    'menu_class' => 'su-nav__primary',
+                    'echo' => true,
+                    'depth' => 1,
+                    'fallback_cb' => false,
+                    'walker' => new sheru_nav_primary())
+                  );
+                }
+                ?>
 
                 <form method="get"
                       class="su-nav-search js-search"
@@ -111,28 +91,17 @@
 
                   <div class="su-nav__scroll su-scrollbar">
 
-                    <?php if ( has_nav_menu( 'sheru-secondary' ) ) { ?>
-
                     <?php
-                    wp_nav_menu( array(
-                      'theme_location' => 'sheru-secondary',
-                      'container' => false,
-                      'menu_class' => 'su-nav__secondary js-nav',
-                      'echo' => true,
-                      'depth' => 1,
-                      // Prevents callback crashing menu if menu empty
-                      'fallback_cb' => false,
-                      'walker' => new sheru_nav_secondary())
-                    );
-                    ?>
-
-                    <?php
-                    } else {
-                    ?>
-
-                    <p>Sheru Secondary Menu has not been defined</p>
-
-                    <?php
+                    if ( has_nav_menu( 'sheru-secondary' ) ) {
+                      wp_nav_menu( array(
+                        'theme_location' => 'sheru-secondary',
+                        'container' => false,
+                        'menu_class' => 'su-nav__secondary js-nav',
+                        'echo' => true,
+                        'depth' => 1,
+                        'fallback_cb' => false,
+                        'walker' => new sheru_nav_secondary())
+                      );
                     }
                     ?>
 

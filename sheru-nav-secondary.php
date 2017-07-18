@@ -1,4 +1,6 @@
 <?php
+
+// SECONDARY NAVIGATION, walk the menu items that have been added in WP admin
 class sheru_nav_secondary extends Walker_Nav_Menu {
   function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
 
@@ -15,7 +17,7 @@ class sheru_nav_secondary extends Walker_Nav_Menu {
     $attributes .= !empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
     $attributes .= !empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
-    $output .= '<li id="item-'. $item->ID . '" class="su-nav__tile-wrapper">';
+    $output .= '<li class="su-nav__tile-wrapper">';
     $output .= '  <div class="su-nav__secondary-tile">';
     $output .= '    <a'. $attributes .' class="su-nav__secondary-tile-link">';
     $output .= '      <div class="su-nav__secondary-tile-content">';

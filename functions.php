@@ -45,25 +45,9 @@ if ( ! function_exists( 'sheru_setup' ) ) :
  * @since Twenty Sixteen 1.0
  */
 function sheru_setup() {
-  /*
-   * Make theme available for translation.
-   * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/sheru
-   * If you're building a theme based on Twenty Sixteen, use a find and replace
-   * to change 'sheru' to the name of your theme in all the template files
-   */
   load_theme_textdomain( 'sheru' );
-
-  // Add default posts and comments RSS feed links to head.
   add_theme_support( 'automatic-feed-links' );
-
-  /*
-   * Let WordPress manage the document title.
-   * By adding theme support, we declare that this theme does not use a
-   * hard-coded <title> tag in the document head, and expect WordPress to
-   * provide it for us.
-   */
   add_theme_support( 'title-tag' );
-
 
   function get_cat_slug($cat_id) {
     //$cat_id = $cat_id;
@@ -72,10 +56,18 @@ function sheru_setup() {
   }
 
   /**
-   * SHERU
-   * Custom secondary navigation
+   * SHERU - NAVIGATION
+   * Custom navigation registration and setup.
    */
+  require_once('sheru-nav-primary.php');
   require_once('sheru-nav-secondary.php');
+
+  add_filter('wp_nav_menu_items','sheru_add_primary_menu_toggles', 10, 2);
+
+  register_nav_menus( array(
+    'sheru-top'  => __( 'Sheru Top Level Menu', 'sheru' ),
+    'sheru-secondary'  => __( 'Sheru Secondary Menu (revealed)', 'sheru' )
+  ) );
 
   /**
    * SHERU
@@ -157,11 +149,7 @@ function sheru_setup() {
   add_theme_support( 'post-thumbnails' );
   set_post_thumbnail_size( 1200, 9999 );
 
-  // This theme uses wp_nav_menu() in two locations.
-  register_nav_menus( array(
-    'sheru-top'  => __( 'Sheru Top Level Menu', 'sheru' ),
-    'sheru-secondary'  => __( 'Sheru Secondary Menu (revealed)', 'sheru' )
-  ) );
+
 
   /*
    * Switch default core markup for search form, comment form, and comments
