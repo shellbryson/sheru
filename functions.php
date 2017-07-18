@@ -62,11 +62,11 @@ function sheru_setup() {
   require_once('sheru-nav-primary.php');
   require_once('sheru-nav-secondary.php');
 
-  add_filter('wp_nav_menu_items','sheru_add_primary_menu_toggles', 10, 2);
+  add_filter('wp_nav_menu_items','sheru_nav_primary_append_toggles', 10, 2);
 
   register_nav_menus( array(
     'sheru-top'  => __( 'Sheru Top Level Menu', 'sheru' ),
-    'sheru-secondary'  => __( 'Sheru Secondary Menu (revealed)', 'sheru' )
+    'sheru-secondary'  => __( 'Sheru Secondary Level Menu', 'sheru' )
   ) );
 
   /**

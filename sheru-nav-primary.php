@@ -1,7 +1,7 @@
 <?php
 
 // PRIMARY NAVIGATION, create fixed elements to append to primary nav
-function sheru_menu_toggles() {
+function sheru_nav_primary_toggles() {
 
   $menuItems =  '<li class="su-nav__primary-tile animation-fadein js-toggleMenu">';
   $menuItems .= '  <button class="su-nav__button"';
@@ -28,9 +28,10 @@ function sheru_menu_toggles() {
 }
 
 // PRIMARY NAVIGATION, filters Primary Navigation, adds fixed elements to end
-function sheru_add_primary_menu_toggles( $items, $args ) {
+// This function is called as a Filter in functions.php
+function sheru_nav_primary_append_toggles( $items, $args ) {
   if( $args->theme_location == 'sheru-top')  {
-    $items .= sheru_menu_toggles();
+    $items .= sheru_nav_primary_toggles();
   }
   return $items;
 }
