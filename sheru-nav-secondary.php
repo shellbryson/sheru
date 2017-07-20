@@ -13,7 +13,7 @@ class sheru_nav_secondary extends Walker_Nav_Menu {
     // Adds custom classes as defined in WP menu confuration. For Tiles, we have:
     // `tile-background--classname` for applying custom background images.
     // Eg:
-    // `tile-background--blog`
+    // `tile-category-devlog`
     $classes = join(' ', $item->classes );
 
     // Build the attributes for the Tile link
@@ -25,8 +25,8 @@ class sheru_nav_secondary extends Walker_Nav_Menu {
     // Build the HTML
     $output .= '<li class="su-nav__tile-wrapper">';
     $output .= '  <div class="su-nav__secondary-tile">';
-    $output .= '    <a'. $attributes .' class="su-nav__secondary-tile-link">';
-    $output .= '      <div class="su-nav__secondary-tile-content tile-background '. $classes .'">';
+    $output .= '    <a'. $attributes .' class="su-nav__secondary-tile-link tile-background '. $classes .'">';
+    $output .= '      <div class="su-nav__secondary-tile-content">';
     $output .= '        <span class="title">'. $title .'</span>';
     $output .= '        <span class="divider"></span>';
     $output .= '      </div>';

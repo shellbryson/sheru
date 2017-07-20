@@ -1074,7 +1074,7 @@ body.admin-bar {
       font-size: 1.1875rem;
       display: block;
       width: 190px;
-      padding: 0 6px;
+      height: 100px;
       border-top: 2px solid rgba(255, 255, 255, 0.3);
       border-right: 1px solid rgba(255, 255, 255, 0.1);
       border-bottom: 2px solid rgba(255, 255, 255, 0.3);
@@ -1113,7 +1113,9 @@ body.admin-bar {
   bottom: 0;
   left: 0;
   z-index: 98;
+  padding: 10px;
   font-family: "Overpass", "Helvetica", "Arial", sans-serif;
+  background-size: cover;
   text-align: left;
   text-decoration: none;
   transition: 0.4s;
@@ -1135,6 +1137,21 @@ body.admin-bar {
         margin-top: -4px;
         content: "";
         background-color: rgba(255, 255, 255, 0.4); } }
+  .tile-pen .su-nav__secondary-tile-link {
+    border: 2px solid red;
+    background-image: url("../images/tile-icons/tile-example.svg"); }
+  .tile-category-codetips .su-nav__secondary-tile-link {
+    border: 2px solid blue;
+    background-image: url("../images/tile-icons/tile-example.svg"); }
+  .tile-category-blog .su-nav__secondary-tile-link {
+    border: 2px solid green;
+    background-image: url("../images/tile-icons/tile-example.svg"); }
+  .tile-category-setup .su-nav__secondary-tile-link {
+    border: 2px solid orange;
+    background-image: url("../images/tile-icons/tile-example.svg"); }
+  .tile-category-inspire .su-nav__secondary-tile-link {
+    border: 2px solid pink;
+    background-image: url("../images/tile-icons/tile-example.svg"); }
 
 @media (min-width: 48em) {
   .su-nav__shard {
@@ -1261,16 +1278,6 @@ body.admin-bar {
   to {
     -webkit-transform: scale(1, 1.1);
             transform: scale(1, 1.1); } }
-
-.tile-background {
-  background-image: url("../images/tile-icons/tile-example.svg");
-  background-size: cover; }
-  .tile-background--pen {
-    background-image: url("../images/tile-icons/tile-example.svg"); }
-  .tile-background--category-codepen {
-    background-image: url("../images/tile-icons/tile-example.svg"); }
-  .tile-background--category-blog {
-    background-image: url("../images/tile-icons/tile-example.svg"); }
 
 .su-nav-search {
   display: none;
