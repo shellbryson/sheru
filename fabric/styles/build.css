@@ -1,6 +1,38 @@
 /*
   General
 */
+.tile-pen {
+  border: 2px solid red;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
+.tile-profile {
+  border: 2px solid red;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
+.tile-category-code {
+  border: 2px solid blue;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
+.tile-category-blog {
+  border: 2px solid green;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
+.tile-category-log {
+  border: 2px solid magenta;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
+.tile-category-projects {
+  border: 2px solid purple;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
+.tile-category-setup {
+  border: 2px solid orange;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
+.tile-category-inspire {
+  border: 2px solid pink;
+  background-image: url("../images/tile-icons/tile-example.svg"); }
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -1137,21 +1169,6 @@ body.admin-bar {
         margin-top: -4px;
         content: "";
         background-color: rgba(255, 255, 255, 0.4); } }
-  .tile-pen .su-nav__secondary-tile-link {
-    border: 2px solid red;
-    background-image: url("../images/tile-icons/tile-example.svg"); }
-  .tile-category-codetips .su-nav__secondary-tile-link {
-    border: 2px solid blue;
-    background-image: url("../images/tile-icons/tile-example.svg"); }
-  .tile-category-blog .su-nav__secondary-tile-link {
-    border: 2px solid green;
-    background-image: url("../images/tile-icons/tile-example.svg"); }
-  .tile-category-setup .su-nav__secondary-tile-link {
-    border: 2px solid orange;
-    background-image: url("../images/tile-icons/tile-example.svg"); }
-  .tile-category-inspire .su-nav__secondary-tile-link {
-    border: 2px solid pink;
-    background-image: url("../images/tile-icons/tile-example.svg"); }
 
 @media (min-width: 48em) {
   .su-nav__shard {
