@@ -685,6 +685,31 @@ body.admin-bar {
 .su-scrollbar::-webkit-scrollbar-thumb:active {
   background: rgba(0, 0, 0, 0.9); }
 
+.su-logo {
+  display: block;
+  position: absolute;
+  z-index: 99;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  -webkit-transform: perspective(800px) rotateY(-15deg);
+          transform: perspective(800px) rotateY(-15deg);
+  transition: 0.4s;
+  -webkit-transform-origin: 20% 0;
+          transform-origin: 20% 0;
+  pointer-events: all;
+  background-image: url("../images/logo.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+  @media (min-width: 48em) {
+    .su-logo {
+      width: 150px;
+      height: 150px; } }
+  .su-logo:hover {
+    -webkit-transform: perspective(800px) rotateY(-25deg);
+            transform: perspective(800px) rotateY(-25deg); }
+
 .su-head {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -713,6 +738,10 @@ body.admin-bar {
     display: -ms-flexbox;
     display: flex;
     width: 100%; }
+  .su-brand__logo {
+    width: 150px;
+    height: 150px;
+    background-color: blue; }
   .su-brand__title {
     font-size: 20px;
     font-size: 1.25rem;

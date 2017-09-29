@@ -45,6 +45,7 @@
 
                     <?php endif; ?>
                   </div>
+                  <div class="su-brand__logo"></div>
                 </header>
 
                 <?php
@@ -112,7 +113,7 @@
               </nav>
 
           </div>
-
+          <div class="su-logo"></div>
 
       </header>
 
