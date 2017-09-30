@@ -320,9 +320,8 @@ p {
     padding-top: 3.125rem; }
 
 .su-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  margin-top: 40px;
+  margin-top: 2.5rem;
   position: relative;
   min-height: 100%;
   border: 1px solid #ffffff;
@@ -339,6 +338,9 @@ p {
     .su-wrapper {
       margin: 20px;
       margin: 1.25rem; } }
+  @media (min-width: 64em) {
+    .su-wrapper {
+      display: table; } }
   @media (min-width: 48em) {
     .su-menu-open .su-wrapper {
       margin: 20px;
@@ -695,7 +697,6 @@ body.admin-bar {
   height: 30px;
   -webkit-transform: perspective(800px) rotateY(-15deg);
           transform: perspective(800px) rotateY(-15deg);
-  transition: 0.4s;
   -webkit-transform-origin: 20% 0;
           transform-origin: 20% 0;
   pointer-events: all;
@@ -709,6 +710,13 @@ body.admin-bar {
   .su-logo:hover {
     -webkit-transform: perspective(800px) rotateY(-25deg);
             transform: perspective(800px) rotateY(-25deg); }
+
+.su-skip-to-content {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px; }
 
 .su-head {
   display: -webkit-box;
@@ -729,7 +737,7 @@ body.admin-bar {
       height: 40px;
       font-family: "Overpass", "Helvetica", "Arial", sans-serif;
       line-height: 40px;
-      background-color: #0e5882;
+      background-color: #a4a4a4;
       transition: 0.2s;
       border-top: 2px solid rgba(255, 255, 255, 0.3);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2); } }
@@ -739,9 +747,19 @@ body.admin-bar {
     display: flex;
     width: 100%; }
   .su-brand__logo {
-    width: 150px;
-    height: 150px;
-    background-color: blue; }
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    top: 0;
+    transition: 0.4s;
+    -webkit-transform-origin: 20% 0;
+            transform-origin: 20% 0;
+    pointer-events: all;
+    background-image: url("../images/logo-small.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%; }
   .su-brand__title {
     font-size: 20px;
     font-size: 1.25rem;
@@ -752,7 +770,7 @@ body.admin-bar {
     display: flex;
     width: 100%;
     font-weight: lighter;
-    color: #4cb3ec;
+    color: #000000;
     text-transform: uppercase; }
     .su-brand__title:hover .su-brand__link, .su-brand__title:focus .su-brand__link {
       display: none; }
@@ -762,16 +780,18 @@ body.admin-bar {
     display: none; }
     @media (min-width: 64em) {
       .su-brand__subtitle {
-        padding: 0 20px;
-        padding: 0 1.25rem;
+        padding-right: 60px;
+        padding-right: 3.75rem;
+        padding-left: 20px;
+        padding-left: 1.25rem;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        color: #4cb3ec;
+        color: #000000;
         text-align: right;
         white-space: nowrap; } }
   .su-brand__link {
-    color: #4cb3ec;
+    color: #000000;
     text-decoration: none; }
     .su-brand__link--hidden {
       display: none; }
@@ -1383,12 +1403,17 @@ body.admin-bar {
   background-color: #3e3e3e; }
 
 .su-sidebar {
+  padding: 20px;
+  padding: 1.25rem;
   width: 100%;
-  margin: 0;
-  background-color: rgba(24, 154, 227, 0.1); }
+  margin: 0; }
   @media (min-width: 64em) {
     .su-sidebar {
-      width: 30%; } }
+      padding-top: 160px;
+      display: table-cell;
+      width: 30%;
+      vertical-align: top;
+      background-color: rgba(24, 154, 227, 0.1); } }
 
 .widget::before {
   margin-bottom: 16px;
@@ -1409,32 +1434,22 @@ body.admin-bar {
 .su-article__content p {
   line-height: 1.6; }
 
-.su-wrapper {
-  margin-top: 20px;
-  margin-top: 1.25rem; }
-  @media (min-width: 64em) {
-    .su-wrapper {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex; } }
-
 .su-content {
-  width: 100%; }
+  width: 100%;
+  padding: 30px; }
+  @media (min-width: 48em) {
+    .su-content {
+      padding-top: 100px;
+      padding-right: 160px;
+      padding-left: 30px; } }
   @media (min-width: 64em) {
     .su-content {
-      padding: 40px;
-      padding: 2.5rem;
-      width: 70%; } }
-
-.su-sidebar {
-  padding: 20px;
-  padding: 1.25rem;
-  width: 100%; }
-  @media (min-width: 64em) {
-    .su-sidebar {
-      padding: 40px;
-      padding: 2.5rem;
-      width: 30%; } }
+      padding-right: 30px;
+      padding-top: 160px;
+      padding-top: 10rem;
+      display: table-cell;
+      width: 70%;
+      vertical-align: top; } }
 
 .su-article__content p {
   line-height: 1.6; }

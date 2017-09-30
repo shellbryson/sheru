@@ -19,7 +19,7 @@
 <body <?php body_class(); ?>>
   <div id="page" class="su-page">
 
-      <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'sheru' ); ?></a>
+      <a class="su-skip-to-content" href="#content">Skip to content</a>
 
       <header class="su-head">
 
