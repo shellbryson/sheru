@@ -14,6 +14,8 @@
     <a href="<?php esc_url( get_permalink() ) ?>" class="su-article__more">Continue reading <span class="su-article__more-sr-only"><?php the_title() ?></span></a>
   </section>
   <footer class="su-article__footer">
-    <?php sheru_entry_meta(); ?>
+    <div class="su-article-meta">
+      <?php sheru_entry_meta(); ?>
+    </div>
   </footer>
 </article>

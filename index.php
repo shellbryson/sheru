@@ -8,7 +8,7 @@ get_header(); ?>
 
       <?php if ( is_home() && ! is_front_page() ) : ?>
         <header>
-          <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+          <h1 class="page-title sr-only"><?php single_post_title(); ?></h1>
         </header>
       <?php endif; ?>
 
@@ -22,7 +22,7 @@ get_header(); ?>
       the_posts_pagination( array(
         'prev_text'          => __( 'Previous page', 'sheru' ),
         'next_text'          => __( 'Next page', 'sheru' ),
-        'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'sheru' ) . ' </span>',
+        'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'sheru' ) . ' </span>',
       ) );
 
     // If no content, include the "No posts found" template.

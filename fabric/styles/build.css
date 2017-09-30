@@ -1511,6 +1511,26 @@ body.admin-bar {
   margin-bottom: 48px;
   margin-bottom: 3rem; }
 
+.su-article-meta {
+  line-height: 20px;
+  vertical-align: middle;
+  color: #8b8a8a; }
+  .su-article-meta a {
+    text-decoration: none;
+    color: #3e3e3e; }
+  .su-article-meta__byline {
+    padding-right: 16px; }
+  .su-article-meta__published {
+    padding-right: 16px; }
+  .su-article-meta__updated {
+    padding-right: 16px; }
+  .su-article-meta__postedon {
+    padding-right: 16px; }
+  .su-article-meta__comment {
+    padding-right: 16px; }
+  .su-article-meta__categories {
+    padding-right: 16px; }
+
 .su-content {
   width: 100%;
   padding: 30px; }
