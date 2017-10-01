@@ -1446,6 +1446,9 @@ body.admin-bar {
   background-color: #ffffff;
   color: #3e3e3e; }
 
+.su-article .more-link {
+  display: none; }
+
 .su-article__footer {
   margin-bottom: 48px;
   margin-bottom: 3rem; }
