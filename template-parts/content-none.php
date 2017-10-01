@@ -10,10 +10,10 @@
 
 <section class="no-results not-found su-article">
   <header class="su-header su-article__header">
-    <h1 class="page-title su-title su-title--one"><?php _e( 'Nothing Found', 'sheru' ); ?></h1>
+    <h1 class="su-heading su-heading--one"><?php _e( 'Nothing Found', 'sheru' ); ?></h1>
   </header>
 
-  <section class="page-content entry-content su-article__content">
+  <section class="su-article__content">
     <?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
       <p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'sheru' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>

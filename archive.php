@@ -24,12 +24,10 @@ get_header(); ?>
 
   <?php if ( have_posts() ) : ?>
 
-    <header class="page-header">
-      <?php
-        the_archive_title( '<h1 class="page-title">', '</h1>' );
-        the_archive_description( '<div class="taxonomy-description">', '</div>' );
-      ?>
-    </header><!-- .page-header -->
+    <header class="su-page-header">
+      <h1 class="su-heading su-heading--two"><?php the_archive_title(); ?></h1>
+      <h2 class="su-heading__subheading"><?php the_archive_description(); ?></h2>
+    </header>
 
     <?php
     // Start the Loop.

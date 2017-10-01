@@ -16,7 +16,7 @@ get_header(); ?>
 
       <header class="su-page-header">
         <h2 class="su-heading su-heading--two"><?php printf( __( 'Search Results for: %s', 'sheru' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h2>
-      </header><!-- .page-header -->
+      </header>
 
       <?php
       // Start the loop.

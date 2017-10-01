@@ -1,21 +1,11 @@
-<?php
-/**
- * The template used for displaying page content
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-?>
-
 <article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <header class="su-header su-article__header">
-    <?php the_title( '<h1 class="su-title su-title--one">', '</h1>' ); ?>
-  </header><!-- .entry-header -->
+    <?php the_title( '<h1 class="su-heading su-heading--one">', '</h1>' ); ?>
+  </header>
 
   <?php sheru_post_thumbnail(); ?>
 
-  <div class="entry-content su-article__content">
+  <div class="su-article__content">
     <?php
     the_content();
 
@@ -28,7 +18,7 @@
       'separator'   => '<span class="screen-reader-text">, </span>',
     ) );
     ?>
-  </div><!-- .entry-content -->
+  </div>
 
   <?php
     edit_post_link(
@@ -42,4 +32,4 @@
     );
   ?>
 
-</article><!-- #post-## -->
+</article>

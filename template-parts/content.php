@@ -1,27 +1,16 @@
-<?php
-/**
- * The template part for displaying content
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-?>
-
 <article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <header class="su-header su-article__header">
     <?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
       <span class="sticky-post"><?php _e( 'Featured', 'sheru' ); ?></span>
     <?php endif; ?>
 
-    <?php the_title( sprintf( '<h2 class="su-title su-title--two su-article__title"><a href="%s" rel="bookmark" class="su-title__link">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+    <?php the_title( sprintf( '<h2 class="su-heading su-heading--two su-article__title"><a href="%s" rel="bookmark" class="su-heading__link">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
   </header>
 
   <?php sheru_post_thumbnail(); ?>
 
   <section class="entry-content su-article__content">
     <?php
-      /* translators: %s: Name of current post */
       the_content( sprintf(
         __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'sheru' ),
         get_the_title()
@@ -36,7 +25,7 @@
         'separator'   => '<span class="screen-reader-text">, </span>',
       ) );
     ?>
-  </section><!-- .entry-content -->
+  </section>
 
   <footer class="entry-footer su-article__footer">
     <?php sheru_entry_meta(); ?>
@@ -51,5 +40,5 @@
         '</span>'
       );
     ?>
-  </footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+  </footer>
+</article>
