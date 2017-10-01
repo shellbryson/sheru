@@ -11,10 +11,8 @@
 
   <section class="su-article__content">
     <?php
-      the_content( sprintf(
-        __( 'Continue reading<span class="sr-only"> "%s"</span>', 'sheru' ),
-        get_the_title()
-      ) );
+
+      the_content();
 
       wp_link_pages( array(
         'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'sheru' ) . '</span>',
