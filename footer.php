@@ -1,6 +1,7 @@
     </div>
 
-    <footer id="colophon" class="su-foot" role="contentinfo">
+    <footer id="colophon" class="su-footer" role="contentinfo">
+
       <nav class="su-footer__navigation" role="navigation" aria-label="Site navigation">
         <ul class="su-footer__navigation-menu">
           <li class="su-footer__navigation-item">
@@ -15,21 +16,7 @@
         </ul>
       </nav>
 
-      <?php if ( has_nav_menu( 'social' ) ) : ?>
-        <nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'sheru' ); ?>">
-          <?php
-            wp_nav_menu( array(
-              'theme_location' => 'social',
-              'menu_class'     => 'social-links-menu',
-              'depth'          => 1,
-              'link_before'    => '<span class="screen-reader-text">',
-              'link_after'     => '</span>',
-            ) );
-          ?>
-        </nav>
-      <?php endif; ?>
-
-      <div class="site-info">
+      <div class="su-footer__meta">
         <span class="site-title">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
             <?php bloginfo( 'name' ); ?>
