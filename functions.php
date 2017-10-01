@@ -69,18 +69,6 @@ function sheru_setup() {
     'sheru-secondary'  => __( 'Sheru Secondary Level Menu', 'sheru' )
   ) );
 
-
-  /**
-   * SHERU - SVG SUPPORT
-   * Custom navigation registration and setup.
-   */
-  // function add_svg_to_upload_mimes( $upload_mimes ) {
-  // 	$upload_mimes['svg'] = 'image/svg+xml';
-  // 	$upload_mimes['svgz'] = 'image/svg+xml';
-  // 	return $upload_mimes;
-  // }
-  // add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
-
   /**
    * SHERU
    * Remove admin bar spacing (handled via CSS instead)
@@ -267,17 +255,6 @@ function sheru_posts($args) {
   endif;
 
 }
-
-//wp_register_sidebar_widget(
-//  'sheru_posts',        // your unique widget id
-//  'Sheru Posts',          // widget name
-//  'sheru_posts',  // callback function
-//  array(                  // options
-//    'description' => 'Lists latest posts, but excludes posts from specified Categories.'
-//  )
-//);
-
-/* ...? */
 
 /**
  * SHERU
