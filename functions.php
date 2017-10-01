@@ -315,9 +315,9 @@ function sheru_widgets_init() {
     'name'          => __( 'Sidebar', 'sheru' ),
     'id'            => 'sidebar-1',
     'description'   => __( 'Add widgets here to appear in your sidebar.', 'sheru' ),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="su-widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="su-heading su-heading--two su-widget__heading">',
     'after_title'   => '</h2>',
   ) );
 
@@ -325,9 +325,9 @@ function sheru_widgets_init() {
     'name'          => __( 'Content Bottom 1', 'sheru' ),
     'id'            => 'sidebar-2',
     'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'sheru' ),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="su-widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="su-heading su-heading--two su-widget__heading">',
     'after_title'   => '</h2>',
   ) );
 
@@ -335,9 +335,9 @@ function sheru_widgets_init() {
     'name'          => __( 'Content Bottom 2', 'sheru' ),
     'id'            => 'sidebar-3',
     'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'sheru' ),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="su-widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="su-heading su-heading--two su-widget__heading">',
     'after_title'   => '</h2>',
   ) );
 }

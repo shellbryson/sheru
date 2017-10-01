@@ -1448,18 +1448,25 @@ body.admin-bar {
       display: table-cell;
       width: 30%;
       vertical-align: top;
-      background-color: rgba(24, 154, 227, 0.1); } }
+      background-color: #f9f9f9; } }
+  .su-sidebar a {
+    color: #3e3e3e;
+    text-decoration: none; }
+    .su-sidebar a:hover, .su-sidebar a:focus {
+      color: #3e3e3e; }
 
-.widget::before {
-  margin-bottom: 16px;
-  margin-bottom: 1rem;
+.su-widget::after {
   display: block;
+  position: relative;
+  background-image: url("../images/chip.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  height: 20px;
   width: 20px;
-  height: 4px;
-  content: "";
-  background-color: #189ae3; }
+  margin-bottom: 44px;
+  content: ""; }
 
-.widget-title {
+.su-widget-title {
   margin-bottom: 16px;
   margin-bottom: 1rem;
   font-size: 30px;
@@ -1555,17 +1562,18 @@ body.admin-bar {
   line-height: 1.6; }
 
 .su-primary-recent__content {
-  position: relative;
   padding: 0 40px 24px;
   color: #ffffff; }
-  .su-primary-recent__content::before {
+  .su-primary-recent__content::after {
     display: block;
-    position: absolute;
-    left: 0;
-    height: 16px;
-    width: 4px;
-    content: "";
-    background: #ffffff; }
+    position: relative;
+    background-image: url("../images/chip.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 20px;
+    margin-bottom: 44px;
+    content: ""; }
   .su-primary-recent__content p {
     display: block;
     font-size: 14px;
