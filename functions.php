@@ -286,7 +286,17 @@ function sheru_posts($args) {
 function sheru_get_theme_version() {
   $sheru_theme = wp_get_theme();
   $sheru_theme_version = $sheru_theme->get('Version');
-  return $sheru_theme_version;
+
+
+  $fileName = "fabric/version.txt";
+     $pluginDirectory = plugin_dir_path( __FILE__ );
+     $filePath = $pluginDirectory . $fileName;
+     $fileContents = file_get_contents($filePath);
+
+  $version_string = $fileContents . " (" .  $sheru_theme_version . ")";
+
+  return $version_string;
+
 }
 
 /**
