@@ -17,8 +17,6 @@
     <?php the_title( sprintf( '<h2 class="su-title su-title--two su-article__title"><a href="%s" rel="bookmark" class="su-title__link">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
   </header>
 
-  <?php sheru_excerpt(); ?>
-
   <?php sheru_post_thumbnail(); ?>
 
   <section class="entry-content su-article__content">

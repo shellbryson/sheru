@@ -45,25 +45,9 @@ if ( ! function_exists( 'sheru_setup' ) ) :
  * @since Twenty Sixteen 1.0
  */
 function sheru_setup() {
-  /*
-   * Make theme available for translation.
-   * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/sheru
-   * If you're building a theme based on Twenty Sixteen, use a find and replace
-   * to change 'sheru' to the name of your theme in all the template files
-   */
   load_theme_textdomain( 'sheru' );
-
-  // Add default posts and comments RSS feed links to head.
   add_theme_support( 'automatic-feed-links' );
-
-  /*
-   * Let WordPress manage the document title.
-   * By adding theme support, we declare that this theme does not use a
-   * hard-coded <title> tag in the document head, and expect WordPress to
-   * provide it for us.
-   */
   add_theme_support( 'title-tag' );
-
 
   function get_cat_slug($cat_id) {
     //$cat_id = $cat_id;
@@ -71,12 +55,19 @@ function sheru_setup() {
     return $category['slug'];
   }
 
-
   /**
-   * SHERU
-   * Custom navigation walker
+   * SHERU - NAVIGATION
+   * Custom navigation registration and setup.
    */
-  require_once('sheru-nav-walker.php');
+  require_once('sheru-nav-primary.php');
+  require_once('sheru-nav-secondary.php');
+
+  add_filter('wp_nav_menu_items','sheru_nav_primary_append_toggles', 10, 2);
+
+  register_nav_menus( array(
+    'sheru-top'  => __( 'Sheru Top Level Menu', 'sheru' ),
+    'sheru-secondary'  => __( 'Sheru Secondary Level Menu', 'sheru' )
+  ) );
 
   /**
    * SHERU
@@ -158,11 +149,7 @@ function sheru_setup() {
   add_theme_support( 'post-thumbnails' );
   set_post_thumbnail_size( 1200, 9999 );
 
-  // This theme uses wp_nav_menu() in two locations.
-  register_nav_menus( array(
-    'primary' => __( 'Primary Menu', 'sheru' ),
-    'social'  => __( 'Social Links Menu', 'sheru' ),
-  ) );
+
 
   /*
    * Switch default core markup for search form, comment form, and comments
@@ -216,7 +203,7 @@ function sheru_get_category_id_from_slug( $slug ) {
  */
 function sheru_home_category( $query ) {
   $categories = array();
-  array_push($categories, sheru_get_category_id_from_slug( "code-tips" ));
+  array_push($categories, sheru_get_category_id_from_slug( "code" ));
   if ( $query->is_home() && $query->is_main_query() ) {
     $query->set( 'category__in', $categories);
   }
@@ -269,17 +256,6 @@ function sheru_posts($args) {
 
 }
 
-//wp_register_sidebar_widget(
-//  'sheru_posts',        // your unique widget id
-//  'Sheru Posts',          // widget name
-//  'sheru_posts',  // callback function
-//  array(                  // options
-//    'description' => 'Lists latest posts, but excludes posts from specified Categories.'
-//  )
-//);
-
-/* ...? */
-
 /**
  * SHERU
  * Returns version of this template
@@ -287,7 +263,17 @@ function sheru_posts($args) {
 function sheru_get_theme_version() {
   $sheru_theme = wp_get_theme();
   $sheru_theme_version = $sheru_theme->get('Version');
-  return $sheru_theme_version;
+
+
+  $fileName = "fabric/version.txt";
+     $pluginDirectory = plugin_dir_path( __FILE__ );
+     $filePath = $pluginDirectory . $fileName;
+     $fileContents = file_get_contents($filePath);
+
+  $version_string = $fileContents . " (" .  $sheru_theme_version . ")";
+
+  return $version_string;
+
 }
 
 /**
@@ -316,9 +302,9 @@ function sheru_widgets_init() {
     'name'          => __( 'Sidebar', 'sheru' ),
     'id'            => 'sidebar-1',
     'description'   => __( 'Add widgets here to appear in your sidebar.', 'sheru' ),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="su-widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="su-heading su-heading--two su-widget__heading">',
     'after_title'   => '</h2>',
   ) );
 
@@ -326,9 +312,9 @@ function sheru_widgets_init() {
     'name'          => __( 'Content Bottom 1', 'sheru' ),
     'id'            => 'sidebar-2',
     'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'sheru' ),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="su-widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="su-heading su-heading--two su-widget__heading">',
     'after_title'   => '</h2>',
   ) );
 
@@ -336,9 +322,9 @@ function sheru_widgets_init() {
     'name'          => __( 'Content Bottom 2', 'sheru' ),
     'id'            => 'sidebar-3',
     'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'sheru' ),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="su-widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="su-heading su-heading--two su-widget__heading">',
     'after_title'   => '</h2>',
   ) );
 }
@@ -370,6 +356,7 @@ function sheru_scripts() {
   wp_enqueue_style( 'sheru-style', get_stylesheet_uri() );
 
   wp_enqueue_style( 'fabric', get_template_directory_uri() . '/fabric/styles/build.css', array(), '0.0.1' );
+  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/fabric/scripts/build.js', array(), '0.0.1', true );
 
   wp_enqueue_script( 'sheru-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 

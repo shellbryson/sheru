@@ -1,23 +1,13 @@
-<?php
-/**
- * The template part for displaying single posts
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-?>
-
 <article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <header class="su-header su-article__header">
-    <?php the_title( '<h1 class="su-title su-title--one su-article__title">', '</h1>' ); ?>
+    <h2 class="su-heading su-heading--two su-article__title">
+      <?php the_title() ?>
+    </h2>
   </header>
-
-  <?php sheru_excerpt(); ?>
 
   <?php sheru_post_thumbnail(); ?>
 
-  <section class="entry-content su-article__content">
+  <section class="su-article__content">
     <?php
       the_content();
 
@@ -36,7 +26,7 @@
     ?>
   </section>
 
-  <footer class="entry-footer su-article__footer">
+  <footer class="su-article__footer">
     <?php sheru_entry_meta(); ?>
     <?php
       edit_post_link(
@@ -49,5 +39,5 @@
         '</span>'
       );
     ?>
-  </footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+  </footer>
+</article>
