@@ -3,7 +3,7 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <!--
-    Sheru Theme by Shell Bryson
+    Sheru Theme and Component Library by Shell Bryson
     author URL: https://sheru.uk
   -->
   <meta name="viewport" content="width=device-width, initial-scale=1">

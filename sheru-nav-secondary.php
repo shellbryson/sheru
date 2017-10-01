@@ -30,12 +30,6 @@ class sheru_nav_secondary extends Walker_Nav_Menu {
     $output .= '        <span class="title">'. $title .'</span>';
     $output .= '        <span class="divider"></span>';
     $output .= '      </div>';
-    $output .= '      <span class="su-nav__shard"></span>';
-    $output .= '      <span class="su-nav__shard"></span>';
-    $output .= '      <span class="su-nav__shard"></span>';
-    $output .= '      <span class="su-nav__shard"></span>';
-    $output .= '      <span class="su-nav__shard"></span>';
-    $output .= '      <span class="su-nav__shard"></span>';
     $output .= '    </a>';
     $output .= '  </div>';
     $output .= '</li>';
