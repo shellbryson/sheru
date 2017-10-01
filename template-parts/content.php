@@ -9,10 +9,10 @@
 
   <?php sheru_post_thumbnail(); ?>
 
-  <section class="entry-content su-article__content">
+  <section class="su-article__content">
     <?php
       the_content( sprintf(
-        __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'sheru' ),
+        __( 'Continue reading<span class="sr-only"> "%s"</span>', 'sheru' ),
         get_the_title()
       ) );
 
@@ -21,8 +21,8 @@
         'after'       => '</div>',
         'link_before' => '<span>',
         'link_after'  => '</span>',
-        'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'sheru' ) . ' </span>%',
-        'separator'   => '<span class="screen-reader-text">, </span>',
+        'pagelink'    => '<span class="sr-only">' . __( 'Page', 'sheru' ) . ' </span>%',
+        'separator'   => '<span class="sr-only">, </span>',
       ) );
     ?>
   </section>
@@ -33,7 +33,7 @@
       edit_post_link(
         sprintf(
           /* translators: %s: Name of current post */
-          __( 'Edit<span class="screen-reader-text"> "%s"</span>', 'sheru' ),
+          __( 'Edit<span class="sr-only"> "%s"</span>', 'sheru' ),
           get_the_title()
         ),
         '<span class="edit-link">',
