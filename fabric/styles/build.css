@@ -687,11 +687,10 @@ body.admin-bar {
   right: 10px;
   width: 30px;
   height: 30px;
-  -webkit-transform: perspective(800px) rotateY(-15deg);
-          transform: perspective(800px) rotateY(-15deg);
+  -webkit-transform: translate3d(0, 0, 0) perspective(800px) rotateY(-15deg);
+          transform: translate3d(0, 0, 0) perspective(800px) rotateY(-15deg);
   -webkit-transform-origin: 20% 0;
           transform-origin: 20% 0;
-  transition: 1.2s;
   pointer-events: all;
   background-image: url("../images/logo.svg");
   background-repeat: no-repeat;
@@ -700,9 +699,6 @@ body.admin-bar {
     .su-logo {
       width: 150px;
       height: 150px; } }
-  .su-logo:hover {
-    -webkit-transform: perspective(800px) rotateY(-25deg);
-            transform: perspective(800px) rotateY(-25deg); }
   .admin-bar .su-logo {
     top: 20px;
     top: 1.25rem; }
@@ -802,7 +798,9 @@ body.admin-bar {
   bottom: 0;
   left: 0;
   z-index: 99;
-  transition: 0.2s; }
+  transition: 0.2s;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
   @media (min-width: 48em) {
     .su-nav {
       top: 10px;
@@ -1246,7 +1244,7 @@ body.admin-bar {
   background-position: right top; }
 
 .projects {
-  background-image: url("../images/tile-icons/tile-default.svg");
+  background-image: url("../images/tile-icons/tile-projects.svg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: right top; }
