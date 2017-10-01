@@ -1393,10 +1393,25 @@ body.admin-bar {
   line-height: 1.6; }
 
 .su-article__content pre {
-  padding: 16px;
-  padding: 1rem;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  padding: 16px 16px;
+  padding: 1rem 1rem;
+  max-width: 100%;
+  overflow: auto;
   display: block;
-  font-family: monospace; }
+  font-family: monospace;
+  background: #f9f9f9;
+  white-space: pre-wrap; }
+  @media (min-width: 48em) {
+    .su-article__content pre {
+      margin-right: 32px;
+      margin-right: 2rem;
+      padding: 16px 32px;
+      padding: 1rem 2rem;
+      font-size: 18px;
+      font-size: 1.125rem;
+      margin-left: -30px; } }
 
 .su-article__more {
   margin-bottom: 16px;
