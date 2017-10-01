@@ -1392,6 +1392,12 @@ body.admin-bar {
 .su-article__content p {
   line-height: 1.6; }
 
+.su-article__content pre {
+  padding: 16px;
+  padding: 1rem;
+  display: block;
+  font-family: monospace; }
+
 .su-article__more {
   margin-bottom: 16px;
   margin-bottom: 1rem;
