@@ -32,8 +32,8 @@ get_header(); ?>
     endif;
     ?>
 
-    </main><!-- .site-main -->
-  </div><!-- .content-area -->
+    </main>
+  </div>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
