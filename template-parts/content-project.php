@@ -10,15 +10,14 @@
 
 <article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <header class="su-header su-article__header">
-    Individual project<?php the_title( '<h1 class="su-title su-title--one su-article__title">', '</h1>' ); ?>
+    Individual project<?php the_title( '<h1 class="su-heading su-heading--one su-article__heading">', '</h1>' ); ?>
   </header>
 
   <?php sheru_excerpt(); ?>
 
   <?php sheru_post_thumbnail(); ?>
 
-  <section class="entry-content su-article__content">
-
+  <section class="su-article__content">
 
     <?php
       the_content();

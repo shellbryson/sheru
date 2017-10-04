@@ -1,41 +1,38 @@
 <?php
-/**
- * The template for displaying pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages and that
- * other "pages" on your WordPress site will use a different template.
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-
 get_header(); ?>
 
-<div id="primary" class="su-content">
-  <main id="main" class="site-main" role="main">
-    <?php
-    // Start the loop.
-    while ( have_posts() ) : the_post();
+  <div id="primary" class="su-content su-content--page">
+    <main id="main" class="su-main" role="main">
 
-      // Include the page content template.
-      get_template_part( 'template-parts/content', 'page' );
+    <?php if ( have_posts() ) : ?>
 
-      // If comments are open or we have at least one comment, load up the comment template.
-      if ( comments_open() || get_comments_number() ) {
-        comments_template();
-      }
+      <?php if ( is_home() && ! is_front_page() ) : ?>
+        <header>
+          <h1 class="sr-only"><?php single_post_title(); ?></h1>
+        </header>
+      <?php endif; ?>
 
-      // End of the loop.
-    endwhile;
+      <?php
+
+      while ( have_posts() ) : the_post();
+        get_template_part( 'template-parts/content', get_post_format() );
+      endwhile;
+
+      // Previous/next page navigation.
+      the_posts_pagination( array(
+        'prev_text'          => __( 'Previous page', 'sheru' ),
+        'next_text'          => __( 'Next page', 'sheru' ),
+        'before_page_number' => '<span class="su-post-navigation sr-only">' . __( 'Page', 'sheru' ) . ' </span>',
+      ) );
+
+    // If no content, include the "No posts found" template.
+    else :
+      get_template_part( 'template-parts/content', 'none' );
+    endif;
     ?>
 
-  </main>
-
-  <?php get_sidebar( 'content-bottom' ); ?>
-
-</div>
+    </main>
+  </div>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

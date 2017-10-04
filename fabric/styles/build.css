@@ -280,41 +280,41 @@ p {
           animation-duration: 1s; }
 
 .su-page {
-  padding: 10px;
-  padding: 0.625rem;
+  padding: 90px 10px;
+  padding: 5.625rem 0.625rem;
   min-height: 100%;
   background: #385978 linear-gradient(135deg, #385978 0%, #7db9e8 100%); }
+  @media (min-width: 48em) {
+    .su-page {
+      padding-top: 0;
+      padding-top: 0;
+      padding-left: 30px;
+      padding-right: 30px; } }
   @media (min-width: 48em) {
     .admin-bar .su-page {
       padding-top: 100px;
       padding-top: 6.25rem; } }
 
+.su-main {
+  width: 100%; }
+
 .su-wrapper {
-  margin-top: 110px;
-  margin-top: 6.875rem;
+  margin-top: 40px;
+  margin-top: 2.5rem;
   position: relative;
+  width: 100%;
   min-height: 100%;
   border: 1px solid #ffffff;
   background-color: #ffffff;
   transition: 1.2s;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-transform-origin: 100% 50%;
           transform-origin: 100% 50%;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2); }
-  @media (min-width: 48em) {
-    .su-wrapper {
-      margin: 20px;
-      margin: 1.25rem; } }
   @media (min-width: 64em) {
     .su-wrapper {
       display: table; } }
   @media (min-width: 48em) {
     .su-menu-open .su-wrapper {
-      margin: 20px;
-      margin: 1.25rem;
       -webkit-transform: translateX(60px) translateY(10px);
               transform: translateX(60px) translateY(10px); } }
   @media (min-width: 48em) {
@@ -683,7 +683,7 @@ body.admin-bar {
 .su-logo {
   display: block;
   position: absolute;
-  top: 80px;
+  top: 90px;
   right: 10px;
   width: 30px;
   height: 30px;
@@ -1675,18 +1675,17 @@ body.admin-bar {
       color: #ffffff; }
 
 .su-content {
-  width: 100%;
-  padding: 30px; }
+  padding: 60px 20px; }
   @media (min-width: 48em) {
     .su-content {
       padding-top: 100px;
       padding-right: 160px;
-      padding-left: 30px; } }
+      padding-left: 44px; } }
   @media (min-width: 64em) {
     .su-content {
-      padding-right: 30px;
       padding-top: 110px;
       padding-top: 6.875rem;
+      padding-right: 30px;
       display: table-cell;
       width: 70%;
       vertical-align: top; } }
