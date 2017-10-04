@@ -1402,7 +1402,8 @@ body.admin-bar {
   display: block;
   font-family: monospace;
   background: #f9f9f9;
-  white-space: pre-wrap; }
+  white-space: pre-wrap;
+  line-height: 1.5; }
   @media (min-width: 48em) {
     .su-article__content pre {
       margin-right: 32px;
@@ -1412,6 +1413,22 @@ body.admin-bar {
       font-size: 18px;
       font-size: 1.125rem;
       margin-left: -30px; } }
+
+.su-article__content figure {
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  font-size: 13px;
+  font-size: 0.8125rem; }
+  @media (min-width: 48em) {
+    .su-article__content figure {
+      margin-left: -30px; } }
+
+@media (min-width: 48em) {
+  .su-article__content figcaption {
+    margin-top: 8px;
+    margin-top: 0.5rem;
+    margin-left: 32px;
+    margin-left: 2rem; } }
 
 .su-article__more {
   margin-bottom: 16px;
