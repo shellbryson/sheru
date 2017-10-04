@@ -1,29 +1,13 @@
 <?php
-/**
- * The template for displaying comments
- *
- * The area of the page that contains both current comments
- * and the comment form.
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
 if ( post_password_required() ) {
   return;
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="su-article-comments">
 
   <?php if ( have_comments() ) : ?>
-    <h2 class="comments-title">
+    <h2 class="su-heading su-heading--two su-article-comments__heading">
       <?php
         $comments_number = get_comments_number();
         if ( 1 === $comments_number ) {
@@ -48,7 +32,7 @@ if ( post_password_required() ) {
 
     <?php the_comments_navigation(); ?>
 
-    <ol class="comment-list">
+    <ol class="su-article-comments__list">
       <?php
         wp_list_comments( array(
           'style'       => 'ol',
@@ -66,14 +50,14 @@ if ( post_password_required() ) {
     // If comments are closed and there are comments, let's leave a little note, shall we?
     if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
   ?>
-    <p class="no-comments"><?php _e( 'Comments are closed.', 'sheru' ); ?></p>
+    <p class="su-article__no-comments"><?php _e( 'Comments are closed.', 'sheru' ); ?></p>
   <?php endif; ?>
 
   <?php
     comment_form( array(
-      'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
+      'title_reply_before' => '<h2 id="reply-title" class="su-heading su-heading--two su-article-comments__heading">',
       'title_reply_after'  => '</h2>',
     ) );
   ?>
 
-</div><!-- .comments-area -->
+</div>

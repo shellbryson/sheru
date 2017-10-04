@@ -1535,6 +1535,111 @@ body.admin-bar {
   .su-article-meta--short .su-article-meta__comment {
     display: none; }
 
+.su-article-comments {
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  padding: 32px;
+  padding: 2rem;
+  display: block;
+  color: #ffffff;
+  background-color: #385978; }
+  .su-article-comments__list {
+    color: #ffffff; }
+  .su-article-comments__heading {
+    color: #ffffff; }
+  .su-article-comments label {
+    margin-top: 16px;
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    vertical-align: top; }
+    @media (min-width: 48em) {
+      .su-article-comments label {
+        display: inline-block;
+        width: 100px; } }
+  .su-article-comments input,
+  .su-article-comments textarea {
+    margin-top: 16px;
+    margin-top: 1rem;
+    padding: 8px;
+    padding: 0.5rem;
+    font-size: 16px;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    vertical-align: top; }
+    @media (min-width: 48em) {
+      .su-article-comments input,
+      .su-article-comments textarea {
+        display: inline-block;
+        width: auto; } }
+  .su-article-comments input[type=submit] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+    width: 100%;
+    max-width: 200px;
+    border: 0;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer; }
+    @media (min-width: 48em) {
+      .su-article-comments input[type=submit] {
+        display: inline-block;
+        width: auto; } }
+    .su-article-comments input[type=submit]:hover, .su-article-comments input[type=submit]:focus {
+      background-color: #9a0013;
+      color: #ffffff; }
+  .su-article-comments .comment::before {
+    display: none; }
+  .su-article-comments .comment::after {
+    margin: 32px 0;
+    margin: 2rem 0;
+    display: block;
+    background-color: #ffffff;
+    max-width: 16px;
+    height: 4px;
+    content: ""; }
+  .su-article-comments .comment-awaiting-moderation {
+    margin: 32px auto;
+    margin: 2rem auto;
+    display: block;
+    font-weight: bold;
+    text-align: center; }
+  .su-article-comments .fn {
+    vertical-align: top; }
+  .su-article-comments .says {
+    vertical-align: top; }
+  .su-article-comments .reply {
+    display: block;
+    position: relative; }
+    .su-article-comments .reply a {
+      color: #ffffff; }
+      .su-article-comments .reply a::after {
+        margin-left: 8px;
+        margin-left: 0.5rem;
+        display: inline-block;
+        content: "";
+        width: 24px;
+        height: 16px;
+        background-size: 24px 16px;
+        background-repeat: no-repeat;
+        background-position: right top;
+        background: url("../images/brand-on-dark.svg"); }
+  .su-article-comments .comment-content {
+    margin: 16px 0;
+    margin: 1rem 0; }
+  .su-article-comments .comment-author img {
+    width: 32px;
+    height: 32px; }
+  .su-article-comments .comment-metadata {
+    margin: 16px 0;
+    margin: 1rem 0;
+    color: #ffffff; }
+    .su-article-comments .comment-metadata a {
+      color: #ffffff; }
+
 .su-content {
   width: 100%;
   padding: 30px; }
