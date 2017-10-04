@@ -85,11 +85,6 @@
 
                 <div class="su-nav__scroll-wrap">
 
-                  <div class="su-nav__action js-nav-control">
-                    <div class="su-nav__action-inner">
-                    </div>
-                  </div>
-
                   <div class="su-nav__scroll su-scrollbar">
 
                     <?php
