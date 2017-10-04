@@ -1,8 +1,7 @@
 <?php
 get_header(); ?>
 
-<div id="primary" class="su-content">
-
+<div id="primary" class="su-content su-content--archive">
   <main id="main" class="su-main" role="main">
 
   <?php if ( have_posts() ) : ?>
