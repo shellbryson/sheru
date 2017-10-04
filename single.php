@@ -1,12 +1,4 @@
 <?php
-/**
- * The template for displaying all single posts and attachments
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-
 get_header(); ?>
 
 <div id="primary" class="su-content">
@@ -29,13 +21,12 @@ get_header(); ?>
           'prev_text' => _x( '<span class="meta-nav">Published in</span><span class="post-title">%title</span>', 'Parent post link', 'sheru' ),
         ) );
       } elseif ( is_singular( 'post' ) ) {
-        // Previous/next post navigation.
         the_post_navigation( array(
-          'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next', 'sheru' ) . '</span> ' .
-            '<span class="screen-reader-text">' . __( 'Next post:', 'sheru' ) . '</span> ' .
+          'next_text' => '<span class="su-post-navigation__next" aria-hidden="true">' . __( 'Next', 'sheru' ) . '</span> ' .
+            '<span class="sr-only">' . __( 'Next post:', 'sheru' ) . '</span> ' .
             '<span class="post-title">%title</span>',
-          'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous', 'sheru' ) . '</span> ' .
-            '<span class="screen-reader-text">' . __( 'Previous post:', 'sheru' ) . '</span> ' .
+          'prev_text' => '<span class="su-post-navigation__previous" aria-hidden="true">' . __( 'Previous', 'sheru' ) . '</span> ' .
+            '<span class="sr-only">' . __( 'Previous post:', 'sheru' ) . '</span> ' .
             '<span class="post-title">%title</span>',
         ) );
       }
@@ -45,8 +36,6 @@ get_header(); ?>
   </main>
 
   <?php get_sidebar( 'content-bottom' ); ?>
-
-
 
 </div>
 

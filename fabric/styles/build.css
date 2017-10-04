@@ -1680,6 +1680,41 @@ body.admin-bar {
 .su-article__content p {
   line-height: 1.6; }
 
+.su-post-navigation__next {
+  color: #3e3e3e;
+  text-decoration: none; }
+  .su-post-navigation__next::after {
+    padding-right: 4px;
+    padding-right: 0.25rem;
+    display: inline-block;
+    position: relative;
+    font-family: "fontawesome";
+    content: ""; }
+  .su-post-navigation__next::after {
+    padding-left: 8px;
+    padding-left: 0.5rem; }
+
+.su-post-navigation__previous {
+  color: #3e3e3e;
+  text-decoration: none; }
+  .su-post-navigation__previous::before {
+    padding-right: 4px;
+    padding-right: 0.25rem;
+    display: inline-block;
+    position: relative;
+    font-family: "fontawesome";
+    content: ""; }
+  .su-post-navigation__previous::before {
+    padding-right: 8px;
+    padding-right: 0.5rem; }
+
+.nav-links {
+  padding-top: 16px;
+  padding-top: 1rem; }
+  .nav-links a {
+    text-decoration: none;
+    color: #9a0013; }
+
 .su-primary-recent__content {
   padding: 0 40px 24px;
   color: #ffffff; }

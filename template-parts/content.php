@@ -25,7 +25,7 @@
     ?>
   </section>
 
-  <footer class="entry-footer su-article__footer">
+  <footer class="su-article__footer">
     <?php sheru_entry_meta(); ?>
     <?php
       edit_post_link(

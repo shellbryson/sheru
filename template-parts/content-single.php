@@ -16,8 +16,8 @@
         'after'       => '</div>',
         'link_before' => '<span>',
         'link_after'  => '</span>',
-        'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'sheru' ) . ' </span>%',
-        'separator'   => '<span class="screen-reader-text">, </span>',
+        'pagelink'    => '<span class="sr-only">' . __( 'Page', 'sheru' ) . ' </span>%',
+        'separator'   => '<span class="sr-only">, </span>',
       ) );
 
       if ( '' !== get_the_author_meta( 'description' ) ) {
@@ -34,7 +34,7 @@
       edit_post_link(
         sprintf(
           /* translators: %s: Name of current post */
-          __( 'Edit<span class="screen-reader-text"> "%s"</span>', 'sheru' ),
+          __( 'Edit<span class="sr-only"> "%s"</span>', 'sheru' ),
           get_the_title()
         ),
         '<span class="edit-link">',
