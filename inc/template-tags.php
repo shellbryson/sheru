@@ -2,6 +2,8 @@
 if ( ! function_exists( 'sheru_entry_meta' ) ) :
 function sheru_entry_meta() {
 
+
+
   if ( 'post' === get_post_type() ) {
     $author_avatar_size = apply_filters( 'sheru_author_avatar_size', 20 );
     printf( '<span class="su-article-meta__byline"><span class="su-article-meta__author vcard">%1$s<span class="sr-only">%2$s </span> <a class="url fn n" href="%3$s">%4$s</a></span></span>',
@@ -34,6 +36,7 @@ function sheru_entry_meta() {
     comments_popup_link( sprintf( __( 'Leave a comment<span class="sr-only"> on %s</span>', 'sheru' ), get_the_title() ) );
     echo '</span>';
   }
+
 }
 endif;
 
@@ -48,8 +51,6 @@ function sheru_entry_date() {
 			get_the_modified_date()
 		);
   }
-
-
 }
 endif;
 
@@ -64,7 +65,7 @@ if ( ! function_exists( 'sheru_entry_taxonomies' ) ) :
 function sheru_entry_taxonomies() {
   $categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'sheru' ) );
   if ( $categories_list && sheru_categorized_blog() ) {
-    printf( '<span class="su-article-meta__categories"><span class="sr-only">%1$s </span>%2$s</span>',
+    printf( '<span class="su-article-meta__categories">Filed under: <span class="sr-only">%1$s </span>%2$s</span>',
       _x( 'Categories', 'Used before category names.', 'sheru' ),
       $categories_list
     );
@@ -72,7 +73,7 @@ function sheru_entry_taxonomies() {
 
   $tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'sheru' ) );
   if ( $tags_list ) {
-    printf( '<span class="tags-links"><span class="sr-only">%1$s </span>%2$s</span>',
+    printf( '<span class="su-article-meta__tags">Tagged as: <span class="sr-only">%1$s </span>%2$s</span>',
       _x( 'Tags', 'Used before tag names.', 'sheru' ),
       $tags_list
     );
@@ -148,11 +149,6 @@ if ( ! function_exists( 'sheru_excerpt_more' ) && ! is_admin() ) :
  * @return string 'Continue reading' link prepended with an ellipsis.
  */
 function sheru_excerpt_more() {
-  // $link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
-  //   esc_url( get_permalink( get_the_ID() ) ),
-  //   /* translators: %s: Name of current post */
-  //   sprintf( __( '' ), get_the_title( get_the_ID() ) )
-  // );
   return ' &hellip; '; // . $link;
 }
 add_filter( 'excerpt_more', 'sheru_excerpt_more' );
