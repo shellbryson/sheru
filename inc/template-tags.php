@@ -2,8 +2,6 @@
 if ( ! function_exists( 'sheru_entry_meta' ) ) :
 function sheru_entry_meta() {
 
-
-
   if ( 'post' === get_post_type() ) {
     $author_avatar_size = apply_filters( 'sheru_author_avatar_size', 20 );
     printf( '<span class="su-article-meta__byline"><span class="su-article-meta__author vcard">%1$s<span class="sr-only">%2$s </span> <a class="url fn n" href="%3$s">%4$s</a></span></span>',
@@ -28,7 +26,9 @@ function sheru_entry_meta() {
   }
 
   if ( 'post' === get_post_type() ) {
+    echo '<span class="su-article-meta">';
     sheru_entry_taxonomies();
+    echo '</span>';
   }
 
   if ( ! is_singular() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {

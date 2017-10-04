@@ -1400,6 +1400,10 @@ body.admin-bar {
   margin-bottom: 1rem;
   color: #8b8a8a; }
 
+.su-article__404 {
+  font-weight: bold;
+  color: #9a0013; }
+
 .su-article__content p {
   line-height: 1.6; }
 
@@ -1538,7 +1542,8 @@ body.admin-bar {
     padding-top: 1rem;
     padding-right: 16px;
     padding-right: 1rem;
-    display: block; }
+    display: block;
+    line-height: 1.6; }
     .su-article-meta__categories::before {
       padding-right: 4px;
       padding-right: 0.25rem;
@@ -1549,7 +1554,8 @@ body.admin-bar {
   .su-article-meta__tags {
     padding-right: 16px;
     padding-right: 1rem;
-    display: block; }
+    display: block;
+    line-height: 1.6; }
     .su-article-meta__tags::before {
       padding-right: 4px;
       padding-right: 0.25rem;
