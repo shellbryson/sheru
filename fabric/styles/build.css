@@ -280,8 +280,8 @@ p {
           animation-duration: 1s; }
 
 .su-page {
-  padding: 50px 10px;
-  padding: 3.125rem 0.625rem;
+  padding: 30px 10px;
+  padding: 1.875rem 0.625rem;
   min-height: 100%;
   background: #385978 linear-gradient(135deg, #717171 0%, #646464 100%); }
   @media (min-width: 48em) {
@@ -1381,7 +1381,7 @@ body.admin-bar {
   background-color: #f9f9f9; }
   @media (min-width: 64em) {
     .su-sidebar {
-      padding-top: 160px;
+      padding-top: 110px;
       display: table-cell;
       width: 30%;
       vertical-align: top; } }
