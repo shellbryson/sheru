@@ -270,7 +270,7 @@ function sheru_get_theme_version() {
      $filePath = $pluginDirectory . $fileName;
      $fileContents = file_get_contents($filePath);
 
-  $version_string = $fileContents . " (" .  $sheru_theme_version . ")";
+  $version_string = $fileContents . " (theme: " .  $sheru_theme_version . ")";
 
   return $version_string;
 

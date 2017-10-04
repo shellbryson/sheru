@@ -1319,13 +1319,18 @@ body.admin-bar {
     display: flex; }
 
 .su-footer {
-  display: table;
-  width: 100%;
-  background-color: #f9f9f9; }
+  width: 100%; }
+  @media (min-width: 48em) {
+    .su-footer {
+      display: table; } }
   .su-footer__navigation {
-    padding: 32px;
-    padding: 2rem;
-    display: table-cell; }
+    padding: 16px;
+    padding: 1rem; }
+    @media (min-width: 48em) {
+      .su-footer__navigation {
+        padding: 32px;
+        padding: 2rem;
+        display: table-cell; } }
   .su-footer__navigation-item {
     margin-right: 16px;
     margin-right: 1rem;
@@ -1340,11 +1345,17 @@ body.admin-bar {
     padding: 2rem;
     font-size: 12px;
     font-size: 0.75rem;
-    display: table-cell;
-    text-align: right; }
+    line-height: 1.5;
+    font-family: monospace;
+    text-transform: lowercase; }
+    @media (min-width: 48em) {
+      .su-footer__meta {
+        display: table-cell;
+        text-align: right; } }
     .su-footer__meta a {
       color: #3e3e3e;
-      text-decoration: none; }
+      text-decoration: none;
+      font-family: monospace; }
       .su-footer__meta a:hover, .su-footer__meta a:focus {
         color: #3e3e3e; }
 
