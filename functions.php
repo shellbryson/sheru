@@ -224,6 +224,26 @@ add_filter( 'widget_categories_args', 'sheru_exclude_catergory_from_widget');
 
 /**
  * SHERU
+ * Remove the word 'archive' or 'categories' from archive pages.
+ */
+ function sheru_archive_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
+    return $title;
+}
+add_filter( 'get_the_archive_title', 'sheru_archive_title' );
+
+/**
+ * SHERU
  * A widget that lists the latest posts, excluding specified Category names.
  */
 function sheru_posts($args) {

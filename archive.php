@@ -6,7 +6,7 @@ get_header(); ?>
   <?php if ( have_posts() ) : ?>
 
     <header class="su-page-header">
-      <h1 class="su-heading su-heading--two"><?php the_archive_title(); ?></h1>
+      <h1 class="su-heading su-heading--one"><?php the_archive_title(); ?></h1>
       <h2 class="su-heading__subheading"><?php the_archive_description(); ?></h2>
     </header>
 

@@ -112,3 +112,4 @@
       </header>
 
       <div class="su-wrapper js-wrapper" id="content">
+        <div class="su-logo su-logo--small"></div>
