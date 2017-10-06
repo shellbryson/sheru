@@ -281,6 +281,7 @@ p {
 .su-page {
   padding: 30px 10px;
   padding: 1.875rem 0.625rem;
+  position: relative;
   min-height: 100%;
   max-width: 100%;
   overflow: hidden;
@@ -304,7 +305,6 @@ p {
 .su-wrapper {
   margin-top: 40px;
   margin-top: 2.5rem;
-  position: relative;
   width: 100%;
   min-height: 100%;
   border: 1px solid #ffffff;
@@ -706,8 +706,9 @@ body.admin-bar {
       z-index: 9; } }
   .su-logo--small {
     display: block;
-    top: 10px;
-    right: 10px;
+    position: absolute;
+    margin-top: 10px;
+    right: 20px;
     width: 30px;
     height: 30px; }
     @media (min-width: 48em) {
@@ -722,9 +723,8 @@ body.admin-bar {
   top: -10px; }
 
 .su-head {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
+  position: relative;
+  z-index: 1; }
 
 .su-brand {
   display: none; }
@@ -804,7 +804,7 @@ body.admin-bar {
   right: 0;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 9;
   transition: 0.4s;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0); }
@@ -817,10 +817,7 @@ body.admin-bar {
       right: auto;
       bottom: auto;
       width: 430px;
-      max-width: 800px; }
-      .admin-bar .su-nav {
-        top: 60px;
-        top: 3.75rem; } }
+      max-width: 800px; } }
   @media (min-width: 64em) {
     .su-nav {
       width: 500px; } }
@@ -829,8 +826,8 @@ body.admin-bar {
       width: 600px; } }
   @media (min-width: 48em) {
     .su-menu-open .su-nav {
-      -webkit-transform: translate(20px, 4px) scale(1.05);
-              transform: translate(20px, 4px) scale(1.05); } }
+      -webkit-transform: translate(20px, 20px) scale(1.05);
+              transform: translate(20px, 20px) scale(1.05); } }
   .su-nav__wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -843,14 +840,13 @@ body.admin-bar {
     @media (min-width: 48em) {
       .su-nav__wrapper {
         display: block;
-        position: absolute;
-        z-index: 999;
         -webkit-transform: perspective(800px) rotateY(8deg);
                 transform: perspective(800px) rotateY(8deg);
         transition: 0.4s;
         -webkit-transform-origin: 20% 0;
                 transform-origin: 20% 0;
-        pointer-events: all; }
+        pointer-events: all;
+        z-index: 1; }
         .su-nav__wrapper:hover {
           -webkit-transform: perspective(800px) rotateY(7deg);
                   transform: perspective(800px) rotateY(7deg); } }
@@ -1076,22 +1072,6 @@ body.admin-bar {
       background-color: #555454; }
     .su-nav__tile-wrapper:nth-child(2) .su-nav__secondary-tile-link {
       background-color: #616161; }
-  .su-nav__action {
-    display: none; }
-    @media (min-width: 48em) {
-      .su-nav__action {
-        position: absolute;
-        right: -25px;
-        z-index: 9999;
-        width: 24px;
-        height: 40px;
-        background-color: rgba(255, 255, 255, 0.3);
-        transition: 0.2s; }
-        .su-nav__action:hover {
-          height: 60px;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); } }
-    .su-nav__action--show {
-      display: block; }
   .su-nav__primary .su-nav__primary-tile {
     width: 25%;
     height: auto;
