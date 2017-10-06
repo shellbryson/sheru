@@ -1,8 +1,7 @@
 <?php
 get_header(); ?>
 
-  <div id="primary" class="su-content">
-    <main id="main" class="su-main">
+  <main class="su-content" id="primary">
 
     <?php if ( have_posts() ) : ?>
 
@@ -31,8 +30,7 @@ get_header(); ?>
     endif;
     ?>
 
-    </main>
-  </div>
+  </main>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

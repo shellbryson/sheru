@@ -17,7 +17,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <div id="page" class="su-page">
+  <div class="su-page" id="page">
 
       <a class="su-skip-to-content" href="#content">Skip to content</a>
 
@@ -85,7 +85,6 @@
                 </form>
 
                 <div class="su-nav__scroll-wrap">
-
                   <div class="su-nav__scroll su-scrollbar" id="nav-secondary">
 
                     <?php
@@ -103,7 +102,6 @@
                     ?>
 
                   </div>
-
                 </div>
 
               </nav>
@@ -113,4 +111,4 @@
 
       </header>
 
-      <div id="content" class="su-wrapper js-wrapper">
+      <div class="su-wrapper js-wrapper" id="content">

@@ -1,8 +1,7 @@
 <?php
 get_header(); ?>
 
-<div id="primary" class="su-content su-content--archive">
-  <main id="main" class="su-main">
+<main class="su-content su-content--archive" id="primary">
 
   <?php if ( have_posts() ) : ?>
 
@@ -24,12 +23,10 @@ get_header(); ?>
 
   else :
     get_template_part( 'template-parts/content', 'none' );
-
   endif;
   ?>
 
-  </main>
-</div>
+</main>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

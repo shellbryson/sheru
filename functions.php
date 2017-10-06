@@ -265,7 +265,7 @@ function sheru_get_theme_version() {
   $sheru_theme_version = $sheru_theme->get('Version');
 
 
-  $fileName = "fabric/version.txt";
+  $fileName = "ui/version.txt";
      $pluginDirectory = plugin_dir_path( __FILE__ );
      $filePath = $pluginDirectory . $fileName;
      $fileContents = file_get_contents($filePath);
