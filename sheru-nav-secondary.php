@@ -2,6 +2,7 @@
 
 // SECONDARY NAVIGATION, walk the menu items that have been added in WP admin
 class sheru_nav_secondary extends Walker_Nav_Menu {
+
   function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
 
     $object = $item->object;
@@ -34,6 +35,10 @@ class sheru_nav_secondary extends Walker_Nav_Menu {
     $output .= '  </div>';
     $output .= '</li>';
 
+  }
+
+  function end_el( &$output, $item, $depth = 0, $args = array() ) {
+    $output .= "\n";
   }
 }
 ?>

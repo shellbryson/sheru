@@ -2,7 +2,7 @@
 get_header(); ?>
 
 <div id="primary" class="su-content">
-  <main id="main" class="su-main" role="main">
+  <main id="main" class="su-main">
     <?php
     // Start the loop.
     while ( have_posts() ) : the_post();

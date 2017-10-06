@@ -27,7 +27,7 @@
 
               <nav class="su-nav__wrapper">
 
-                <header class="su-brand">
+                <div class="su-brand">
                   <div class="su-brand__wrapper">
 
                     <h1 class="su-brand__title">
@@ -46,7 +46,7 @@
                     <?php endif; ?>
                   </div>
                   <div class="su-brand__logo"></div>
-                </header>
+                </div>
 
                 <?php
                 if ( has_nav_menu( 'sheru-top' ) ) {
@@ -64,6 +64,7 @@
 
                 <form method="get"
                       class="su-nav-search js-search"
+                      id="nav-search"
                       action="<?php echo esc_url( home_url( '/' ) ); ?>"
                       role="search">
                   <label class="su-nav-search__label">
@@ -85,7 +86,7 @@
 
                 <div class="su-nav__scroll-wrap">
 
-                  <div class="su-nav__scroll su-scrollbar">
+                  <div class="su-nav__scroll su-scrollbar" id="nav-secondary">
 
                     <?php
                     if ( has_nav_menu( 'sheru-secondary' ) ) {

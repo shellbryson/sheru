@@ -59,5 +59,9 @@ class sheru_nav_primary extends Walker_Nav_Menu {
     $output .= '</li>';
 
   }
+
+  function end_el( &$output, $item, $depth = 0, $args = array() ) {
+    $output .= "\n";
+  }
 }
 ?>
