@@ -107,7 +107,20 @@
               </nav>
 
           </div>
-          <div class="su-logo"></div>
+
+          <div class="su-logo-animated">
+            <div class="su-logo-animated__wrapper">
+              <div class="l b bg2"></div>
+              <div class="l b bg3"></div>
+              <div class="l b bg7"></div>
+              <div class="l b bg8"></div>
+              <div class="l c chev0"></div>
+              <div class="l c chev1"></div>
+              <div class="l c chev2"></div>
+              <div class="l c chev3"></div>
+              <div class="l c chev4"></div>
+            </div>
+          </div>
 
       </header>
 
