@@ -26,7 +26,9 @@ function sheru_entry_meta() {
   }
 
   if ( 'post' === get_post_type() ) {
+    echo '<span class="su-article-meta">';
     sheru_entry_taxonomies();
+    echo '</span>';
   }
 
   if ( ! is_singular() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
@@ -34,6 +36,7 @@ function sheru_entry_meta() {
     comments_popup_link( sprintf( __( 'Leave a comment<span class="sr-only"> on %s</span>', 'sheru' ), get_the_title() ) );
     echo '</span>';
   }
+
 }
 endif;
 
@@ -48,8 +51,6 @@ function sheru_entry_date() {
 			get_the_modified_date()
 		);
   }
-
-
 }
 endif;
 
@@ -64,7 +65,7 @@ if ( ! function_exists( 'sheru_entry_taxonomies' ) ) :
 function sheru_entry_taxonomies() {
   $categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'sheru' ) );
   if ( $categories_list && sheru_categorized_blog() ) {
-    printf( '<span class="su-article-meta__categories"><span class="sr-only">%1$s </span>%2$s</span>',
+    printf( '<span class="su-article-meta__categories">Filed under: <span class="sr-only">%1$s </span>%2$s</span>',
       _x( 'Categories', 'Used before category names.', 'sheru' ),
       $categories_list
     );
@@ -72,7 +73,7 @@ function sheru_entry_taxonomies() {
 
   $tags_list = get_the_tag_list( '', _x( ', ', 'Used between list items, there is a space after the comma.', 'sheru' ) );
   if ( $tags_list ) {
-    printf( '<span class="tags-links"><span class="sr-only">%1$s </span>%2$s</span>',
+    printf( '<span class="su-article-meta__tags">Tagged as: <span class="sr-only">%1$s </span>%2$s</span>',
       _x( 'Tags', 'Used before tag names.', 'sheru' ),
       $tags_list
     );
@@ -114,60 +115,25 @@ function sheru_post_thumbnail() {
 endif;
 
 if ( ! function_exists( 'sheru_excerpt' ) ) :
-  /**
-   * Displays the optional excerpt.
-   *
-   * Wraps the excerpt in a div element.
-   *
-   * Create your own sheru_excerpt() function to override in a child theme.
-   *
-   * @since Twenty Sixteen 1.0
-   *
-   * @param string $class Optional. Class string of the div element. Defaults to 'entry-summary'.
-   */
   function sheru_excerpt( $class = 'entry-summary' ) {
     $class = esc_attr( $class );
 
     if ( has_excerpt() || is_search() ) : ?>
       <div class="<?php echo $class; ?>">
         <?php the_excerpt(); ?>
-      </div><!-- .<?php echo $class; ?> -->
+      </div>
     <?php endif;
   }
 endif;
 
 if ( ! function_exists( 'sheru_excerpt_more' ) && ! is_admin() ) :
-/**
- * Replaces "[...]" (appended to automatically generated excerpts) with ... and
- * a 'Continue reading' link.
- *
- * Create your own sheru_excerpt_more() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- *
- * @return string 'Continue reading' link prepended with an ellipsis.
- */
 function sheru_excerpt_more() {
-  $link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
-    esc_url( get_permalink( get_the_ID() ) ),
-    /* translators: %s: Name of current post */
-    sprintf( __( 'Continue reading<span class="sr-only"> "%s"</span>', 'sheru' ), get_the_title( get_the_ID() ) )
-  );
-  return ' &hellip; ' . $link;
+  return ' &hellip; '; // . $link;
 }
 add_filter( 'excerpt_more', 'sheru_excerpt_more' );
 endif;
 
 if ( ! function_exists( 'sheru_categorized_blog' ) ) :
-/**
- * Determines whether blog/site has more than one category.
- *
- * Create your own sheru_categorized_blog() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- *
- * @return bool True if there is more than one category, false otherwise.
- */
 function sheru_categorized_blog() {
   if ( false === ( $all_the_cool_cats = get_transient( 'sheru_categories' ) ) ) {
     // Create an array of all the categories that are attached to posts.
@@ -207,18 +173,3 @@ function sheru_category_transient_flusher() {
 }
 add_action( 'edit_category', 'sheru_category_transient_flusher' );
 add_action( 'save_post',     'sheru_category_transient_flusher' );
-
-if ( ! function_exists( 'sheru_the_custom_logo' ) ) :
-/**
- * Displays the optional custom logo.
- *
- * Does nothing if the custom logo is not available.
- *
- * @since Twenty Sixteen 1.2
- */
-function sheru_the_custom_logo() {
-  if ( function_exists( 'the_custom_logo' ) ) {
-    the_custom_logo();
-  }
-}
-endif;

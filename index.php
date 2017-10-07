@@ -1,16 +1,29 @@
 <?php
 get_header(); ?>
 
-  <div id="primary" class="su-content">
-    <main id="main" class="site-main" role="main">
+  <main class="su-content" id="primary">
+
+    <?php
+      query_posts(array(
+          'post_type' => 'frontpage',
+          'showposts' => 1
+      ) );
+    ?>
 
     <?php if ( have_posts() ) : ?>
 
-      <?php if ( is_home() && ! is_front_page() ) : ?>
-        <header>
-          <h1 class="page-title sr-only"><?php single_post_title(); ?></h1>
-        </header>
-      <?php endif; ?>
+    <?php
+      while (have_posts()) : the_post();
+        get_template_part( 'template-parts/frontpage', get_post_format() );
+      endwhile;
+        wp_reset_query();
+    ?>
+
+    <?php endif; ?>
+
+    <h2 class="su-heading su-heading--two su-heading--section">Latest posts</h2>
+
+    <?php if ( have_posts() ) : ?>
 
       <?php
 
@@ -22,18 +35,16 @@ get_header(); ?>
       the_posts_pagination( array(
         'prev_text'          => __( 'Previous page', 'sheru' ),
         'next_text'          => __( 'Next page', 'sheru' ),
-        'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'sheru' ) . ' </span>',
+        'before_page_number' => '<span class="su-post-navigation sr-only">' . __( 'Page', 'sheru' ) . ' </span>',
       ) );
 
     // If no content, include the "No posts found" template.
     else :
       get_template_part( 'template-parts/content', 'none' );
-
     endif;
     ?>
 
-    </main>
-  </div>
+  </main>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

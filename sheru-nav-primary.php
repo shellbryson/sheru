@@ -4,10 +4,10 @@
 function sheru_nav_primary_toggles() {
 
   $menuItems =  '<li class="su-nav__primary-tile animation-fadein js-toggleMenu">';
-  $menuItems .= '  <button class="su-nav__button"';
+  $menuItems .= '  <button class="su-nav__button su-nav__button--title"';
   $menuItems .= '    aria-haspopup="true"';
   $menuItems .= '    aria-owns="nav-secondary"';
-  $menuItems .= '    aria-controls="nav-secondary">';
+  $menuItems .= '    aria-controls="nav-secondary"><span class="su-nav__primary-menu-title">Menu</span>';
   $menuItems .= '    <span class="sr-only">Toggle expanded navigation</span>';
   $menuItems .= '    <i class="fa fa-th-large su-display-small"></i>';
   $menuItems .= '    <i class="fa fa-bars su-display-medium"></i>';
@@ -58,6 +58,10 @@ class sheru_nav_primary extends Walker_Nav_Menu {
     $output .= '  <a'. $attributes .' class="su-nav__primary-tile-link">'. $title .'</a>';
     $output .= '</li>';
 
+  }
+
+  function end_el( &$output, $item, $depth = 0, $args = array() ) {
+    $output .= "\n";
   }
 }
 ?>

@@ -1,34 +1,21 @@
 <?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-
 get_header(); ?>
 
-<div id="primary" class="su-content">
-  <main id="main" class="site-main" role="main">
+<main class="su-content" id="primary">
 
-    <section class="error-404 not-found">
-      <header class="su-page-header">
-        <h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'sheru' ); ?></h1>
-      </header>
-
-      <div class="page-content">
-        <p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'sheru' ); ?></p>
-
-        <?php get_search_form(); ?>
-      </div>
-    </section>
-
-  </main>
+  <section class="su-article__content error-404 not-found">
+    <header class="su-page-header">
+      <h1 class="su-heading su-heading--one">Uh-oh, can't find that page. Error <span class="su-article__404">404</span>.</h1>
+    </header>
+    <p>Please let <a href="https://twitter.com/sherucode">@sherucode</a> know!</p>
+    <p>
+      You can use the search at the top of the page if you are looking for something specific.
+    </p>
+  </section>
 
   <?php get_sidebar( 'content-bottom' ); ?>
 
-</div>
+</main>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

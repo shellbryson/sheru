@@ -1,49 +1,6 @@
 <?php
-/**
- * Twenty Sixteen functions and definitions
- *
- * Set up the theme and provides some helper functions, which are used in the
- * theme as custom template tags. Others are attached to action and filter
- * hooks in WordPress to change core functionality.
- *
- * When using a child theme you can override certain functions (those wrapped
- * in a function_exists() call) by defining them first in your child theme's
- * functions.php file. The child theme's functions.php file is included before
- * the parent theme's file, so the child theme functions would be used.
- *
- * @link https://codex.wordpress.org/Theme_Development
- * @link https://codex.wordpress.org/Child_Themes
- *
- * Functions that are not pluggable (not wrapped in function_exists()) are
- * instead attached to a filter or action hook.
- *
- * For more information on hooks, actions, and filters,
- * {@link https://codex.wordpress.org/Plugin_API}
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-
-/**
- * Sheru Theme only works in WordPress 4.4 or later.
- */
-if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
-  require get_template_directory() . '/inc/back-compat.php';
-}
 
 if ( ! function_exists( 'sheru_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- *
- * Create your own sheru_setup() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- */
 function sheru_setup() {
   load_theme_textdomain( 'sheru' );
   add_theme_support( 'automatic-feed-links' );
@@ -130,16 +87,45 @@ function sheru_setup() {
 
  add_action( 'init', 'custom_post_type_devlogs', 0 );
 
-  /*
-   * Enable support for custom logo.
-   *
-   *  @since Twenty Sixteen 1.2
-   */
-  add_theme_support( 'custom-logo', array(
-    'height'      => 240,
-    'width'       => 240,
-    'flex-height' => true,
-  ) );
+ function custom_post_type_frontpage() {
+
+   $labels = array(
+     'name'                => _x( 'Frontpage', 'Post Type General Name', 'sheru' ),
+     'singular_name'       => _x( 'Frontpage', 'Post Type Singular Name', 'sheru' ),
+     'menu_name'           => __( 'Frontpage', 'sheru' ),
+     'all_items'           => __( 'All Frontpage articles', 'sheru' ),
+     'view_item'           => __( 'View Fontpage', 'sheru' ),
+     'add_new_item'        => __( 'Add New Frontpage', 'sheru' ),
+     'add_new'             => __( 'Add New', 'sheru' ),
+     'edit_item'           => __( 'Edit Frontpage', 'sheru' ),
+     'update_item'         => __( 'Update Frontpage', 'sheru' ),
+     'search_items'        => __( 'Search Devlogs', 'sheru' ),
+     'not_found'           => __( 'Frontpage Not Found', 'sheru' ),
+     'not_found_in_trash'  => __( 'Frontpage Not found in Trash', 'sheru' ),
+   );
+
+   $args = array(
+     'label'               => __( 'frontpage', 'sheru' ),
+     'description'         => __( 'Frontpage content', 'sheru' ),
+     'labels'              => $labels,
+     'supports'            => array( 'title', 'editor' ),
+     'hierarchical'        => false,
+     'public'              => true,
+     'show_ui'             => true,
+     'show_in_menu'        => true,
+     'show_in_nav_menus'   => true,
+     'show_in_admin_bar'   => true,
+     'menu_position'       => 6,
+     'can_export'          => true,
+     'has_archive'         => true,
+     'exclude_from_search' => false,
+     'publicly_queryable'  => true,
+     'capability_type'     => 'post',
+   );
+  register_post_type( 'frontpage', $args );
+ }
+
+ add_action( 'init', 'custom_post_type_frontpage', 0 );
 
   /*
    * Enable support for Post Thumbnails on posts and pages.
@@ -148,8 +134,6 @@ function sheru_setup() {
    */
   add_theme_support( 'post-thumbnails' );
   set_post_thumbnail_size( 1200, 9999 );
-
-
 
   /*
    * Switch default core markup for search form, comment form, and comments
@@ -186,7 +170,6 @@ function sheru_setup() {
 endif; // sheru_setup
 add_action( 'after_setup_theme', 'sheru_setup' );
 
-
 /**
  * SHERU
  * Gets a category ID from its Slug
@@ -204,6 +187,8 @@ function sheru_get_category_id_from_slug( $slug ) {
 function sheru_home_category( $query ) {
   $categories = array();
   array_push($categories, sheru_get_category_id_from_slug( "code" ));
+  array_push($categories, sheru_get_category_id_from_slug( "projects" ));
+  array_push($categories, sheru_get_category_id_from_slug( "blog" ));
   if ( $query->is_home() && $query->is_main_query() ) {
     $query->set( 'category__in', $categories);
   }
@@ -217,10 +202,31 @@ add_action( 'pre_get_posts', 'sheru_home_category' );
 function sheru_exclude_catergory_from_widget( $args ){
   $excluded_categories = array();
   array_push($excluded_categories, sheru_get_category_id_from_slug( "blog" ));
+  array_push($excluded_categories, sheru_get_category_id_from_slug( "frontpage" ));
   $args["exclude"] = $excluded_categories;
   return $args;
 }
 add_filter( 'widget_categories_args', 'sheru_exclude_catergory_from_widget');
+
+/**
+ * SHERU
+ * Remove the word 'archive' or 'categories' from archive pages.
+ */
+ function sheru_archive_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
+    return $title;
+}
+add_filter( 'get_the_archive_title', 'sheru_archive_title' );
 
 /**
  * SHERU
@@ -265,12 +271,12 @@ function sheru_get_theme_version() {
   $sheru_theme_version = $sheru_theme->get('Version');
 
 
-  $fileName = "fabric/version.txt";
+  $fileName = "ui/version.txt";
      $pluginDirectory = plugin_dir_path( __FILE__ );
      $filePath = $pluginDirectory . $fileName;
      $fileContents = file_get_contents($filePath);
 
-  $version_string = $fileContents . " (" .  $sheru_theme_version . ")";
+  $version_string = $fileContents . " (theme: " .  $sheru_theme_version . ")";
 
   return $version_string;
 
@@ -355,8 +361,8 @@ function sheru_scripts() {
   // Theme stylesheet.
   wp_enqueue_style( 'sheru-style', get_stylesheet_uri() );
 
-  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/fabric/styles/build.css', array(), '0.0.1' );
-  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/fabric/scripts/build.js', array(), '0.0.1', true );
+  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/ui/styles/build.min.css', array(), '0.0.5' );
+  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/ui/scripts/build.min.js', array(), '0.0.5', true );
 
   wp_enqueue_script( 'sheru-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 
