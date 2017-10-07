@@ -1,4 +1,4 @@
-<section class="no-results not-found su-article">
+<section class="su-article su-article--not-found">
   <header class="su-header su-article__header">
     <h1 class="su-heading su-heading--one"><?php _e( 'Nothing Found', 'sheru' ); ?></h1>
   </header>

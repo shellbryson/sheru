@@ -115,39 +115,18 @@ function sheru_post_thumbnail() {
 endif;
 
 if ( ! function_exists( 'sheru_excerpt' ) ) :
-  /**
-   * Displays the optional excerpt.
-   *
-   * Wraps the excerpt in a div element.
-   *
-   * Create your own sheru_excerpt() function to override in a child theme.
-   *
-   * @since Twenty Sixteen 1.0
-   *
-   * @param string $class Optional. Class string of the div element. Defaults to 'entry-summary'.
-   */
   function sheru_excerpt( $class = 'entry-summary' ) {
     $class = esc_attr( $class );
 
     if ( has_excerpt() || is_search() ) : ?>
       <div class="<?php echo $class; ?>">
         <?php the_excerpt(); ?>
-      </div><!-- .<?php echo $class; ?> -->
+      </div>
     <?php endif;
   }
 endif;
 
 if ( ! function_exists( 'sheru_excerpt_more' ) && ! is_admin() ) :
-/**
- * Replaces "[...]" (appended to automatically generated excerpts) with ... and
- * a 'Continue reading' link.
- *
- * Create your own sheru_excerpt_more() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- *
- * @return string 'Continue reading' link prepended with an ellipsis.
- */
 function sheru_excerpt_more() {
   return ' &hellip; '; // . $link;
 }
@@ -155,15 +134,6 @@ add_filter( 'excerpt_more', 'sheru_excerpt_more' );
 endif;
 
 if ( ! function_exists( 'sheru_categorized_blog' ) ) :
-/**
- * Determines whether blog/site has more than one category.
- *
- * Create your own sheru_categorized_blog() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- *
- * @return bool True if there is more than one category, false otherwise.
- */
 function sheru_categorized_blog() {
   if ( false === ( $all_the_cool_cats = get_transient( 'sheru_categories' ) ) ) {
     // Create an array of all the categories that are attached to posts.
@@ -203,18 +173,3 @@ function sheru_category_transient_flusher() {
 }
 add_action( 'edit_category', 'sheru_category_transient_flusher' );
 add_action( 'save_post',     'sheru_category_transient_flusher' );
-
-if ( ! function_exists( 'sheru_the_custom_logo' ) ) :
-/**
- * Displays the optional custom logo.
- *
- * Does nothing if the custom logo is not available.
- *
- * @since Twenty Sixteen 1.2
- */
-function sheru_the_custom_logo() {
-  if ( function_exists( 'the_custom_logo' ) ) {
-    the_custom_logo();
-  }
-}
-endif;

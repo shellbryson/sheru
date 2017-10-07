@@ -17,7 +17,7 @@ get_header(); ?>
     the_posts_pagination( array(
       'prev_text'          => __( 'Previous page', 'sheru' ),
       'next_text'          => __( 'Next page', 'sheru' ),
-      'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'sheru' ) . ' </span>',
+      'before_page_number' => '<span class="su-post-navigation sr-only">' . __( 'Page', 'sheru' ) . ' </span>',
     ) );
 
   else :
