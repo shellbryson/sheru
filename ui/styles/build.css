@@ -632,6 +632,14 @@ body.admin-bar {
   .su-heading__link {
     text-decoration: none;
     color: #3e3e3e; }
+  .su-heading--section {
+    padding: 16px;
+    padding: 1rem;
+    text-transform: uppercase; }
+    @media (min-width: 48em) {
+      .su-heading--section {
+        padding: 0 44px 44px 44px;
+        padding: 0 2.75rem 2.75rem 2.75rem; } }
 
 .su-paragraph,
 .su-article__content p {
@@ -701,9 +709,16 @@ body.admin-bar {
       display: block;
       top: 10px;
       right: 18px;
-      width: 150px;
-      height: 150px;
+      width: 90px;
+      height: 90px;
       z-index: 9; } }
+  @media (min-width: 64em) {
+    .su-logo {
+      display: block;
+      top: 10px;
+      right: 18px;
+      width: 150px;
+      height: 150px; } }
   .su-logo--small {
     display: block;
     position: absolute;
@@ -1377,6 +1392,8 @@ body.admin-bar {
 
 .su-article {
   margin: 20px 20px 0 20px; }
+  .su-article__title {
+    text-transform: inherit; }
   @media (min-width: 48em) {
     .su-article {
       margin-top: 0;
@@ -1484,6 +1501,90 @@ body.admin-bar {
     max-width: 4px;
     height: 4px;
     content: ""; }
+  .su-article--frontpage {
+    background-image: url("../images/backgrounds/frontpage.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 282px;
+    margin-top: 0;
+    margin: 0; }
+    @media (min-width: 48em) {
+      .su-article--frontpage {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-top: -100px;
+        min-height: 450px; } }
+    .su-article--frontpage .su-article__header {
+      margin-left: 16px;
+      margin-left: 1rem;
+      padding-top: 44px;
+      padding-top: 2.75rem; }
+      @media (min-width: 48em) {
+        .su-article--frontpage .su-article__header {
+          margin-left: 44px;
+          margin-left: 2.75rem;
+          padding-top: 112px;
+          padding-top: 7rem;
+          width: 30%; } }
+      @media (min-width: 64em) {
+        .su-article--frontpage .su-article__header {
+          width: 40%; } }
+      @media (min-width: 48em) {
+        .su-article--frontpage .su-article__header .su-heading {
+          max-width: 100px; } }
+    .su-article--frontpage .su-article__content {
+      margin: 0 16px;
+      margin: 0 1rem;
+      padding-top: 44px;
+      padding-top: 2.75rem;
+      width: auto; }
+      @media (min-width: 48em) {
+        .su-article--frontpage .su-article__content {
+          margin: 16px 16px 16px 0;
+          margin: 1rem 1rem 1rem 0;
+          padding-top: 112px;
+          padding-top: 7rem;
+          width: 50%; } }
+      @media (min-width: 64em) {
+        .su-article--frontpage .su-article__content {
+          margin: 16px 32px 16px 16px;
+          margin: 1rem 2rem 1rem 1rem; } }
+    .su-article--frontpage .su-article__3d-wrap {
+      padding: 16px;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.5); }
+      @media (min-width: 48em) {
+        .su-article--frontpage .su-article__3d-wrap:hover {
+          -webkit-transform: perspective(800px) rotateY(-15deg) scale(1.05) translateX(-10px);
+                  transform: perspective(800px) rotateY(-15deg) scale(1.05) translateX(-10px); } }
+      @media (min-width: 48em) {
+        .su-article--frontpage .su-article__3d-wrap {
+          margin-right: 16px;
+          margin-right: 1rem;
+          -webkit-transform: perspective(800px) rotateY(-20deg);
+                  transform: perspective(800px) rotateY(-20deg);
+          transition: 0.4s;
+          -webkit-transform-origin: 20% 0;
+                  transform-origin: 20% 0;
+          max-width: 90%; } }
+      @media (min-width: 64em) {
+        .su-article--frontpage .su-article__3d-wrap {
+          margin-right: 32px;
+          margin-right: 2rem; } }
+      .su-article--frontpage .su-article__3d-wrap a {
+        margin-right: 4px;
+        margin-right: 0.25rem;
+        padding: 4px 8px;
+        padding: 0.25rem 0.5rem;
+        font-size: 16px;
+        font-size: 1rem;
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #000000; }
+        .su-article--frontpage .su-article__3d-wrap a:hover, .su-article--frontpage .su-article__3d-wrap a:focus {
+          background-color: #9a0013;
+          color: #ffffff; }
 
 .su-article-meta {
   margin-left: 16px;

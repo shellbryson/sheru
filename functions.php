@@ -130,6 +130,46 @@ function sheru_setup() {
 
  add_action( 'init', 'custom_post_type_devlogs', 0 );
 
+ function custom_post_type_frontpage() {
+
+   $labels = array(
+     'name'                => _x( 'Frontpage', 'Post Type General Name', 'sheru' ),
+     'singular_name'       => _x( 'Frontpage', 'Post Type Singular Name', 'sheru' ),
+     'menu_name'           => __( 'Frontpage', 'sheru' ),
+     'all_items'           => __( 'All Frontpage articles', 'sheru' ),
+     'view_item'           => __( 'View Fontpage', 'sheru' ),
+     'add_new_item'        => __( 'Add New Frontpage', 'sheru' ),
+     'add_new'             => __( 'Add New', 'sheru' ),
+     'edit_item'           => __( 'Edit Frontpage', 'sheru' ),
+     'update_item'         => __( 'Update Frontpage', 'sheru' ),
+     'search_items'        => __( 'Search Devlogs', 'sheru' ),
+     'not_found'           => __( 'Frontpage Not Found', 'sheru' ),
+     'not_found_in_trash'  => __( 'Frontpage Not found in Trash', 'sheru' ),
+   );
+
+   $args = array(
+     'label'               => __( 'frontpage', 'sheru' ),
+     'description'         => __( 'Frontpage content', 'sheru' ),
+     'labels'              => $labels,
+     'supports'            => array( 'title', 'editor' ),
+     'hierarchical'        => false,
+     'public'              => true,
+     'show_ui'             => true,
+     'show_in_menu'        => true,
+     'show_in_nav_menus'   => true,
+     'show_in_admin_bar'   => true,
+     'menu_position'       => 6,
+     'can_export'          => true,
+     'has_archive'         => true,
+     'exclude_from_search' => false,
+     'publicly_queryable'  => true,
+     'capability_type'     => 'post',
+   );
+  register_post_type( 'frontpage', $args );
+ }
+
+ add_action( 'init', 'custom_post_type_frontpage', 0 );
+
   /*
    * Enable support for custom logo.
    *
@@ -186,7 +226,6 @@ function sheru_setup() {
 endif; // sheru_setup
 add_action( 'after_setup_theme', 'sheru_setup' );
 
-
 /**
  * SHERU
  * Gets a category ID from its Slug
@@ -204,6 +243,8 @@ function sheru_get_category_id_from_slug( $slug ) {
 function sheru_home_category( $query ) {
   $categories = array();
   array_push($categories, sheru_get_category_id_from_slug( "code" ));
+  array_push($categories, sheru_get_category_id_from_slug( "projects" ));
+  array_push($categories, sheru_get_category_id_from_slug( "blog" ));
   if ( $query->is_home() && $query->is_main_query() ) {
     $query->set( 'category__in', $categories);
   }
@@ -217,6 +258,7 @@ add_action( 'pre_get_posts', 'sheru_home_category' );
 function sheru_exclude_catergory_from_widget( $args ){
   $excluded_categories = array();
   array_push($excluded_categories, sheru_get_category_id_from_slug( "blog" ));
+  array_push($excluded_categories, sheru_get_category_id_from_slug( "frontpage" ));
   $args["exclude"] = $excluded_categories;
   return $args;
 }
@@ -375,8 +417,8 @@ function sheru_scripts() {
   // Theme stylesheet.
   wp_enqueue_style( 'sheru-style', get_stylesheet_uri() );
 
-  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/ui/styles/build.min.css', array(), '0.0.3' );
-  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/ui/scripts/build.min.js', array(), '0.0.3', true );
+  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/ui/styles/build.min.css', array(), '0.0.4' );
+  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/ui/scripts/build.min.js', array(), '0.0.4', true );
 
   wp_enqueue_script( 'sheru-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 

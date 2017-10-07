@@ -1,8 +1,8 @@
 <article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <header class="su-header su-article__header">
-    <h2 class="su-heading su-heading--two su-article__title">
+    <h1 class="su-heading su-heading--two su-article__title">
       <?php the_title() ?>
-    </h2>
+    </h1>
   </header>
 
   <?php sheru_post_thumbnail(); ?>

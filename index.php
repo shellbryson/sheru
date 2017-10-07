@@ -3,13 +3,27 @@ get_header(); ?>
 
   <main class="su-content" id="primary">
 
+    <?php
+      query_posts(array(
+          'post_type' => 'frontpage',
+          'showposts' => 1
+      ) );
+    ?>
+
     <?php if ( have_posts() ) : ?>
 
-      <?php if ( is_home() && ! is_front_page() ) : ?>
-        <header>
-          <h1 class="sr-only"><?php single_post_title(); ?></h1>
-        </header>
-      <?php endif; ?>
+    <?php
+      while (have_posts()) : the_post();
+        get_template_part( 'template-parts/frontpage', get_post_format() );
+      endwhile;
+        wp_reset_query();
+    ?>
+
+    <?php endif; ?>
+
+    <h2 class="su-heading su-heading--two su-heading--section">Latest posts</h2>
+
+    <?php if ( have_posts() ) : ?>
 
       <?php
 

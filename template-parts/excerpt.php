@@ -1,4 +1,12 @@
-<article class="su-article su-article--divider" id="post-<?php the_ID(); ?>">
+<?php
+$article_excerpt_categories = get_the_category();
+$article_excerpt_categories_output = "";
+if ( ! empty( $article_excerpt_categories ) ) {
+  $article_excerpt_categories_output = esc_html( $article_excerpt_categories[0]->name );
+}
+?>
+
+<article class="su-article su-article--divider su-article--<?php echo strtolower($article_excerpt_categories_output); ?>" id="post-<?php the_ID(); ?>">
   <header class="su-header su-article__header">
     <h2 class="su-heading su-heading--two su-article__title">
       <a href="<?php the_permalink() ?>" rel="bookmark" class="su-heading__link">

@@ -1,10 +1,11 @@
-<article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <header class="su-header su-article__header">
-    <?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
-      <span class="sticky-post"><?php _e( 'Featured', 'sheru' ); ?></span>
-    <?php endif; ?>
+<article class="su-article su-article--<?php echo get_post_type ?>" id="post-<?php the_ID(); ?>">
 
-    <?php the_title( sprintf( '<h2 class="su-heading su-heading--two su-article__title"><a href="%s" rel="bookmark" class="su-heading__link">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+  <header class="su-header su-article__header">
+    <?php if ( is_single() ) : ?>
+      <?php the_title( sprintf( '<h1 class="su-heading su-heading--one su-article__title"><a href="%s" rel="bookmark" class="su-heading__link">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+    <?php else : ?>
+      <?php the_title( sprintf( '<h2 class="su-heading su-heading--two su-article__title"><a href="%s" rel="bookmark" class="su-heading__link">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+    <?php endif; ?>
   </header>
 
   <?php sheru_post_thumbnail(); ?>
@@ -28,7 +29,7 @@
   <footer class="su-article__footer">
 
     <div  class="su-article__meta">
-      <?php sheru_entry_meta(); ?>  
+      <?php sheru_entry_meta(); ?>
     </div>
     <?php
       edit_post_link(
