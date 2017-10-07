@@ -1,49 +1,6 @@
 <?php
-/**
- * Twenty Sixteen functions and definitions
- *
- * Set up the theme and provides some helper functions, which are used in the
- * theme as custom template tags. Others are attached to action and filter
- * hooks in WordPress to change core functionality.
- *
- * When using a child theme you can override certain functions (those wrapped
- * in a function_exists() call) by defining them first in your child theme's
- * functions.php file. The child theme's functions.php file is included before
- * the parent theme's file, so the child theme functions would be used.
- *
- * @link https://codex.wordpress.org/Theme_Development
- * @link https://codex.wordpress.org/Child_Themes
- *
- * Functions that are not pluggable (not wrapped in function_exists()) are
- * instead attached to a filter or action hook.
- *
- * For more information on hooks, actions, and filters,
- * {@link https://codex.wordpress.org/Plugin_API}
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-
-/**
- * Sheru Theme only works in WordPress 4.4 or later.
- */
-if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
-  require get_template_directory() . '/inc/back-compat.php';
-}
 
 if ( ! function_exists( 'sheru_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- *
- * Create your own sheru_setup() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- */
 function sheru_setup() {
   load_theme_textdomain( 'sheru' );
   add_theme_support( 'automatic-feed-links' );
@@ -171,25 +128,12 @@ function sheru_setup() {
  add_action( 'init', 'custom_post_type_frontpage', 0 );
 
   /*
-   * Enable support for custom logo.
-   *
-   *  @since Twenty Sixteen 1.2
-   */
-  add_theme_support( 'custom-logo', array(
-    'height'      => 240,
-    'width'       => 240,
-    'flex-height' => true,
-  ) );
-
-  /*
    * Enable support for Post Thumbnails on posts and pages.
    *
    * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
    */
   add_theme_support( 'post-thumbnails' );
   set_post_thumbnail_size( 1200, 9999 );
-
-
 
   /*
    * Switch default core markup for search form, comment form, and comments
@@ -417,8 +361,8 @@ function sheru_scripts() {
   // Theme stylesheet.
   wp_enqueue_style( 'sheru-style', get_stylesheet_uri() );
 
-  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/ui/styles/build.min.css', array(), '0.0.4' );
-  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/ui/scripts/build.min.js', array(), '0.0.4', true );
+  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/ui/styles/build.min.css', array(), '0.0.5' );
+  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/ui/scripts/build.min.js', array(), '0.0.5', true );
 
   wp_enqueue_script( 'sheru-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 
