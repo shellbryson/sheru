@@ -108,7 +108,7 @@
 
         </div>
 
-        <div class="su-logo-animated">
+        <a class="su-logo-animated" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
           <div class="su-logo-animated__wrapper">
             <div class="l b bg2"></div>
             <div class="l b bg3"></div>
@@ -120,9 +120,9 @@
             <div class="l c chev3"></div>
             <div class="l c chev4"></div>
           </div>
-        </div>
+        </a>
 
       </header>
 
       <div class="su-wrapper js-wrapper" id="content">
-        <div class="su-logo su-logo--small"></div>
+        <a class="su-logo su-logo--small" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"></a>

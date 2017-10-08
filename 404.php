@@ -3,17 +3,19 @@ get_header(); ?>
 
 <main class="su-content" id="primary">
 
-  <section class="su-article__content error-404 not-found">
-    <header class="su-page-header">
-      <h1 class="su-heading su-heading--one">Uh-oh, can't find that page. Error <span class="su-article__404">404</span>.</h1>
+  <article class="su-article su-article--404>" id="post-<?php the_ID(); ?>">
+    <header class="su-header su-article__header">
+      <h1 class="su-heading su-heading--one">Uh-oh, can't find that page. Error <span class="su-heading__highlight">404</span>.</h1>
     </header>
-    <p>Please let <a href="https://twitter.com/sherucode">@sherucode</a> know!</p>
-    <p>
-      You can use the search at the top of the page if you are looking for something specific.
-    </p>
-  </section>
 
-  <?php get_sidebar( 'content-bottom' ); ?>
+    <section class="su-article__content">
+      <p>Please let <a href="https://twitter.com/sherucode">@sherucode</a> know!</p>
+      <p>
+        You can use the search at the top of the page if you are looking for something specific.
+      </p>
+    </section>
+
+  </article>
 
 </main>
 

@@ -1,4 +1,4 @@
-<article class="su-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="su-article" id="post-<?php the_ID(); ?>">
   <header class="su-header su-article__header">
     <h1 class="su-heading su-heading--two su-article__title">
       <?php the_title() ?>
