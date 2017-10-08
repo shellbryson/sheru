@@ -1534,7 +1534,8 @@ body.admin-bar {
       vertical-align: top; } }
   .su-sidebar a {
     color: #3e3e3e;
-    text-decoration: none; }
+    text-decoration: none;
+    color: #9a0013; }
     .su-sidebar a:hover, .su-sidebar a:focus {
       color: #3e3e3e; }
 
@@ -1628,6 +1629,9 @@ body.admin-bar {
         margin-top: 0.5rem;
         margin-left: 32px;
         margin-left: 2rem; } }
+    .su-article__content a {
+      text-decoration: none;
+      color: #9a0013; }
   .su-article__more {
     margin-bottom: 16px;
     margin-bottom: 1rem;
@@ -1772,6 +1776,14 @@ body.admin-bar {
   .su-article-meta__byline {
     padding-right: 16px;
     padding-right: 1rem; }
+  .su-article-meta__author a {
+    padding: 0 8px;
+    padding: 0 0.5rem;
+    font-size: 16px;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    color: #9a0013; }
   .su-article-meta__published {
     padding-right: 16px;
     padding-right: 1rem; }
@@ -1779,7 +1791,8 @@ body.admin-bar {
     display: none; }
     @media (min-width: 32em) {
       .su-article-meta__updated {
-        display: inline-block; } }
+        display: inline-block;
+        color: #8b8a8a; } }
   .su-article-meta__postedon {
     padding-right: 16px;
     padding-right: 1rem; }
@@ -1789,6 +1802,16 @@ body.admin-bar {
     padding-right: 16px;
     padding-right: 1rem;
     display: block; }
+    .su-article-meta__comment a {
+      padding: 4px 8px;
+      padding: 0.25rem 0.5rem;
+      font-size: 16px;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      background-color: #9a0013;
+      color: #ffffff;
+      line-height: 1.6; }
   .su-article-meta__categories {
     padding-top: 16px;
     padding-top: 1rem;
