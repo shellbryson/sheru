@@ -1619,16 +1619,19 @@ body.admin-bar {
         .su-article__content figure {
           margin-left: -30px; } }
       .su-article__content figure img {
-        max-width: 75%;
+        max-width: 100%;
         height: auto; }
     .su-article__content img {
       max-width: 100%; }
-    @media (min-width: 48em) {
-      .su-article__content figcaption {
-        margin-top: 8px;
-        margin-top: 0.5rem;
-        margin-left: 32px;
-        margin-left: 2rem; } }
+    .su-article__content figcaption {
+      margin-top: 8px;
+      margin-top: 0.5rem; }
+      @media (min-width: 48em) {
+        .su-article__content figcaption {
+          margin-top: 8px;
+          margin-top: 0.5rem;
+          margin-left: 32px;
+          margin-left: 2rem; } }
     .su-article__content a {
       text-decoration: none;
       color: #9a0013; }
