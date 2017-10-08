@@ -643,26 +643,36 @@ body.admin-bar {
         padding: 0 44px 44px 44px;
         padding: 0 2.75rem 2.75rem 2.75rem; } }
 
-.su-paragraph,
-.su-article__content p {
+.su-paragraph p,
+.su-paragraph code,
+.su-article__content p,
+.su-article__content code {
   margin-bottom: 32px;
   margin-bottom: 2rem;
   font-size: 16px;
   font-size: 1rem;
   color: #000000; }
   @media (min-width: 48em) {
-    .su-paragraph,
-    .su-article__content p {
+    .su-paragraph p,
+    .su-paragraph code,
+    .su-article__content p,
+    .su-article__content code {
       font-size: 18px;
       font-size: 1.125rem; } }
-  .su-paragraph a,
-  .su-article__content p a {
-    color: #000000;
+  .su-paragraph p a,
+  .su-paragraph code a,
+  .su-article__content p a,
+  .su-article__content code a {
+    color: #9a0013;
     text-decoration: none;
     transition: 0.2s; }
-    .su-paragraph a:hover, .su-paragraph a:focus,
+    .su-paragraph p a:hover, .su-paragraph p a:focus,
+    .su-paragraph code a:hover,
+    .su-paragraph code a:focus,
     .su-article__content p a:hover,
-    .su-article__content p a:focus {
+    .su-article__content p a:focus,
+    .su-article__content code a:hover,
+    .su-article__content code a:focus {
       color: #000000; }
 
 .su-forms__input {
@@ -1632,6 +1642,26 @@ body.admin-bar {
           margin-top: 0.5rem;
           margin-left: 32px;
           margin-left: 2rem; } }
+    .su-article__content code {
+      background-color: #f9f9f9;
+      font-family: monospace;
+      padding: 4px 8px;
+      font-size: inherit; }
+    .su-article__content blockquote {
+      margin-left: 32px;
+      margin-left: 2rem;
+      margin-bottom: 32px;
+      margin-bottom: 2rem; }
+      .su-article__content blockquote p {
+        display: inline; }
+      .su-article__content blockquote::before {
+        font-size: 32px;
+        font-size: 2rem;
+        margin-left: -34px;
+        margin-right: 10px;
+        display: inline-block;
+        font-family: "fontawesome";
+        content: "\f054"; }
     .su-article__content a {
       text-decoration: none;
       color: #9a0013; }
