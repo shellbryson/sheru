@@ -1655,7 +1655,7 @@ body.admin-bar {
       margin-bottom: 2rem;
       padding: 16px 32px 16px 48px;
       padding: 1rem 2rem 1rem 3rem;
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.05);
       font-weight: bolder;
       font-size: 20px;
       width: 100% !important; }
