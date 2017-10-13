@@ -361,8 +361,8 @@ function sheru_scripts() {
   // Theme stylesheet.
   wp_enqueue_style( 'sheru-style', get_stylesheet_uri() );
 
-  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/ui/styles/build.min.css', array(), '0.0.6' );
-  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/ui/scripts/build.min.js', array(), '0.0.6', true );
+  wp_enqueue_style( 'fabric', get_template_directory_uri() . '/ui/styles/build.min.css', array(), '1.0.0' );
+  wp_enqueue_script( 'sheru-script', get_template_directory_uri() . '/ui/scripts/build.min.js', array(), '1.0.0, true );
 
   wp_enqueue_script( 'sheru-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 

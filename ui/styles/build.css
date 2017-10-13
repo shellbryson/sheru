@@ -101,64 +101,51 @@ abbr[data-original-title] {
   cursor: help;
   text-decoration: none; }
 
-ul,
-ol {
-  margin: 0 0 30px 0;
-  margin: 0 0 1.875rem 0;
-  padding: 0;
-  list-style: none; }
-  @media (min-width: 48em) {
-    ul,
-    ol {
-      margin: 0 0 40px 0;
-      margin: 0 0 2.5rem 0; } }
-  ul li,
-  ol li {
-    padding-left: 21px;
-    padding-left: 1.3125rem;
-    margin-bottom: 15px;
-    margin-bottom: 0.9375rem;
-    text-indent: -21px;
-    text-indent: -1.3125rem;
-    position: relative;
-    line-height: 1.4; }
-    ul li p,
-    ol li p {
-      display: inline; }
-
-ul li {
+li {
+  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.6;
   text-indent: 0; }
-  ul li:before {
-    display: block;
-    position: absolute;
-    top: 8px;
-    left: 0;
-    width: 4px;
-    height: 4px;
-    border-radius: 100%;
-    content: "";
-    background-color: #000000; }
+  li p {
+    font-size: inherit;
+    line-height: inherit; }
 
 ol {
-  counter-reset: item; }
-  ol > li,
-  ol ol > li {
-    padding-left: 28px;
-    padding-left: 1.75rem;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  padding-left: 28px; }
+  @media (min-width: 48em) {
+    ol {
+      padding-left: 0; } }
+  ol li {
     position: relative;
-    text-indent: -10px; }
-  ol > li:before,
-  ol ol > li:before {
-    font-size: 18px;
-    font-size: 1.125rem;
-    margin-left: -20px;
-    margin-left: -1.25rem;
-    padding-right: 10px;
-    padding-right: 0.625rem;
-    content: counter(item) ". ";
-    font-weight: bold;
-    color: #000000;
-    counter-increment: item; }
+    counter-increment: step-counter;
+    list-style-type: none; }
+    ol li::before {
+      margin-left: -28px;
+      margin-left: -1.75rem;
+      padding-right: 10px;
+      padding-right: 0.625rem;
+      content: counter(step-counter);
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-image: url("../images/bullet-ol.svg");
+      color: #ffffff;
+      font-size: 13px;
+      padding: 0;
+      top: 0;
+      margin-top: 4px;
+      margin-right: 4px;
+      text-align: center; }
+
+ul li::before {
+  top: 2px;
+  content: url("../images/bullet-ul.svg");
+  border-radius: 0;
+  background-color: inherit; }
 
 dt {
   margin-bottom: 15px;
