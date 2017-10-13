@@ -874,6 +874,18 @@ body.admin-bar {
 .su-head {
   position: relative;
   z-index: 1; }
+  @media (min-width: 48em) {
+    .su-menu-open .su-head::before {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.5);
+      content: ""; } }
 
 .su-brand {
   display: none; }
@@ -902,9 +914,9 @@ body.admin-bar {
     display: block;
     position: absolute;
     width: 40px;
-    height: 40px;
+    height: 26px;
     right: 10px;
-    top: 0;
+    top: 5px;
     transition: 0.4s;
     -webkit-transform-origin: 20% 0;
             transform-origin: 20% 0;
