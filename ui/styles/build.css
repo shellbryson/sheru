@@ -1678,6 +1678,9 @@ body.admin-bar {
     .su-article__content a {
       text-decoration: none;
       color: #9a0013; }
+    .su-article__content li pre {
+      margin-top: 32px;
+      margin-top: 2rem; }
   .su-article__more {
     margin-bottom: 16px;
     margin-bottom: 1rem;
