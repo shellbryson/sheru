@@ -443,6 +443,7 @@ define('navigation',['require'],function (require) {
   const searchPanel = document.querySelector('.js-search');
   const toggleNavigation = document.querySelector('.js-toggleMenu');
   const toggleSearch = document.querySelector('.js-toggleSearch');
+  const overlay = document.querySelector('.js-overlay');
   const _navOnClass = 'su-nav__secondary--show';
   const _searchOnClass = 'su-nav-search--show';
   const _navOnControlOnClass = 'su-nav__action--show';
@@ -468,6 +469,11 @@ define('navigation',['require'],function (require) {
       } else {
         openSearch();
       }
+    });
+
+    overlay.addEventListener('click', function (e) {
+      e.preventDefault();
+      closeNavigation();
     });
   }
 
