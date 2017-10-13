@@ -22,7 +22,7 @@
       <a class="su-skip-to-content" href="#content">Skip to content</a>
 
       <header class="su-head">
-
+        <div class="su-head__overlay js-overlay"></div>
         <div class="su-nav">
 
           <nav class="su-nav__wrapper">
