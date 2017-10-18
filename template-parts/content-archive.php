@@ -1,4 +1,4 @@
-<article class="su-article su-article-devlog" id="post-<?php the_ID(); ?>">
+<article class="su-article su-article-archive" id="post-<?php the_ID(); ?>">
 
   <header class="su-header su-article__header">
     <?php if ( is_single() ) : ?>

@@ -1,4 +1,4 @@
-<article class="su-article su-article--frontpage" id="post-<?php the_ID(); ?>">
+<article class="su-article su-article-first" id="post-<?php the_ID(); ?>">
 
   <header class="su-header su-article__header">
     <?php the_title( sprintf( '<h1 class="su-heading su-heading--one su-article__title"><a href="%s" rel="bookmark" class="su-heading__link">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
@@ -7,7 +7,7 @@
   <?php sheru_post_thumbnail(); ?>
 
   <section class="su-article__content">
-    <div class="su-article__3d-wrap">
+    <div class="su-article__buttons">
     <?php
 
       the_content();

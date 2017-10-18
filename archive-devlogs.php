@@ -1,7 +1,7 @@
 <?php
 get_header(); ?>
 
-<main class="su-content su-content--devlog" id="primary">
+<main class="su-content su-content-devlog" id="primary">
 
   <?php if ( have_posts() ) : ?>
 
