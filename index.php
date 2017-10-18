@@ -5,8 +5,8 @@ get_header(); ?>
 
     <?php
       query_posts(array(
-          'post_type' => 'frontpage',
-          'showposts' => 1
+        'post_type' => 'frontpage',
+        'showposts' => 1
       ) );
     ?>
 

@@ -1,14 +1,22 @@
 <article class="su-article su-article-devlog" id="post-<?php the_ID(); ?>">
 
   <header class="su-header su-article__header">
-    <?php if ( is_single() ) : ?>
-      <?php the_title( sprintf( '<h1 class="su-heading su-heading--one su-article__title"><a href="%s" rel="bookmark" class="su-heading__link">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
-    <?php else : ?>
-      <?php the_title( sprintf( '<h2 class="su-heading su-heading--two su-article__title"><a href="%s" rel="bookmark" class="su-heading__link">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-    <?php endif; ?>
-  </header>
 
-  <?php sheru_post_thumbnail(); ?>
+    <?php
+      if ( is_single() ) {
+        $heading_element = "h1";
+      } else {
+        $heading_element = "h2";
+      }
+    ?>
+
+    <<?php echo $heading_element ?> class="su-heading su-heading--three su-article__title">
+      <a href="<?php echo esc_url( get_permalink() )?>" rel="bookmark" class="su-heading__link">
+        <?php echo the_date('Y-m-d') ?> <?php echo the_title() ?>
+      </a>
+    </<?php echo $heading_element ?>>
+
+  </header>
 
   <section class="su-article__content">
     <?php

@@ -1,4 +1,4 @@
-<article class="su-article su-article--<?php echo get_post_type ?>" id="post-<?php the_ID(); ?>">
+<article class="su-article" id="post-<?php the_ID(); ?>">
 
   <header class="su-header su-article__header">
     <?php if ( is_single() ) : ?>

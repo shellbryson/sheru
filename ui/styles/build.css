@@ -1829,6 +1829,46 @@ body.admin-bar {
     vertical-align: top; } }
 
 @media (min-width: 48em) {
+  .su-article-devlog {
+    margin-right: 44px; } }
+
+.su-article-devlog .su-article__header {
+  margin: 32px 0;
+  margin: 2rem 0;
+  text-transform: lowercase; }
+
+.su-article-devlog .su-article__content {
+  padding: 20px;
+  padding: 1.25rem;
+  font-size: 12px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.8); }
+  .su-article-devlog .su-article__content p,
+  .su-article-devlog .su-article__content li,
+  .su-article-devlog .su-article__content pre,
+  .su-article-devlog .su-article__content code {
+    font-size: 12px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: #ffffff; }
+    @media (min-width: 48em) {
+      .su-article-devlog .su-article__content p,
+      .su-article-devlog .su-article__content li,
+      .su-article-devlog .su-article__content pre,
+      .su-article-devlog .su-article__content code {
+        font-size: 14px;
+        font-size: 0.875rem; } }
+  .su-article-devlog .su-article__content p {
+    color: rgba(255, 255, 255, 0.7); }
+  .su-article-devlog .su-article__content code {
+    background-color: #3e3e3e;
+    color: #F39700; }
+  .su-article-devlog .su-article__content pre {
+    background-color: #3e3e3e;
+    color: #F39700; }
+
+@media (min-width: 48em) {
   .su-content-devlog {
     margin-top: 100px;
     margin-top: 6.25rem; } }
@@ -1839,7 +1879,7 @@ body.admin-bar {
     vertical-align: top; } }
 
 .su-article-first-devlog {
-  background-image: url("../images/backgrounds/frontpage.svg");
+  background-image: url("../images/backgrounds/frontpage-devlog.svg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 282px;
@@ -1847,11 +1887,12 @@ body.admin-bar {
   margin: 0; }
   @media (min-width: 48em) {
     .su-article-first-devlog {
+      margin-bottom: 32px;
+      margin-bottom: 2rem;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      margin-top: -100px;
-      min-height: 450px; } }
+      margin-top: -100px; } }
   .su-article-first-devlog .su-article__header {
     margin-left: 16px;
     margin-left: 1rem;

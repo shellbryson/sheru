@@ -3,12 +3,23 @@ get_header(); ?>
 
 <main class="su-content su-content-devlog" id="primary">
 
-  <?php if ( have_posts() ) : ?>
+  <?php
+    query_posts(array(
+      'post_type' => 'frontpage_devlog',
+      'showposts' => 1
+    ) );
 
-    <header class="su-page-header">
-      <h1 class="su-heading su-heading--one"><?php the_archive_title(); ?></h1>
-      <h2 class="su-heading__subheading"><?php the_archive_description(); ?></h2>
-    </header>
+    if ( have_posts() ) :
+
+      while (have_posts()) : the_post();
+        get_template_part( 'template-parts/first-devlog', get_post_format() );
+      endwhile;
+      wp_reset_query();
+
+    endif;
+  ?>
+
+  <?php if ( have_posts() ) : ?>
 
     <?php
     while ( have_posts() ) : the_post();
