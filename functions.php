@@ -108,7 +108,7 @@ function sheru_get_category_id_from_slug( $slug ) {
 function sheru_home_category( $query ) {
   $categories = array();
   array_push($categories, sheru_get_category_id_from_slug( "code" ));
-  array_push($categories, sheru_get_category_id_from_slug( "projects" ));
+  array_push($categories, sheru_get_category_id_from_slug( "dev-projects" ));
   array_push($categories, sheru_get_category_id_from_slug( "blog" ));
   if ( $query->is_home() && $query->is_main_query() ) {
     $query->set( 'category__in', $categories);
