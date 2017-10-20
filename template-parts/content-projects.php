@@ -12,7 +12,7 @@
 
     <<?php echo $heading_element ?> class="su-heading su-heading--three su-article__title">
       <a href="<?php echo esc_url( get_permalink() )?>" rel="bookmark" class="su-heading__link">
-        <?php echo the_date('Y-m-d') ?> <?php echo the_title() ?>
+        <span class="su-article-project__year"><?php the_field('acf_project_year'); ?></span> <?php echo the_title() ?>
       </a>
     </<?php echo $heading_element ?>>
 

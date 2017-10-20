@@ -1828,6 +1828,40 @@ body.admin-bar {
     width: 70%;
     vertical-align: top; } }
 
+.su-article-project {
+  display: table;
+  width: 100%;
+  margin: 0; }
+  .su-article-project__meta {
+    padding: 0 30px;
+    padding: 0 1.875rem;
+    display: table-cell;
+    position: relative;
+    width: 150px; }
+  .su-article-project__excerpt {
+    display: table-cell; }
+  .su-article-project__year {
+    padding: 16px;
+    padding: 1rem;
+    font-size: 32px;
+    font-size: 2rem;
+    position: absolute;
+    display: block;
+    height: 70px;
+    background-color: #9a0013;
+    color: #ffffff;
+    z-index: 2; }
+  .su-article-project__divider::after {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 2px;
+    left: 80px;
+    bottom: 0;
+    content: '';
+    background-color: #9a0013;
+    height: 100%; }
+
 @media (min-width: 48em) {
   .su-article-devlog {
     margin-right: 44px; } }

@@ -16,7 +16,7 @@ get_header(); ?>
       while (have_posts()) : the_post();
         get_template_part( 'template-parts/first-projects', get_post_format() );
       endwhile;
-        wp_reset_query();
+      wp_reset_query();
     ?>
 
     <?php endif; ?>
@@ -26,7 +26,7 @@ get_header(); ?>
       <?php
 
       while ( have_posts() ) : the_post();
-        get_template_part( 'template-parts/excerpt', get_post_format() );
+        get_template_part( 'template-parts/excerpt-projects', get_post_format() );
       endwhile;
 
       // Previous/next page navigation.
